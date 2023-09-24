@@ -11,6 +11,11 @@ theme:
 #    - navigation.sections  # 显示多级title
 #    - navigation.expand   # 配合 navigation.sections 使用，默认打开所有的title
     - navigation.prune  #  渲染的 HTML 中仅包含可见的导航项
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - navigation.footer  # 页脚的上一个和下一个
+
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
