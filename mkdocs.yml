@@ -1,0 +1,139 @@
+# [文档](https://squidfunk.github.io/mkdocs-material/plugins/)
+
+site_name: 'Docs'
+
+theme:
+  name: material
+  features:
+#    - navigation.tabs  # 启用选项卡后，顶级部分将呈现在上方视口标题下方的菜单层中1220px，但在移动设备上保持原样。
+    - navigation.tabs.sticky  # 滚动时导航选项卡始终保持可见
+    - navigation.path  # 导航路径
+#    - navigation.sections  # 显示多级title
+#    - navigation.expand   # 配合 navigation.sections 使用，默认打开所有的title
+    - navigation.prune  #  渲染的 HTML 中仅包含可见的导航项
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme)"
+      scheme: default  # 浅色模式（称为 ）default和深色模式（称为 ）slate
+      primary: indigo  # 原色用于标题、侧边栏、文本链接和其他几个组件。要更改主颜色，请将以下值设置mkdocs.yml为有效的颜色名称：
+      accent: indigo  # 强调色用于表示可以交互的元素，例如悬停的链接、按钮和滚动条。
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme)"  # 通过使用媒体查询，每个调色板都可以链接到用户对浅色和深色外观的系统偏好。
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+      primary: indigo
+      accent: indigo
+
+  font:
+    text: Roboto
+
+  language: zh
+
+  icon:  # 首页 homepage 的图片
+#   logo: material/weather-night
+#  favicon: icon/1.icon  # 图标
+
+extra:
+  homepage: /  # https://example.com
+
+##   cookie 同意
+#  consent:
+#    actions:
+#      - accept
+#      - reject
+#      - manage
+#    title: Cookie consent
+#    description: >-
+#      We use cookies to recognize your repeated visits and preferences, as well
+#      as to measure the effectiveness of our documentation and whether users
+#      find what they're searching for. With your consent, you're helping us to
+#      make our documentation better.
+
+
+copyright: >
+  Copyright &copy; 2016 - 2023 Martin Donath –
+  <a href="#__consent">Change cookie settings</a>
+
+
+
+plugins:
+  - blog:
+      draft: true  #  渲染草稿帖子
+      enabled: true
+      blog_dir: blog
+      blog_toc: true
+      post_date_format: medium
+      post_url_date_format: yyyy-MM-dd
+  #    post_url_format: "{date}/{slug}"  # categories– 帖子类别  、file- 文件名
+      post_excerpt: optional  # 该插件使帖子摘录成为可选。当帖子未定义摘录时，视图将包含整个帖子
+      post_excerpt_max_authors: 0  # 摘录中呈现的作者数量的上限
+      post_excerpt_max_categories: 0  # 摘录中呈现的类别数量的上限
+      post_readtime: true   #  自动计算帖子的阅读时间并呈现
+
+  - search:
+      enabled: true
+
+  # 标签插件
+#  - tags:
+#      enabled: true
+#      tags: true
+
+
+markdown_extensions:
+  - pymdownx.arithmatex:  # 允许渲染块和内联块方程
+      generic: true
+#  BetterEm扩展改进了标记的检测，以使用特殊字符（即 for和format）强调Markdown中的文本。
+  - pymdownx.betterem
+  # Caret 、Mark和Tilde扩展添加了使用简单语法突出显示文本并定义下标和上标的功能。
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  # Critic扩展允许使用Critic 标记来突出显示文档中添加、删除或更新的部分，即跟踪 Markdown 语法的更改。
+  - pymdownx.critic:
+      mode: view  # 此选项定义如何解析标记，即是否仅解析view所有建议的更改，或者accept或者reject它们：
+  # 记录扩展，
+  - pymdownx.details
+  # 代码块语法突出显示
+  - pymdownx.highlight:
+      anchor_linenums: true  #  如果代码块包含行号，启用此设置将使用锚链接将它们包裹起来，以便更轻松地进行超链接和共享：
+      use_pygments: true
+      pygments_lang_class: true
+  #    auto_title: true  # 自动title
+      linenums: true  # 行号
+      line_spans: __span
+  - pymdownx.inlinehilite
+
+  # 启用图表支持
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+#  - pymdownx.smartsymbols  # 扩展将一些字符序列转换为相应的符号，例如版权符号或分数。
+
+#  - pymdownx.snippets:
+#    auto_append:
+#      - includes/Demo.md
+
+  - pymdownx.tasklist:  # 任务列表
+      clickable_checkbox: true
+  #  选项卡式扩展允许使用内容选项卡
+  - pymdownx.tabbed:
+      alternate_style: true  # 优化样式
+
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
