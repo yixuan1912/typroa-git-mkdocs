@@ -1,8 +1,11 @@
-# 如何使用本站
+# syntax
 
-```python
 
-```
+
+
+
+
+
 [文档](https://squidfunk.github.io/mkdocs-material/plugins/)
 
 
@@ -201,7 +204,7 @@ sequenceDiagram
     Different tab set.
 
 === "Tab B"
-    ```
+```
     More content.
     ```
 
