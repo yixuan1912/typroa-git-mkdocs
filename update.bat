@@ -11,6 +11,6 @@ echo push
 git push origin main
 
 
-echo ç»“æŸ
+echo ½áÊø
 
 pause >nul
