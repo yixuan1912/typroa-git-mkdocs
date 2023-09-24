@@ -1,3 +1,8 @@
+# 如何使用本站
+
+```python
+
+```
 [文档](https://squidfunk.github.io/mkdocs-material/plugins/)
 
 
@@ -79,10 +84,6 @@ def main():
 
 print(11)
 ```
-
-<img src="img/image-20230923234448507.png" alt="image-20230923234448507" style="zoom:50%;" />
-
-
 
 
 
@@ -203,11 +204,6 @@ sequenceDiagram
     ```
     More content.
     ```
-
-
-![image-20230924000038280](img/image-20230924000038280.png)
-
-
 
 
 
