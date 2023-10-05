@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6d3cbe75-788b-4def-a37b-eaced8c44cbe" name="192.168.8.20">
+        <fileTransfer rootFolder="/root/data/mkDocs" accessType="SFTP" host="192.168.8.20" port="22" sshConfigId="7f3bf17b-067d-4222-9ed7-679832426f0a" sshConfig="root@192.168.8.20:22">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
