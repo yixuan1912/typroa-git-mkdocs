@@ -1,0 +1,1914 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-Hive3%E5%AE%89%E8%A3%85/">
+      
+      
+        <link rel="next" href="../Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Spark Local环境部署 - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spark-local" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spark Local环境部署
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Hadoop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-main/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据库范式建模
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Hadoop-3.3.0-Centos7-64bit_%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Hadoop 3.3.0 Centos7 64bit 编译安装详解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Hive3%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Hive3安装
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Spark Local环境部署
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Spark Local环境部署
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      下载地址
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anaconda-on-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anaconda On Linux 安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      解压
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      上传Spark安装包
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binpyspark" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/pyspark
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-ui-4040" class="md-nav__link">
+    <span class="md-ellipsis">
+      WEB UI (4040)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binspark-shell-" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/spark-shell - 了解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binspark-submit-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/spark-submit (PI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hive SQL 语法大全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      下载地址
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anaconda-on-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anaconda On Linux 安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      解压
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      上传Spark安装包
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binpyspark" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/pyspark
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-ui-4040" class="md-nav__link">
+    <span class="md-ellipsis">
+      WEB UI (4040)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binspark-shell-" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/spark-shell - 了解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binspark-submit-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin/spark-submit (PI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="spark-local">Spark Local环境部署</h1>
+<h2 id="_1">下载地址</h2>
+<p>https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</p>
+<h2 id="_2">条件</h2>
+<ul>
+<li>PYTHON 推荐3.8</li>
+<li>JDK 1.8</li>
+</ul>
+<h2 id="anaconda-on-linux">Anaconda On Linux 安装</h2>
+<p>本次课程的Python环境需要安装到Linux(虚拟机)和Windows(本机)上</p>
+<p>参见最下方, 附: Anaconda On Linux 安装</p>
+<h2 id="_3">解压</h2>
+<p>解压下载的Spark安装包</p>
+<p><code>tar -zxvf spark-3.2.0-bin-hadoop3.2.tgz -C /export/server/</code></p>
+<h2 id="_4">环境变量</h2>
+<p>配置Spark由如下5个环境变量需要设置</p>
+<ul>
+<li>SPARK_HOME: 表示Spark安装路径在哪里 </li>
+<li>PYSPARK_PYTHON: 表示Spark想运行Python程序, 那么去哪里找python执行器 </li>
+<li>JAVA_HOME: 告知Spark Java在哪里 </li>
+<li>HADOOP_CONF_DIR: 告知Spark Hadoop的配置文件在哪里 </li>
+<li>HADOOP_HOME: 告知Spark  Hadoop安装在哪里 </li>
+</ul>
+<p>这5个环境变量 都需要配置在: <code>/etc/profile</code>中</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/export/server/jdk1.8.0_241
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib/dt.jar:<span class="nv">$JAVA_HOME</span>/lib/tools.jar
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HADOOP_HOME</span><span class="o">=</span>/export/server/hadoop-3.3.0
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/sbin
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SPARK_HOME</span><span class="o">=</span>/export/server/spark
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>/export/server/anaconda3/envs/pyspark/bin/python3.8
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span><span class="nv">$HADOOP_HOME</span>/etc/hadoop
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/sbin:<span class="nv">$PATH</span>
+</span></code></pre></div></td></tr></table></div>
+<p>PYSPARK_PYTHON和 JAVA_HOME 需要同样配置在: <code>/root/.bashrc</code>中</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/export/server/jdk1.8.0_241
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYSPARK_HOME</span><span class="o">=</span>/export/server/anaconda3/envs/pyspark/bin/python3.8
+</span></code></pre></div></td></tr></table></div>
+<h2 id="spark">上传Spark安装包</h2>
+<p>资料中提供了: <code>spark-3.2.0-bin-hadoop3.2.tgz</code></p>
+<p>上传这个文件到Linux服务器中</p>
+<p>将其解压, 课程中将其解压(安装)到: <code>/export/server</code>内.</p>
+<p><code>tar -zxvf spark-3.2.0-bin-hadoop3.2.tgz -C /export/server/</code></p>
+<p>由于spark目录名称很长, 给其一个软链接:</p>
+<p><code>ln -s /export/server/spark-3.2.0-bin-hadoop3.2 /export/server/spark</code>
+​</p>
+<h2 id="_5">测试</h2>
+<h3 id="binpyspark">bin/pyspark</h3>
+<p>bin/pyspark 程序, 可以提供一个  <code>交互式</code>的 Python解释器环境, 在这里面可以写普通python代码, 以及spark代码
+<img alt="image-20230627200104551" src="../img/image-20230627200104551.png" /></p>
+<p>如图:</p>
+<p><img alt="image-20230627200111414" src="../img/image-20230627200111414.png" /></p>
+<p>在这个环境内, 可以运行spark代码</p>
+<p>图中的: <code>parallelize</code> 和 <code>map</code> 都是spark提供的API</p>
+<p><code>sc.parallelize([1,2,3,4,5]).map(lambda x: x + 1).collect()</code>
+​</p>
+<h3 id="web-ui-4040">WEB UI (4040)</h3>
+<p>Spark程序在运行的时候, 会绑定到机器的<code>4040</code>端口上.</p>
+<p>如果4040端口被占用, 会顺延到4041 ... 4042...
+<img alt="image-20230627213304654" src="../img/image-20230627213304654.png" /></p>
+<p>打开监控页面后, 可以发现 在程序内仅有一个Driver，因为我们是Local模式, Driver即管理 又 干活.  同时, 输入jps
+<img alt="image-20230627213356766" src="../img/image-20230627213356766.png" /></p>
+<p>可以看到local模式下的唯一进程存在, 这个进程 即是master也是worker</p>
+<h3 id="binspark-shell-">bin/spark-shell - 了解</h3>
+<p>同样是一个解释器环境, 和<code>bin/pyspark</code>不同的是, 这个解释器环境 运行的不是python代码, 而是scala程序代码</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>scala&gt;<span class="w"> </span>sc.parallelize<span class="o">(</span>Array<span class="o">(</span><span class="m">1</span>,2,3,4,5<span class="o">))</span>.map<span class="o">(</span><span class="nv">x</span><span class="o">=</span>&gt;<span class="w"> </span>x<span class="w"> </span>+<span class="w"> </span><span class="m">1</span><span class="o">)</span>.collect<span class="o">()</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>res0:<span class="w"> </span>Array<span class="o">[</span>Int<span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Array<span class="o">(</span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>这个仅作为了解即可, 因为这个是用于scala语言的解释器环境</p>
+</blockquote>
+<h3 id="binspark-submit-pi">bin/spark-submit (PI)</h3>
+<p>作用: 提交指定的Spark代码到Spark环境中运行</p>
+<p>使用方法:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># 语法</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>bin/spark-submit<span class="w"> </span><span class="o">[</span>可选的一些选项<span class="o">]</span><span class="w"> </span>jar包或者python代码的路径<span class="w"> </span><span class="o">[</span>代码的参数<span class="o">]</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1"># 示例</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>bin/spark-submit<span class="w"> </span>/export/server/spark/examples/src/main/python/pi.py<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1"># 此案例 运行Spark官方所提供的示例代码 来计算圆周率值.  后面的10 是主函数接受的参数, 数字越高, 计算圆周率越准确.</span>
+</span></code></pre></div></td></tr></table></div>
+<p>对比</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>bin/spark-submit</th>
+<th>bin/pyspark</th>
+<th>bin/spark-shell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>提交java\scala\python代码到spark中运行</td>
+<td>提供一个<code>python</code></td>
+<td></td>
+</tr>
+<tr>
+<td>解释器环境用来以python代码执行spark程序</td>
+<td>提供一个<code>scala</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>解释器环境用来以scala代码执行spark程序</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>特点</td>
+<td>提交代码用</td>
+<td>解释器环境 写一行执行一行</td>
+<td>解释器环境 写一行执行一行</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>正式场合, 正式提交spark程序运行</td>
+<td>测试\学习\写一行执行一行\用来验证代码等</td>
+<td>测试\学习\写一行执行一行\用来验证代码等</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Local模式将是我们7天Spark课程的主力使用模式</p>
+</blockquote>
+<h1 id="spark-standalone">Spark StandAlone环境部署</h1>
+<h2 id="_6">新角色 历史服务器</h2>
+<blockquote>
+<p>历史服务器不是Spark环境的必要组件, 是可选的.</p>
+<p>回忆: 在YARN中 有一个历史服务器, 功能: 将YARN运行的程序的历史日志记录下来, 通过历史服务器方便用户查看程序运行的历史信息.</p>
+</blockquote>
+<p>Spark的历史服务器, 功能: 将Spark运行的程序的历史日志记录下来, 通过历史服务器方便用户查看程序运行的历史信息.</p>
+<p>搭建集群环境, 我们一般<code>推荐将历史服务器也配置上</code>, 方面以后查看历史记录
+​</p>
+<h2 id="_7">集群规划</h2>
+<p>课程中 使用三台Linux虚拟机来组成集群环境, 非别是:</p>
+<p>node1 node2 node3</p>
+<p>node1运行: Spark的Master进程  和 1个Worker进程</p>
+<p>node2运行: spark的1个worker进程</p>
+<p>node3运行: spark的1个worker进程</p>
+<p>整个集群提供: 1个master进程 和 3个worker进程</p>
+<h2 id="_8">安装</h2>
+<h3 id="pythonanaconda">在所有机器安装Python(Anaconda)</h3>
+<p>参考 附1内容, 如何在Linux上安装anaconda</p>
+<p>同时不要忘记 都创建<code>pyspark</code>虚拟环境 以及安装虚拟环境所需要的包<code>pyspark jieba pyhive</code></p>
+<h3 id="_9">在所有机器配置环境变量</h3>
+<p>参考 Local模式下 环境变量的配置内容</p>
+<p><strong><code>确保3台都配置</code></strong></p>
+<h3 id="_10">配置配置文件</h3>
+<p>进入到spark的配置文件目录中, <code>cd $SPARK_HOME/conf</code></p>
+<p>配置workers文件</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># 改名, 去掉后面的.template后缀</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>mv<span class="w"> </span>workers.template<span class="w"> </span>workers
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1"># 编辑worker文件</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># 功能: 这个文件就是指示了  当前SparkStandAlone环境下, 有哪些worker</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>vim<span class="w"> </span>workers
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># 将里面的localhost删除, 追加</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>node1
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>node2
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>node3
+</span></code></pre></div></td></tr></table></div>
+<p>配置spark-env.sh文件</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># 1. 改名</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>mv<span class="w"> </span>spark-env.sh.template<span class="w"> </span>spark-env.sh
+</span></code></pre></div></td></tr></table></div>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span>
+<span class="normal"><a href="#__codelineno-6-26">26</a></span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># 2. 编辑spark-env.sh, 在底部追加如下内容</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="c1">## 设置JAVA安装目录</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nv">JAVA_HOME</span><span class="o">=</span>/export/server/jdk
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="c1">## HADOOP软件配置文件目录，读取HDFS上文件和运行YARN集群</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span>/export/server/hadoop/etc/hadoop
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nv">YARN_CONF_DIR</span><span class="o">=</span>/export/server/hadoop/etc/hadoop
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1">## 指定spark老大Master的IP和提交任务的通信端口</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="c1"># 告知Spark的master运行在哪个机器上</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SPARK_MASTER_HOST</span><span class="o">=</span>node1
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="c1"># 告知sparkmaster的通讯端口</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SPARK_MASTER_PORT</span><span class="o">=</span><span class="m">7077</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="c1"># 告知spark master的 webui端口</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="nv">SPARK_MASTER_WEBUI_PORT</span><span class="o">=</span><span class="m">8080</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="c1"># worker cpu可用核数</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="nv">SPARK_WORKER_CORES</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="c1"># worker可用内存</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="nv">SPARK_WORKER_MEMORY</span><span class="o">=</span>1g
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="c1"># worker的工作通讯地址</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="nv">SPARK_WORKER_PORT</span><span class="o">=</span><span class="m">7078</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="c1"># worker的 webui地址</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="nv">SPARK_WORKER_WEBUI_PORT</span><span class="o">=</span><span class="m">8081</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="c1">## 设置历史服务器</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="c1"># 配置的意思是  将spark程序运行的历史日志 存到hdfs的/sparklog文件夹中</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="nv">SPARK_HISTORY_OPTS</span><span class="o">=</span><span class="s2">&quot;-Dspark.history.fs.logDirectory=hdfs://node1:8020/sparklog/ -Dspark.history.fs.cleaner.enabled=true&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>注意, 上面的配置的路径 要根据你自己机器实际的路径来写</p>
+<p>在HDFS上创建程序运行历史记录存放的文件夹:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>hadoop<span class="w"> </span>fs<span class="w"> </span>-mkdir<span class="w"> </span>/sparklog
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>hadoop<span class="w"> </span>fs<span class="w"> </span>-chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>/sparklog
+</span></code></pre></div></td></tr></table></div>
+<p>配置spark-defaults.conf文件</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># 1. 改名</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>mv<span class="w"> </span>spark-defaults.conf.template<span class="w"> </span>spark-defaults.conf
+</span></code></pre></div></td></tr></table></div>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># 2. 修改内容, 追加如下内容</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1"># 开启spark的日期记录功能</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>spark.eventLog.enabled<span class="w">  </span><span class="nb">true</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1"># 设置spark日志记录的路径</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>spark.eventLog.dir<span class="w">   </span>hdfs://node1:8020/sparklog/<span class="w"> </span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="c1"># 设置spark日志是否启动压缩</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>spark.eventLog.compress<span class="w">     </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>配置log4j.properties 文件 [可选配置]</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1"># 1. 改名</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>mv<span class="w"> </span>log4j.properties.template<span class="w"> </span>log4j.properties
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1"># 2. 修改内容</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="c1">#log4j.rootCategory=INFO, console</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>log4j.rootCategory<span class="o">=</span>WARN,<span class="w"> </span>console
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>这个文件的修改不是必须的,  为什么修改为WARN. 因为Spark是个话痨</p>
+<p>会疯狂输出日志, 设置级别为WARN 只输出警告和错误日志, 不要输出一堆废话.</p>
+</blockquote>
+<h3 id="spark_1">将Spark安装文件夹  分发到其它的服务器上</h3>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>spark-3.2.0-bin-hadoop3.2<span class="w"> </span>node2:/export/server/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>scp<span class="w"> </span>-r<span class="w"> </span>spark-3.2.0-bin-hadoop3.2node3:/export/server/
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1">#  在node2和node3上 给spark安装目录增加软链接</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>ln<span class="w"> </span>-s<span class="w"> </span>/export/server/spark-3.2.0-bin-hadoop3.2<span class="w"> </span>/export/server/spark
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_11">检查</h3>
+<p>检查每台机器的:</p>
+<p>JAVA_HOME</p>
+<p>SPARK_HOME</p>
+<p>PYSPARK_PYTHON</p>
+<p>等等 环境变量是否正常指向正确的目录</p>
+<h3 id="_12">启动历史服务器</h3>
+<p><code>sbin/start-history-server.sh</code></p>
+<h3 id="sparkmasterworker">启动Spark的Master和Worker进程</h3>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># 启动全部master和worker</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>sbin/start-all.sh
+</span></code></pre></div></td></tr></table></div>
+<h3 id="masterweb-ui">查看Master的WEB UI</h3>
+<p>默认端口master我们设置到了8080</p>
+<p>如果端口被占用, 会顺延到8081 ...;8082... 8083... 直到申请到端口为止</p>
+<p>可以在日志中查看, 具体顺延到哪个端口上:</p>
+<p><code>Service 'MasterUI' could not bind on port 8080. Attempting port 8081.</code></p>
+<h3 id="standalone">连接到StandAlone集群</h3>
+<h4 id="binpyspark_1">bin/pyspark</h4>
+<p>执行:</p>
+<p><div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>bin/pyspark<span class="w"> </span>--master<span class="w"> </span>spark://node1:7077
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># 通过--master选项来连接到 StandAlone集群</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="c1"># 如果不写--master选项, 默认是local模式运行</span>
+</span></code></pre></div></td></tr></table></div>
+<img alt="" src="https://pybd.yuque.com/api/filetransfer/images?url=https%3A%2F%2Fimage-set.oss-cn-zhangjiakou.aliyuncs.com%2Fimg-out%2F2021%2F09%2F08%2F20210908154652.png&amp;sign=d22ba394d315a9b4921ac0892d30ecd2516ab354222f1c6b812b63126d3ba64e#from=url&amp;id=aMI2X&amp;margin=%5Bobject%20Object%5D&amp;originHeight=497&amp;originWidth=1644&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none" /></p>
+<h4 id="binspark-shell">bin/spark-shell</h4>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>bin/spark-shell<span class="w"> </span>--master<span class="w"> </span>spark://node1:7077
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="c1"># 同样适用--master来连接到集群使用</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-scala highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c1">// 测试代码</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="n">sc</span><span class="p">.</span><span class="n">parallelize</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="n">x</span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">collect</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="binspark-submit-pi_1">bin/spark-submit (PI)</h4>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>bin/spark-submit<span class="w"> </span>--master<span class="w"> </span>spark://node1:7077<span class="w"> </span>/export/server/spark/examples/src/main/python/pi.py<span class="w"> </span><span class="m">100</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="c1"># 同样使用--master来指定将任务提交到集群运行</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="web-ui">查看历史服务器WEB UI</h3>
+<p>历史服务器的默认端口是: 18080</p>
+<p>我们启动在node1上, 可以在浏览器打开:</p>
+<p><code>node1:18080</code>来进入到历史服务器的WEB UI上.
+<img alt="" src="https://pybd.yuque.com/api/filetransfer/images?url=https%3A%2F%2Fimage-set.oss-cn-zhangjiakou.aliyuncs.com%2Fimg-out%2F2021%2F09%2F08%2F20210908160451.png&amp;sign=24bd99909213440824bcb26ac36fa691aeff18418e941b24f8beaf028ecf547d#from=url&amp;id=niLUK&amp;margin=%5Bobject%20Object%5D&amp;originHeight=616&amp;originWidth=1881&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none" /></p>
+<h1 id="spark-standalone-ha">Spark StandAlone HA 环境搭建</h1>
+<h2 id="_13">步骤</h2>
+<blockquote>
+<p>前提: 确保Zookeeper 和 HDFS 均已经启动</p>
+</blockquote>
+<p>先在<code>spark-env.sh</code>中, 删除: <code>SPARK_MASTER_HOST=node1</code></p>
+<p>原因: 配置文件中固定master是谁, 那么就无法用到zk的动态切换master功能了.</p>
+<p>在<code>spark-env.sh</code>中, 增加:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nv">SPARK_DAEMON_JAVA_OPTS</span><span class="o">=</span><span class="s2">&quot;-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=node1:2181,node2:2181,node3:2181 -Dspark.deploy.zookeeper.dir=/spark-ha&quot;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="c1"># spark.deploy.recoveryMode 指定HA模式 基于Zookeeper实现</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1"># 指定Zookeeper的连接地址</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="c1"># 指定在Zookeeper中注册临时节点的路径</span>
+</span></code></pre></div></td></tr></table></div>
+<p>将spark-env.sh 分发到每一台服务器上</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>scp<span class="w"> </span>spark-env.sh<span class="w"> </span>node2:/export/server/spark/conf/
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>scp<span class="w"> </span>spark-env.sh<span class="w"> </span>node3:/export/server/spark/conf/
+</span></code></pre></div></td></tr></table></div>
+<p>停止当前StandAlone集群</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>sbin/stop-all.sh
+</span></code></pre></div></td></tr></table></div>
+<p>启动集群:</p>
+<p><div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># 在node1上 启动一个master 和全部worker</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>sbin/start-all.sh
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="c1"># 注意, 下面命令在node2上执行</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a>sbin/start-master.sh
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="c1"># 在node2上启动一个备用的master进程</span>
+</span></code></pre></div></td></tr></table></div>
+<img alt="" src="https://pybd.yuque.com/api/filetransfer/images?url=https%3A%2F%2Fimage-set.oss-cn-zhangjiakou.aliyuncs.com%2Fimg-out%2F2021%2F09%2F08%2F20210908162145.png&amp;sign=c91a0734a2253c8d5502c116be7c8ae516af6bd9bed835bb25698d6cd4852203#from=url&amp;id=CK971&amp;margin=%5Bobject%20Object%5D&amp;originHeight=366&amp;originWidth=888&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none" />
+<img alt="" src="https://pybd.yuque.com/api/filetransfer/images?url=https%3A%2F%2Fimage-set.oss-cn-zhangjiakou.aliyuncs.com%2Fimg-out%2F2021%2F09%2F08%2F20210908162112.png&amp;sign=7bad1d23f0bbc110082c84a1432f50ac211f3114c786eb01df7d4691e83fad21#from=url&amp;id=BTOB5&amp;margin=%5Bobject%20Object%5D&amp;originHeight=440&amp;originWidth=858&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none" /></p>
+<h2 id="master">master主备切换</h2>
+<p>提交一个spark任务到当前<code>alive</code>master上:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>bin/spark-submit<span class="w"> </span>--master<span class="w"> </span>spark://node1:7077<span class="w"> </span>/export/server/spark/examples/src/main/python/pi.py<span class="w"> </span><span class="m">1000</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在提交成功后, 将alivemaster直接kill掉</p>
+<p>不会影响程序运行:
+<img alt="" src="https://pybd.yuque.com/api/filetransfer/images?url=https%3A%2F%2Fimage-set.oss-cn-zhangjiakou.aliyuncs.com%2Fimg-out%2F2021%2F09%2F08%2F20210908162555.png&amp;sign=6c267116ad788645fdc2af413af7ac1c6e22ae0d655afe3dd4fda1117f6d5253#from=url&amp;id=AAdNb&amp;margin=%5Bobject%20Object%5D&amp;originHeight=314&amp;originWidth=1889&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none" />
+当新的master接收集群后, 程序继续运行, 正常得到结果.</p>
+<blockquote>
+<p>结论 HA模式下, 主备切换 不会影响到正在运行的程序.</p>
+<p>最大的影响是 会让它中断大约30秒左右.</p>
+</blockquote>
+<h1 id="spark-on-yarn">Spark On YARN 环境搭建</h1>
+<h2 id="_14">部署</h2>
+<p>确保:</p>
+<ul>
+<li>HADOOP_CONF_DIR</li>
+<li>YARN_CONF_DIR</li>
+</ul>
+<p>在spark-env.sh 以及 环境变量配置文件中即可
+​</p>
+<h2 id="yarn">连接到YARN中</h2>
+<h3 id="binpyspark_2">bin/pyspark</h3>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>bin/pyspark<span class="w"> </span>--master<span class="w"> </span>yarn<span class="w"> </span>--deploy-mode<span class="w"> </span>client<span class="p">|</span>cluster
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="c1"># --deploy-mode 选项是指定部署模式, 默认是 客户端模式</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="c1"># client就是客户端模式</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="c1"># cluster就是集群模式</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="c1"># --deploy-mode 仅可以用在YARN模式下</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>注意: 交互式环境 pyspark  和 spark-shell  无法运行 cluster模式</p>
+</blockquote>
+<h3 id="binspark-shell_1">bin/spark-shell</h3>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>bin/spark-shell<span class="w"> </span>--master<span class="w"> </span>yarn<span class="w"> </span>--deploy-mode<span class="w"> </span>client<span class="p">|</span>cluster
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>注意: 交互式环境 pyspark  和 spark-shell  无法运行 cluster模式</p>
+</blockquote>
+<h3 id="binspark-submit-pi_2">bin/spark-submit (PI)</h3>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>bin/spark-submit<span class="w"> </span>--master<span class="w"> </span>yarn<span class="w"> </span>--deploy-mode<span class="w"> </span>client<span class="p">|</span>cluster<span class="w"> </span>/xxx/xxx/xxx.py<span class="w"> </span>参数
+</span></code></pre></div></td></tr></table></div>
+<h2 id="spark-submit-spark-shell-pyspark">spark-submit 和 spark-shell 和 pyspark的相关参数</h2>
+<p>参见: 附2
+​</p>
+<h1 id="1-anaconda-on-linux">附1 Anaconda On Linux 安装 (单台服务器)</h1>
+<h2 id="_15">安装</h2>
+<p>上传安装包:</p>
+<p>上传: 资料中提供的<code>Anaconda3-2021.05-Linux-x86_64.sh</code>文件到Linux服务器上</p>
+<p>安装:</p>
+<p><code>sh ./Anaconda3-2021.05-Linux-x86_64.sh</code></p>
+<p><img src="img/image-20230627174848156.png" alt="image-20230627174848156" style="zoom: 67%;" /></p>
+<p><img src="img/image-20230627175021543.png" alt="image-20230627175021543" style="zoom:67%;" /></p>
+<p>输入yes后就安装完成了.</p>
+<p>安装完成后, <code>退出SecureCRT 重新进来</code>: 
+<img alt="image-20230627174828225" src="../img/image-20230627174828225.png" /></p>
+<p>看到这个Base开头表明安装好了.</p>
+<p>base是默认的虚拟环境.
+​</p>
+<h2 id="_16">国内源</h2>
+<p>如果你安装好后, 没有出现base, 可以打开:/root/.condarc这个文件, 追加如下内容:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-25-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-25-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-25-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-25-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-25-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-25-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-25-10">10</a></span>
+<span class="normal"><a href="#__codelineno-25-11">11</a></span>
+<span class="normal"><a href="#__codelineno-25-12">12</a></span>
+<span class="normal"><a href="#__codelineno-25-13">13</a></span>
+<span class="normal"><a href="#__codelineno-25-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>channels:
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="w">  </span>-<span class="w"> </span>defaults
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>show_channel_urls:<span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>default_channels:
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a>custom_channels:
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="w">  </span>conda-forge:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10"></a><span class="w">  </span>msys2:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11"></a><span class="w">  </span>bioconda:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12"></a><span class="w">  </span>menpo:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13"></a><span class="w">  </span>pytorch:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14"></a><span class="w">  </span>simpleitk:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></code></pre></div></td></tr></table></div>
+<h1 id="2-spark-submitpyspark">附2 spark-submit和pyspark相关参数</h1>
+<p>客户端工具我们可以用的有:</p>
+<ul>
+<li>bin/pyspark: pyspark解释器spark环境</li>
+<li>bin/spark-shell: scala解释器spark环境</li>
+<li>bin/spark-submit: 提交jar包或Python文件执行的工具</li>
+<li>bin/spark-sql: sparksql客户端工具</li>
+</ul>
+<p>这4个客户端工具的参数基本通用.</p>
+<p>以spark-submit 为例:</p>
+<p><code>bin/spark-submit --master spark://node1:7077 xxx.py</code></p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span>
+<span class="normal"><a href="#__codelineno-26-15">15</a></span>
+<span class="normal"><a href="#__codelineno-26-16">16</a></span>
+<span class="normal"><a href="#__codelineno-26-17">17</a></span>
+<span class="normal"><a href="#__codelineno-26-18">18</a></span>
+<span class="normal"><a href="#__codelineno-26-19">19</a></span>
+<span class="normal"><a href="#__codelineno-26-20">20</a></span>
+<span class="normal"><a href="#__codelineno-26-21">21</a></span>
+<span class="normal"><a href="#__codelineno-26-22">22</a></span>
+<span class="normal"><a href="#__codelineno-26-23">23</a></span>
+<span class="normal"><a href="#__codelineno-26-24">24</a></span>
+<span class="normal"><a href="#__codelineno-26-25">25</a></span>
+<span class="normal"><a href="#__codelineno-26-26">26</a></span>
+<span class="normal"><a href="#__codelineno-26-27">27</a></span>
+<span class="normal"><a href="#__codelineno-26-28">28</a></span>
+<span class="normal"><a href="#__codelineno-26-29">29</a></span>
+<span class="normal"><a href="#__codelineno-26-30">30</a></span>
+<span class="normal"><a href="#__codelineno-26-31">31</a></span>
+<span class="normal"><a href="#__codelineno-26-32">32</a></span>
+<span class="normal"><a href="#__codelineno-26-33">33</a></span>
+<span class="normal"><a href="#__codelineno-26-34">34</a></span>
+<span class="normal"><a href="#__codelineno-26-35">35</a></span>
+<span class="normal"><a href="#__codelineno-26-36">36</a></span>
+<span class="normal"><a href="#__codelineno-26-37">37</a></span>
+<span class="normal"><a href="#__codelineno-26-38">38</a></span>
+<span class="normal"><a href="#__codelineno-26-39">39</a></span>
+<span class="normal"><a href="#__codelineno-26-40">40</a></span>
+<span class="normal"><a href="#__codelineno-26-41">41</a></span>
+<span class="normal"><a href="#__codelineno-26-42">42</a></span>
+<span class="normal"><a href="#__codelineno-26-43">43</a></span>
+<span class="normal"><a href="#__codelineno-26-44">44</a></span>
+<span class="normal"><a href="#__codelineno-26-45">45</a></span>
+<span class="normal"><a href="#__codelineno-26-46">46</a></span>
+<span class="normal"><a href="#__codelineno-26-47">47</a></span>
+<span class="normal"><a href="#__codelineno-26-48">48</a></span>
+<span class="normal"><a href="#__codelineno-26-49">49</a></span>
+<span class="normal"><a href="#__codelineno-26-50">50</a></span>
+<span class="normal"><a href="#__codelineno-26-51">51</a></span>
+<span class="normal"><a href="#__codelineno-26-52">52</a></span>
+<span class="normal"><a href="#__codelineno-26-53">53</a></span>
+<span class="normal"><a href="#__codelineno-26-54">54</a></span>
+<span class="normal"><a href="#__codelineno-26-55">55</a></span>
+<span class="normal"><a href="#__codelineno-26-56">56</a></span>
+<span class="normal"><a href="#__codelineno-26-57">57</a></span>
+<span class="normal"><a href="#__codelineno-26-58">58</a></span>
+<span class="normal"><a href="#__codelineno-26-59">59</a></span>
+<span class="normal"><a href="#__codelineno-26-60">60</a></span>
+<span class="normal"><a href="#__codelineno-26-61">61</a></span>
+<span class="normal"><a href="#__codelineno-26-62">62</a></span>
+<span class="normal"><a href="#__codelineno-26-63">63</a></span>
+<span class="normal"><a href="#__codelineno-26-64">64</a></span>
+<span class="normal"><a href="#__codelineno-26-65">65</a></span>
+<span class="normal"><a href="#__codelineno-26-66">66</a></span>
+<span class="normal"><a href="#__codelineno-26-67">67</a></span>
+<span class="normal"><a href="#__codelineno-26-68">68</a></span>
+<span class="normal"><a href="#__codelineno-26-69">69</a></span>
+<span class="normal"><a href="#__codelineno-26-70">70</a></span>
+<span class="normal"><a href="#__codelineno-26-71">71</a></span>
+<span class="normal"><a href="#__codelineno-26-72">72</a></span>
+<span class="normal"><a href="#__codelineno-26-73">73</a></span>
+<span class="normal"><a href="#__codelineno-26-74">74</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>Usage:<span class="w"> </span>spark-submit<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;app<span class="w"> </span>jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>file<span class="w"> </span><span class="p">|</span><span class="w"> </span>R<span class="w"> </span>file&gt;<span class="w"> </span><span class="o">[</span>app<span class="w"> </span>arguments<span class="o">]</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>Usage:<span class="w"> </span>spark-submit<span class="w"> </span>--kill<span class="w"> </span><span class="o">[</span>submission<span class="w"> </span>ID<span class="o">]</span><span class="w"> </span>--master<span class="w"> </span><span class="o">[</span>spark://...<span class="o">]</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>Usage:<span class="w"> </span>spark-submit<span class="w"> </span>--status<span class="w"> </span><span class="o">[</span>submission<span class="w"> </span>ID<span class="o">]</span><span class="w"> </span>--master<span class="w"> </span><span class="o">[</span>spark://...<span class="o">]</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a>Usage:<span class="w"> </span>spark-submit<span class="w"> </span>run-example<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>example-class<span class="w"> </span><span class="o">[</span>example<span class="w"> </span>args<span class="o">]</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6"></a>Options:
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="w">  </span>--master<span class="w"> </span>MASTER_URL<span class="w">         </span>spark://host:port,<span class="w"> </span>mesos://host:port,<span class="w"> </span>yarn,
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8"></a><span class="w">                              </span>k8s://https://host:port,<span class="w"> </span>or<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="o">(</span>Default:<span class="w"> </span>local<span class="o">[</span>*<span class="o">])</span>.
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="w">  </span>--deploy-mode<span class="w"> </span>DEPLOY_MODE<span class="w">   </span>部署模式<span class="w"> </span>client<span class="w"> </span>或者<span class="w"> </span>cluster<span class="w"> </span>默认是client
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10"></a><span class="w">  </span>--class<span class="w"> </span>CLASS_NAME<span class="w">          </span>运行java或者scala<span class="w"> </span>class<span class="o">(</span><span class="k">for</span><span class="w"> </span>Java<span class="w"> </span>/<span class="w"> </span>Scala<span class="w"> </span>apps<span class="o">)</span>.
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11"></a><span class="w">  </span>--name<span class="w"> </span>NAME<span class="w">                 </span>程序的名字
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12"></a><span class="w">  </span>--jars<span class="w"> </span>JARS<span class="w">                 </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>jars<span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>driver
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="w">                              </span>and<span class="w"> </span>executor<span class="w"> </span>classpaths.
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14"></a><span class="w">  </span>--packages<span class="w">                  </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>maven<span class="w"> </span>coordinates<span class="w"> </span>of<span class="w"> </span>jars<span class="w"> </span>to<span class="w"> </span>include
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15"></a><span class="w">                              </span>on<span class="w"> </span>the<span class="w"> </span>driver<span class="w"> </span>and<span class="w"> </span>executor<span class="w"> </span>classpaths.<span class="w"> </span>Will<span class="w"> </span>search<span class="w"> </span>the<span class="w"> </span><span class="nb">local</span>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16"></a><span class="w">                              </span>maven<span class="w"> </span>repo,<span class="w"> </span><span class="k">then</span><span class="w"> </span>maven<span class="w"> </span>central<span class="w"> </span>and<span class="w"> </span>any<span class="w"> </span>additional<span class="w"> </span>remote
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17"></a><span class="w">                              </span>repositories<span class="w"> </span>given<span class="w"> </span>by<span class="w"> </span>--repositories.<span class="w"> </span>The<span class="w"> </span>format<span class="w"> </span><span class="k">for</span><span class="w"> </span>the
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18"></a><span class="w">                              </span>coordinates<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>groupId:artifactId:version.
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19"></a><span class="w">  </span>--exclude-packages<span class="w">          </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>groupId:artifactId,<span class="w"> </span>to<span class="w"> </span>exclude<span class="w"> </span><span class="k">while</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20"></a><span class="w">                              </span>resolving<span class="w"> </span>the<span class="w"> </span>dependencies<span class="w"> </span>provided<span class="w"> </span><span class="k">in</span><span class="w"> </span>--packages<span class="w"> </span>to<span class="w"> </span>avoid
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21"></a><span class="w">                              </span>dependency<span class="w"> </span>conflicts.
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22"></a><span class="w">  </span>--repositories<span class="w">              </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>additional<span class="w"> </span>remote<span class="w"> </span>repositories<span class="w"> </span>to
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23"></a><span class="w">                              </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>maven<span class="w"> </span>coordinates<span class="w"> </span>given<span class="w"> </span>with<span class="w"> </span>--packages.
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24"></a><span class="w">  </span>--py-files<span class="w"> </span>PY_FILES<span class="w">         </span>指定Python程序依赖的其它python文件
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25"></a><span class="w">  </span>--files<span class="w"> </span>FILES<span class="w">               </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>placed<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>working
+</span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26"></a><span class="w">                              </span>directory<span class="w"> </span>of<span class="w"> </span>each<span class="w"> </span>executor.<span class="w"> </span>File<span class="w"> </span>paths<span class="w"> </span>of<span class="w"> </span>these<span class="w"> </span>files
+</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27"></a><span class="w">                              </span><span class="k">in</span><span class="w"> </span>executors<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>accessed<span class="w"> </span>via<span class="w"> </span>SparkFiles.get<span class="o">(</span>fileName<span class="o">)</span>.
+</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28"></a><span class="w">  </span>--archives<span class="w"> </span>ARCHIVES<span class="w">         </span>Comma-separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>archives<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>extracted<span class="w"> </span>into<span class="w"> </span>the
+</span><span id="__span-26-29"><a id="__codelineno-26-29" name="__codelineno-26-29"></a><span class="w">                              </span>working<span class="w"> </span>directory<span class="w"> </span>of<span class="w"> </span>each<span class="w"> </span>executor.
+</span><span id="__span-26-30"><a id="__codelineno-26-30" name="__codelineno-26-30"></a>
+</span><span id="__span-26-31"><a id="__codelineno-26-31" name="__codelineno-26-31"></a><span class="w">  </span>--conf,<span class="w"> </span>-c<span class="w"> </span><span class="nv">PROP</span><span class="o">=</span>VALUE<span class="w">       </span>手动指定配置
+</span><span id="__span-26-32"><a id="__codelineno-26-32" name="__codelineno-26-32"></a><span class="w">  </span>--properties-file<span class="w"> </span>FILE<span class="w">      </span>Path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>from<span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>extra<span class="w"> </span>properties.<span class="w"> </span>If<span class="w"> </span>not
+</span><span id="__span-26-33"><a id="__codelineno-26-33" name="__codelineno-26-33"></a><span class="w">                              </span>specified,<span class="w"> </span>this<span class="w"> </span>will<span class="w"> </span>look<span class="w"> </span><span class="k">for</span><span class="w"> </span>conf/spark-defaults.conf.
+</span><span id="__span-26-34"><a id="__codelineno-26-34" name="__codelineno-26-34"></a>
+</span><span id="__span-26-35"><a id="__codelineno-26-35" name="__codelineno-26-35"></a><span class="w">  </span>--driver-memory<span class="w"> </span>MEM<span class="w">         </span>Driver的可用内存<span class="o">(</span>Default:<span class="w"> </span>1024M<span class="o">)</span>.
+</span><span id="__span-26-36"><a id="__codelineno-26-36" name="__codelineno-26-36"></a><span class="w">  </span>--driver-java-options<span class="w">       </span>Driver的一些Java选项
+</span><span id="__span-26-37"><a id="__codelineno-26-37" name="__codelineno-26-37"></a><span class="w">  </span>--driver-library-path<span class="w">       </span>Extra<span class="w"> </span>library<span class="w"> </span>path<span class="w"> </span>entries<span class="w"> </span>to<span class="w"> </span>pass<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>driver.
+</span><span id="__span-26-38"><a id="__codelineno-26-38" name="__codelineno-26-38"></a><span class="w">  </span>--driver-class-path<span class="w">         </span>Extra<span class="w"> </span>class<span class="w"> </span>path<span class="w"> </span>entries<span class="w"> </span>to<span class="w"> </span>pass<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>driver.<span class="w"> </span>Note<span class="w"> </span>that
+</span><span id="__span-26-39"><a id="__codelineno-26-39" name="__codelineno-26-39"></a><span class="w">                              </span>jars<span class="w"> </span>added<span class="w"> </span>with<span class="w"> </span>--jars<span class="w"> </span>are<span class="w"> </span>automatically<span class="w"> </span>included<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+</span><span id="__span-26-40"><a id="__codelineno-26-40" name="__codelineno-26-40"></a><span class="w">                              </span>classpath.
+</span><span id="__span-26-41"><a id="__codelineno-26-41" name="__codelineno-26-41"></a>
+</span><span id="__span-26-42"><a id="__codelineno-26-42" name="__codelineno-26-42"></a><span class="w">  </span>--executor-memory<span class="w"> </span>MEM<span class="w">       </span>Executor的内存<span class="w"> </span><span class="o">(</span>Default:<span class="w"> </span>1G<span class="o">)</span>.
+</span><span id="__span-26-43"><a id="__codelineno-26-43" name="__codelineno-26-43"></a>
+</span><span id="__span-26-44"><a id="__codelineno-26-44" name="__codelineno-26-44"></a><span class="w">  </span>--proxy-user<span class="w"> </span>NAME<span class="w">           </span>User<span class="w"> </span>to<span class="w"> </span>impersonate<span class="w"> </span>when<span class="w"> </span>submitting<span class="w"> </span>the<span class="w"> </span>application.
+</span><span id="__span-26-45"><a id="__codelineno-26-45" name="__codelineno-26-45"></a><span class="w">                              </span>This<span class="w"> </span>argument<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>work<span class="w"> </span>with<span class="w"> </span>--principal<span class="w"> </span>/<span class="w"> </span>--keytab.
+</span><span id="__span-26-46"><a id="__codelineno-26-46" name="__codelineno-26-46"></a>
+</span><span id="__span-26-47"><a id="__codelineno-26-47" name="__codelineno-26-47"></a><span class="w">  </span>--help,<span class="w"> </span>-h<span class="w">                  </span>显示帮助文件
+</span><span id="__span-26-48"><a id="__codelineno-26-48" name="__codelineno-26-48"></a><span class="w">  </span>--verbose,<span class="w"> </span>-v<span class="w">               </span>Print<span class="w"> </span>additional<span class="w"> </span>debug<span class="w"> </span>output.
+</span><span id="__span-26-49"><a id="__codelineno-26-49" name="__codelineno-26-49"></a><span class="w">  </span>--version,<span class="w">                  </span>打印版本
+</span><span id="__span-26-50"><a id="__codelineno-26-50" name="__codelineno-26-50"></a>
+</span><span id="__span-26-51"><a id="__codelineno-26-51" name="__codelineno-26-51"></a><span class="w"> </span>Cluster<span class="w"> </span>deploy<span class="w"> </span>mode<span class="w"> </span>only<span class="o">(</span>集群模式专属<span class="o">)</span>:
+</span><span id="__span-26-52"><a id="__codelineno-26-52" name="__codelineno-26-52"></a><span class="w">  </span>--driver-cores<span class="w"> </span>NUM<span class="w">          </span>Driver可用的的CPU核数<span class="o">(</span>Default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>.
+</span><span id="__span-26-53"><a id="__codelineno-26-53" name="__codelineno-26-53"></a>
+</span><span id="__span-26-54"><a id="__codelineno-26-54" name="__codelineno-26-54"></a><span class="w"> </span>Spark<span class="w"> </span>standalone<span class="w"> </span>or<span class="w"> </span>Mesos<span class="w"> </span>with<span class="w"> </span>cluster<span class="w"> </span>deploy<span class="w"> </span>mode<span class="w"> </span>only:
+</span><span id="__span-26-55"><a id="__codelineno-26-55" name="__codelineno-26-55"></a><span class="w">  </span>--supervise<span class="w">                 </span>如果给定,<span class="w"> </span>可以尝试重启Driver
+</span><span id="__span-26-56"><a id="__codelineno-26-56" name="__codelineno-26-56"></a>
+</span><span id="__span-26-57"><a id="__codelineno-26-57" name="__codelineno-26-57"></a><span class="w"> </span>Spark<span class="w"> </span>standalone,<span class="w"> </span>Mesos<span class="w"> </span>or<span class="w"> </span>K8s<span class="w"> </span>with<span class="w"> </span>cluster<span class="w"> </span>deploy<span class="w"> </span>mode<span class="w"> </span>only:
+</span><span id="__span-26-58"><a id="__codelineno-26-58" name="__codelineno-26-58"></a><span class="w">  </span>--kill<span class="w"> </span>SUBMISSION_ID<span class="w">        </span>指定程序ID<span class="w"> </span><span class="nb">kill</span>
+</span><span id="__span-26-59"><a id="__codelineno-26-59" name="__codelineno-26-59"></a><span class="w">  </span>--status<span class="w"> </span>SUBMISSION_ID<span class="w">      </span>指定程序ID<span class="w"> </span>查看运行状态
+</span><span id="__span-26-60"><a id="__codelineno-26-60" name="__codelineno-26-60"></a>
+</span><span id="__span-26-61"><a id="__codelineno-26-61" name="__codelineno-26-61"></a><span class="w"> </span>Spark<span class="w"> </span>standalone,<span class="w"> </span>Mesos<span class="w"> </span>and<span class="w"> </span>Kubernetes<span class="w"> </span>only:
+</span><span id="__span-26-62"><a id="__codelineno-26-62" name="__codelineno-26-62"></a><span class="w">  </span>--total-executor-cores<span class="w"> </span>NUM<span class="w">  </span>整个任务可以给Executor多少个CPU核心用
+</span><span id="__span-26-63"><a id="__codelineno-26-63" name="__codelineno-26-63"></a>
+</span><span id="__span-26-64"><a id="__codelineno-26-64" name="__codelineno-26-64"></a><span class="w"> </span>Spark<span class="w"> </span>standalone,<span class="w"> </span>YARN<span class="w"> </span>and<span class="w"> </span>Kubernetes<span class="w"> </span>only:
+</span><span id="__span-26-65"><a id="__codelineno-26-65" name="__codelineno-26-65"></a><span class="w">  </span>--executor-cores<span class="w"> </span>NUM<span class="w">        </span>单个Executor能使用多少CPU核心
+</span><span id="__span-26-66"><a id="__codelineno-26-66" name="__codelineno-26-66"></a>
+</span><span id="__span-26-67"><a id="__codelineno-26-67" name="__codelineno-26-67"></a><span class="w"> </span>Spark<span class="w"> </span>on<span class="w"> </span>YARN<span class="w"> </span>and<span class="w"> </span>Kubernetes<span class="w"> </span>only<span class="o">(</span>YARN模式下<span class="o">)</span>:
+</span><span id="__span-26-68"><a id="__codelineno-26-68" name="__codelineno-26-68"></a><span class="w">  </span>--num-executors<span class="w"> </span>NUM<span class="w">         </span>Executor应该开启几个
+</span><span id="__span-26-69"><a id="__codelineno-26-69" name="__codelineno-26-69"></a><span class="w">  </span>--principal<span class="w"> </span>PRINCIPAL<span class="w">       </span>Principal<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>login<span class="w"> </span>to<span class="w"> </span>KDC.
+</span><span id="__span-26-70"><a id="__codelineno-26-70" name="__codelineno-26-70"></a><span class="w">  </span>--keytab<span class="w"> </span>KEYTAB<span class="w">             </span>The<span class="w"> </span>full<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>contains<span class="w"> </span>the<span class="w"> </span>keytab<span class="w"> </span><span class="k">for</span><span class="w"> </span>the
+</span><span id="__span-26-71"><a id="__codelineno-26-71" name="__codelineno-26-71"></a><span class="w">                              </span>principal<span class="w"> </span>specified<span class="w"> </span>above.
+</span><span id="__span-26-72"><a id="__codelineno-26-72" name="__codelineno-26-72"></a>
+</span><span id="__span-26-73"><a id="__codelineno-26-73" name="__codelineno-26-73"></a><span class="w"> </span>Spark<span class="w"> </span>on<span class="w"> </span>YARN<span class="w"> </span>only:
+</span><span id="__span-26-74"><a id="__codelineno-26-74" name="__codelineno-26-74"></a><span class="w">  </span>--queue<span class="w"> </span>QUEUE_NAME<span class="w">          </span>指定运行的YARN队列<span class="o">(</span>Default:<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="o">)</span>.
+</span></code></pre></div></td></tr></table></div>
+<h1 id="3-windowsanaconda">附3 Windows系统配置Anaconda</h1>
+<h2 id="_17">安装</h2>
+<p>打开资料中提供的:Anaconda3-2021.05-Windows-x86_64.exe文件,或者去官网下载:<a href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a>
+​</p>
+<p>打开后,一直点击<code>Next</code>下一步即可:
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635404423256-901ececb-4b90-40b4-9307-15c7bb9806bc.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=390&amp;id=uc4673aa7&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=581&amp;originWidth=747&amp;originalType=binary&amp;ratio=1&amp;size=76352&amp;status=done&amp;style=none&amp;taskId=u9c41750d-4da4-429e-935e-6bf211cfaa1&amp;width=501" />
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635404820335-e022981a-2b0d-4850-b421-a5bf7e52fdc1.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=389&amp;id=u142555d0&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=581&amp;originWidth=747&amp;originalType=binary&amp;ratio=1&amp;size=111001&amp;status=done&amp;style=none&amp;taskId=u4cb4bc13-d190-48f0-9282-49fbe53a9b7&amp;width=500" />
+如果想要修改安装路径, 可以修改
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635404981077-aae1a968-503a-4439-8a8e-3bd39c151979.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=342&amp;id=u15bf9b4d&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=342&amp;originWidth=675&amp;originalType=binary&amp;ratio=1&amp;size=124888&amp;status=done&amp;style=none&amp;taskId=ue36de514-a44b-44f8-8c4c-8f23471feaa&amp;width=675" />
+不必勾选
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635405162073-0d9f3acc-27d9-468b-8d61-464091400bc4.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=581&amp;id=uaf22e31f&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=581&amp;originWidth=747&amp;originalType=binary&amp;ratio=1&amp;size=127902&amp;status=done&amp;style=none&amp;taskId=ua506d623-2193-43c5-96ed-932da85f134&amp;width=747" />
+最终点击Finish完成安装
+​</p>
+<p>打开开始菜单, 搜索Anaconda
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635405295376-529e614f-eb90-4943-bc70-8b97908e92b9.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=688&amp;id=u6199808c&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=688&amp;originWidth=542&amp;originalType=binary&amp;ratio=1&amp;size=71371&amp;status=done&amp;style=none&amp;taskId=u6d8631b1-1148-4250-90ef-2c7ab3ca453&amp;width=542" />
+出现如图的程序, 安装成功.
+​</p>
+<p>打开 <code>Anaconda Prompt</code>程序:
+<img alt="image.png" src="https://cdn.nlark.com/yuque/0/2021/png/12371070/1635405361389-57f0d33d-0513-4594-ab3f-6408f4c598f9.png#clientId=u8fb108bc-acfc-4&amp;from=paste&amp;height=142&amp;id=u1f1ff36e&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=142&amp;originWidth=1468&amp;originalType=binary&amp;ratio=1&amp;size=13875&amp;status=done&amp;style=none&amp;taskId=u138f0c1f-c18f-442f-9878-fb3a6d6fae8&amp;width=1468" />
+出现<code>base</code>说明安装正确.
+​</p>
+<h2 id="_18">配置国内源</h2>
+<p>Anaconda默认源服务器在国外, 网速比较慢, 配置国内源加速网络下载.
+​</p>
+<p>打开上图中的 <code>Anaconda Prompt</code>程序:
+执行:
+<code>conda config --set show_channel_urls yes</code>
+​</p>
+<p>然后用记事本打开:
+<code>C:\Users\用户名\.condarc</code>文件, 将如下内容替换进文件内,保存即可:
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-27-10">10</a></span>
+<span class="normal"><a href="#__codelineno-27-11">11</a></span>
+<span class="normal"><a href="#__codelineno-27-12">12</a></span>
+<span class="normal"><a href="#__codelineno-27-13">13</a></span>
+<span class="normal"><a href="#__codelineno-27-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>channels:
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="w">  </span>-<span class="w"> </span>defaults
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a>show_channel_urls:<span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4"></a>default_channels:
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="w">  </span>-<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8"></a>custom_channels:
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9"></a><span class="w">  </span>conda-forge:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10"></a><span class="w">  </span>msys2:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11"></a><span class="w">  </span>bioconda:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12"></a><span class="w">  </span>menpo:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13"></a><span class="w">  </span>pytorch:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14"></a><span class="w">  </span>simpleitk:<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></code></pre></div></td></tr></table></div></p>
+<h2 id="_19">创建虚拟环境</h2>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span>
+<span class="normal"><a href="#__codelineno-28-7">7</a></span>
+<span class="normal"><a href="#__codelineno-28-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># 创建虚拟环境 pyspark, 基于Python 3.8</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>pyspark<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1"># 切换到虚拟环境内</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>conda<span class="w"> </span>activate<span class="w"> </span>pyspark
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="c1"># 在虚拟环境内安装包</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8"></a>pip<span class="w"> </span>install<span class="w"> </span>pyhive<span class="w"> </span>pyspark<span class="w"> </span>jieba<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="spark-on-hive">安装Spark on Hive</h1>
+<ul>
+<li>hive启动metastore服务</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span>
+<span class="normal"><a href="#__codelineno-29-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>vim<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/conf/hive-site.xml
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>&lt;!--<span class="w"> </span>远程模式部署metastore<span class="w"> </span>metastore地址<span class="w"> </span>--&gt;
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a>&lt;property&gt;
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="w">    </span>&lt;name&gt;hive.metastore.uris&lt;/name&gt;
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="w">    </span>&lt;value&gt;thrift://node1:9083&lt;/value&gt;
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a>&lt;/property&gt;
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>修改spark和hive的配置文件</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-30-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-30-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-30-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-30-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-30-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-30-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-30-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-30-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-30-10">10</a></span>
+<span class="normal"><a href="#__codelineno-30-11">11</a></span>
+<span class="normal"><a href="#__codelineno-30-12">12</a></span>
+<span class="normal"><a href="#__codelineno-30-13">13</a></span>
+<span class="normal"><a href="#__codelineno-30-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>vim<span class="w">  </span>/export/server/spark/conf/hive-site.xml
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a>&lt;configuration&gt;
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="w">  </span>&lt;property&gt;
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5"></a><span class="w">    </span>&lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="w">    </span>&lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7"></a>&lt;!--&lt;value&gt;/root/hivedata&lt;/value&gt;<span class="w"> </span>--&gt;
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8"></a><span class="w">  </span>&lt;/property&gt;
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9"></a>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10"></a><span class="w">  </span>&lt;property&gt;
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11"></a><span class="w">    </span>&lt;name&gt;hive.metastore.uris&lt;/name&gt;
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12"></a><span class="w">    </span>&lt;value&gt;thrift://node1:9083&lt;/value&gt;
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13"></a><span class="w">  </span>&lt;/property&gt;
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14"></a>&lt;/configuration&gt;
+</span></code></pre></div></td></tr></table></div>
+<h1 id="spark-thriftserver">安装spark-ThriftServer</h1>
+<blockquote>
+<p>注意：需要已经配置好了 Spark On Hive</p>
+</blockquote>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>yum<span class="w"> </span>install<span class="w"> </span>zlib-devel<span class="w"> </span>bzip2-devel<span class="w"> </span>openssl-devel<span class="w"> </span>ncurses-devel<span class="w"> </span>sqlite-devel<span class="w"> </span>readline-devel<span class="w"> </span>tk-devel<span class="w"> </span>libffi-devel<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>gcc-c++<span class="w"> </span>python-devel<span class="w"> </span>cyrus-sasl-devel<span class="w"> </span>cyrus-sasl-plain<span class="w"> </span>cyrus-sasl-gssapi<span class="w"> </span>-y
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span>pyhive<span class="w"> </span>pymysql<span class="w"> </span>sasl<span class="w"> </span>thrift<span class="w"> </span>thrift_sasl
+</span></code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../02-Hive3%E5%AE%89%E8%A3%85/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 02 Hive3安装">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                02 Hive3安装
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: Hive SQL 语法大全">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Hive SQL 语法大全
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

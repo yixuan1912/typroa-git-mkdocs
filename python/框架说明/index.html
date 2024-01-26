@@ -1,0 +1,1811 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+      
+      
+        <link rel="next" href="../%E7%88%AC%E8%99%AB%E8%AE%B0%E5%BD%95/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>框架说明 - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              框架说明
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 框架运行说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chromedriver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chromedriver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webdriver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webdriver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微信小程序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    框架说明
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    框架说明
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-itemspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. items.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-middlewarespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. middlewares.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. middlewares.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunnelproxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      TunnelProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abroadproxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      AbroadProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baidumiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaiduMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pipelinespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. pipelines.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-settingpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. setting.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5conf" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.conf文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. parse文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-redis_func" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. redis_func文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. logs文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-rotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Rotate文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10spiders" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.spiders文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.lib文件夹
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%88%AC%E8%99%AB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    爬虫记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%80%86%E5%90%91-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向 app
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%80%86%E5%90%91-js/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向 js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../Py-100Days/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Py 100Days
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-md%E7%AC%94%E8%AE%B0/01-matlab%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据分析 md笔记
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/01.%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-itemspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. items.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-middlewarespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. middlewares.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. middlewares.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunnelproxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      TunnelProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abroadproxymiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      AbroadProxyMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baidumiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaiduMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pipelinespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. pipelines.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-settingpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. setting.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5conf" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.conf文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. parse文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-redis_func" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. redis_func文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. logs文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-rotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Rotate文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10spiders" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.spiders文件夹
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.lib文件夹
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="toc">
+<ul>
+<li><a href="#_1">整体结构</a><ul>
+<li><a href="#1-itemspy">1. items.py</a></li>
+<li><a href="#2-middlewarespy">2. middlewares.py</a><ul>
+<li><a href="#proxymiddleware">ProxyMiddleware</a></li>
+<li><a href="#tunnelproxymiddleware">TunnelProxyMiddleware</a></li>
+<li><a href="#abroadproxymiddleware">AbroadProxyMiddleware</a></li>
+<li><a href="#baidumiddleware">BaiduMiddleware</a></li>
+</ul>
+</li>
+<li><a href="#3-pipelinespy">3. pipelines.py</a></li>
+<li><a href="#4-settingpy">4. setting.py</a></li>
+<li><a href="#5conf">5.conf文件夹</a></li>
+<li><a href="#6-parse">6. parse文件夹</a></li>
+<li><a href="#7-redis_func">7. redis_func文件夹</a></li>
+<li><a href="#8-logs">8. logs文件夹</a></li>
+<li><a href="#9-rotate">9. Rotate文件夹</a></li>
+<li><a href="#10spiders">10.spiders文件夹</a></li>
+<li><a href="#11lib">11.lib文件夹</a></li>
+</ul>
+</li>
+<li><a href="#_2">使用例子</a><ul>
+<li><a href="#1">1. 创建一个新爬虫文件</a></li>
+<li><a href="#2">2.新增一条配置信息</a></li>
+<li><a href="#3">3. 修改配置</a></li>
+<li><a href="#4">4. 爬虫文件解析：</a></li>
+<li><a href="#5">5. 执行命令运行爬虫</a></li>
+</ul>
+</li>
+<li><a href="#end">END</a></li>
+</ul>
+</div>
+<h1 id="_1">整体结构</h1>
+<h2 id="1-itemspy">1. items.py</h2>
+<p><code>items.py</code> 配置数据存储字段 </p>
+<p>如果需要添加新字段。需要对<code>pipelines.py</code>同时添加到<code>dict_content_name</code>（评论同理）如下</p>
+<p><img alt="1631159914737" src="../img/1631159914737.png" /></p>
+<p><code>slaveItem</code> 和<code>CommentItem</code></p>
+<p><img alt="1631158835952" src="../img/1631158835952.png" /></p>
+<p><img alt="1631158942335" src="../img/1631158942335.png" /></p>
+<h2 id="2-middlewarespy">2. middlewares.py</h2>
+<p>配置不同的<code>middlewares</code>可以实现不同的效果。可以配置代理，请求头等</p>
+<h3 id="proxymiddleware"><code>ProxyMiddleware</code></h3>
+<p>代理池--代理<code>ip</code>添加到<code>redis</code>中，代理真实数量不低于20个</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">redisClient</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;192.168.0.106&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;6379&#39;</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">excle_path</span> <span class="o">=</span> <span class="s2">&quot;D:\slave\slave\Proxy\Proxy.xls&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">excel_book</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook_xls</span><span class="p">(</span><span class="n">excle_path</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">sheet1</span> <span class="o">=</span> <span class="n">excel_book</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sheet1</span><span class="o">.</span><span class="n">nrows</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">ip</span> <span class="o">=</span> <span class="n">sheet1</span><span class="o">.</span><span class="n">cell_value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">port</span> <span class="o">=</span> <span class="n">sheet1</span><span class="o">.</span><span class="n">cell_value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="c1"># 格式： 117.28.246.17,80,2021-05-25,zdaye</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">proxy</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;,2021-06-25 15:37:38,proxy&#39;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">redisClient</span><span class="o">.</span><span class="n">lpush</span><span class="p">(</span><span class="s1">&#39;zdyProxy&#39;</span><span class="p">,</span> <span class="n">proxy</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="1631159073634" src="../img/1631159073634.png" /></p>
+<h3 id="tunnelproxymiddleware"><code>TunnelProxyMiddleware</code></h3>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># 隧道代理，此处使用亿牛云的，需要配置用户名和密码等， 具体参考：https://www.16yun.cn/help/ss_demo/</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># 在下面这里配置用户名密码等：</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">proxyHost</span> <span class="o">=</span> <span class="s2">&quot;u6880.10.tn.16yun.cn&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">proxyPort</span> <span class="o">=</span> <span class="s2">&quot;6442&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">proxyUser</span> <span class="o">=</span> <span class="s2">&quot;16IXHCPW&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">proxyPass</span> <span class="o">=</span> <span class="s2">&quot;281792&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="1631159374719" src="../img/1631159374719.png" /></p>
+<h3 id="abroadproxymiddleware"><code>AbroadProxyMiddleware</code></h3>
+<p>如果本机开了代理，无法进行爬虫，可以尝试使用此middleware</p>
+<p><img alt="1631159544993" src="../img/1631159544993.png" /></p>
+<h3 id="baidumiddleware"><code>BaiduMiddleware</code></h3>
+<p>可以通过百度旋转验证</p>
+<p><img alt="1631159714308" src="../img/1631159714308.png" /></p>
+<h2 id="3-pipelinespy">3. pipelines.py</h2>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># 用于处理数据，分为`CommentPipeline`和`SlavePipeline`</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># CommentPipeline --&gt; 用于调用评论的kafka接口</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># SlavePipeline   --&gt; 用于调用文章的kafka接口</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p><code>SlavePipeline</code></p>
+</li>
+<li>
+<p>用于存储的字段</p>
+</li>
+<li>
+<p><img alt="1631166685303" src="../img/1631166685303.png" /></p>
+</li>
+<li>
+<p>在标题和正文中查找省和市字段：</p>
+<ul>
+<li>
+<p><img alt="1631166791882" src="../img/1631166791882.png" /></p>
+</li>
+<li>
+<p><img alt="1631166831812" src="../img/1631166831812.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>重新映射认证类型（用于识别微博头条的用户认证）</p>
+<ul>
+<li><img alt="1631167247851" src="../img/1631167247851.png" /></li>
+<li><img alt="1631167267925" src="../img/1631167267925.png" /></li>
+</ul>
+</li>
+<li>
+<p>对数据进行处理， 去掉注释 script标签等，和解决img链接不完整的问题</p>
+</li>
+<li>
+<p><img alt="1631166912148" src="../img/1631166912148.png" /></p>
+</li>
+<li>
+<p>具体实现</p>
+<ul>
+<li><img alt="1631166979189" src="../img/1631166979189.png" /></li>
+</ul>
+</li>
+<li>
+<p>对数据进行特殊字符处理和编码</p>
+</li>
+<li><img alt="1631167077587" src="../img/1631167077587.png" /></li>
+<li>通过<code>kafka</code>发送数据</li>
+<li><img alt="1631167137849" src="../img/1631167137849.png" /></li>
+</ul>
+<h2 id="4-settingpy">4. setting.py</h2>
+<p><code>setting.py</code>对整体框架的配置，对于单个爬虫的配置可以使用<code>lib</code>文件夹下的<code>customSettings.py</code></p>
+<p><img alt="1631167560553" src="../img/1631167560553.png" /></p>
+<h2 id="5conf">5.<code>conf</code>文件夹</h2>
+<p><code>spider.cfg</code>文件</p>
+<ul>
+<li>
+<p>redis 配置</p>
+</li>
+<li>
+<p><img alt="1631169994845" src="../img/1631169994845.png" /></p>
+</li>
+<li>
+<p>配置kfk请求地址：<img alt="1631167699603" src="../img/1631167699603.png" /></p>
+</li>
+<li>kfk备用地址具体实现：</li>
+<li><img alt="1631167771195" src="../img/1631167771195.png" /></li>
+<li>配置具体地址url</li>
+<li><img alt="1631167795884" src="../img/1631167795884.png" /></li>
+<li>备用地址请求实现（如果第一个地址不可用，则请求下一个地址）：</li>
+<li><img alt="1631167850240" src="../img/1631167850240.png" /></li>
+<li>kfk备用请求：</li>
+<li>
+<p><img alt="1631167955475" src="../img/1631167955475.png" /></p>
+</li>
+<li>
+<p>当前需要运行的爬配置，爬虫编号node编号等</p>
+</li>
+<li>
+<p><img alt="1631170099855" src="../img/1631170099855.png" /></p>
+</li>
+<li>
+<p>配置采集信源信息 ，配置爬虫配置，爬虫文件名，是否开启代理，时间过滤天数，是否使用cdh去重等</p>
+</li>
+<li>
+<p><img alt="1631170117395" src="../img/1631170117395.png" /></p>
+</li>
+<li>
+<p>一个爬虫文件 可以对应多个域名，上图一个文件对应了三个不同的域名</p>
+</li>
+<li>
+<p><code>parse_class_name</code> 为爬虫文件名字（也就是parse文件夹下对应的爬虫文件名） </p>
+</li>
+<li>
+<p><code>zdy_proxy</code> True 表示使用代理，False不使用 </p>
+</li>
+<li>
+<p><code>cdh_filter</code> True 表示使用 kafka 接口去重，False 不使用 </p>
+</li>
+<li>
+<p>注意：域名需要与你添加的爬虫的种子链接的域名一致</p>
+</li>
+<li>
+<p>每新创建一个爬虫文件，对应一条或多条配置信息 </p>
+</li>
+<li>
+<p>例：</p>
+</li>
+<li>
+<p><code>py
+    http://news.fjsen.com/node_163753.htm
+    http://taihai.fjsen.com/tw_politics.htm
+    http://www.jianyangnews.com/node_159259.htm
+    http://www.wysxww.com/node_173.htm</code></p>
+</li>
+</ul>
+<h2 id="6-parse">6. <code>parse</code>文件夹</h2>
+<p>爬虫存放目录</p>
+<ul>
+<li>爬虫文件：</li>
+<li>例:百度新闻，BBC，参考消息，大公网等等</li>
+<li>
+<p><img alt="1631168143070" src="../img/1631168143070.png" /></p>
+</li>
+<li>
+<p>评论文件名格式: <code>网站名_comment.py</code>，comment用于识别是否为评论</p>
+</li>
+<li><img alt="1631168303628" src="../img/1631168303628.png" /></li>
+</ul>
+<h2 id="7-redis_func">7. <code>redis_func文件夹</code></h2>
+<ul>
+<li>种子文件存放地方，名字格式为<code>add_prifile_爬虫文件名.py</code></li>
+<li>add_prifile不能打错，否则linux自动加种子的shell脚本可能识别不了是加种子的文件</li>
+<li>运行的地方需要加一个限制，例如</li>
+<li><img alt="1631169010877" src="../img/1631169010877.png" /></li>
+<li>也可用一个固定的数字</li>
+<li><img alt="1631169088671" src="../img/1631169088671.png" /></li>
+</ul>
+<h2 id="8-logs">8. <code>logs</code>文件夹</h2>
+<ul>
+<li>
+<p>爬虫日志存放地方</p>
+</li>
+<li>
+<p>文件名格式和<code>conf</code>文件夹下的<code>spider.cfg</code>相关联：</p>
+</li>
+<li>
+<p><img alt="1631168804020" src="../img/1631168804020.png" /></p>
+</li>
+<li>格式为： <code>master_or_slave 加 _ 加 node_id 加 当天日期</code></li>
+<li>例：<code>slave_0.log.2021-09-07 16</code></li>
+</ul>
+<h2 id="9-rotate"><code>9. Rotate文件夹</code></h2>
+<ul>
+<li>用于通过百度的旋转图片验证</li>
+</ul>
+<h2 id="10spiders"><code>10.spiders文件夹</code></h2>
+<ul>
+<li><code>spider.py</code> 封装整体爬虫运行逻辑，如下</li>
+<li><img alt="1631169543930" src="../img/1631169543930.png" /></li>
+<li>时间过滤，默认180天</li>
+<li>指纹过滤，使用文章链接进行去重（指纹存在redis中），配置是否开启指纹过滤在parse文件中，</li>
+<li>例： <code>dont_filter</code> : 是否开启指纹过滤，默认为不开启<img alt="1631169696605" src="../img/1631169696605.png" /></li>
+<li><code>cdh</code>过滤，通过调用<code>kafka</code>的接口实现去重，判断文章链接是否存在和是否需要重复抓取</li>
+<li><code>kafka</code>接口配置和实现在<code>lib</code>文件夹下的 <code>crawlerApi.py</code>的 <code>api_cdh_exist</code>函数中</li>
+</ul>
+<h2 id="11lib"><code>11.lib</code>文件夹</h2>
+<ul>
+<li><code>commands</code> 创建模板使用的文件</li>
+<li><code>crawlerApi</code> 封装一些调用接口，如： <code>kafka</code> 去重接口， <code>kafka</code> 存储接口</li>
+<li><code>customSettings</code>  自定义配置文件，如下图，配置并发请求数</li>
+<li><code>DateTimeFormat</code> 封装对于任何格式的时间处理（例：三天前，时间戳等转换为正常时间格式）</li>
+<li><code>loaders</code> 封装一些小功能（例：对表情数据进行转换）</li>
+<li><code>log</code> 配置日志文件</li>
+<li><code>spiders_param</code> 封装对代理处理的方法</li>
+<li><code>tools</code> 封装时间处理方法</li>
+<li>
+<p><code>useragent</code> 设置请求头 </p>
+</li>
+<li>
+<p><code>utils</code> 读取爬虫配置文件，并处理（文件为 <code>conf</code> 文件夹下） </p>
+</li>
+</ul>
+<h1 id="_2">使用例子</h1>
+<h3 id="1">1. 创建一个新爬虫文件</h3>
+<ul>
+<li>进入<code>slave\slave</code>目录下</li>
+<li>执行命令 <code>scrapy genparse JinRiTouTiao wz parse</code></li>
+<li><code>JinRiTouTiao</code> 为爬虫名称， <code>wz</code> 为网站缩写， <code>parse</code> 代表创建到某目录下</li>
+<li>
+<p>创建成功如下图：</p>
+</li>
+<li>
+<p><img alt="1631171948713" src="../img/1631171948713.png" /></p>
+</li>
+<li>
+<p>parse 文件夹下就多了一个<img alt="1631172127971" src="../img/1631172127971.png" />爬虫文件</p>
+</li>
+</ul>
+<h3 id="2">2.新增一条配置信息</h3>
+<ul>
+<li>
+<p>写到<code>conf</code>文件夹下的<code>spider.cfg</code>下面</p>
+</li>
+<li>
+<p><code>python
+  toutiao.com = {"project": {"parse_class": "True", "parse_class_name": "JinRiTouTiao", "zdy_proxy": "True", "cdh_filter": "False", "time_filter": "30"}}</code></p>
+</li>
+<li>
+<p>种子：https://www.toutiao.com/api/pc/list/feed?category=pc_profile_article&amp;token=MS4wLjABAAAAaUhxLC10yf766zvPm3RSYweRiaom2ui_ZccXzB1r4vo&amp;max_behot_time=1630138098654</p>
+</li>
+<li>域名： toutiao.com</li>
+</ul>
+<h3 id="3">3. 修改配置</h3>
+<ul>
+<li>node_id 和crawler_code一致</li>
+<li><img alt="1631172521989" src="../img/1631172521989.png" /></li>
+</ul>
+<h3 id="4">4. 爬虫文件解析：</h3>
+<ul>
+<li>
+<p>种子解析函数，用处理从 <code>redis</code> 读取的种子，处理成自己需要的格式，以列表形式返回 </p>
+</li>
+<li>
+<p>可以使用此方法重新构造种子</p>
+</li>
+<li>
+<p><img alt="1631173438290" src="../img/1631173438290.png" /></p>
+</li>
+<li>
+<p>种子 <code>url</code> 请求，也就是第一步请求，获取板块下面新闻链接 </p>
+</li>
+</ul>
+<p><img alt="1631173547116" src="../img/1631173547116.png" /></p>
+<ul>
+<li>
+<p><code>callback</code> 回调函数，具体调用，查看 <code>spider.py</code> 文件 </p>
+</li>
+<li>
+<p><code>response_handle</code>处理第一步请求响应的结果，解析出板块下新闻链接</p>
+</li>
+</ul>
+<p><img alt="1631173738724" src="../img/1631173738724.png" /></p>
+<ul>
+<li>url 为文章链接，用来去重 </li>
+<li>published 为文章的发时间， 用于时间过滤</li>
+<li>
+<p><strong>注意：</strong>调用 <code>getDateTime</code> 对时间进行处理，转换为常规时间格式（ 2021-05-26 10:51:57 ） </p>
+</li>
+<li>
+<p>详情页请求， 就是对<code>response_handle</code>函数获取到的文章的<code>url</code>进行请求</p>
+</li>
+</ul>
+<p><img alt="1631173858664" src="../img/1631173858664.png" /></p>
+<ul>
+<li>如果有下一页，则需要对下一页函数进行编辑，在<code>next_page</code>函数中构造好下一页链接并返回</li>
+</ul>
+<p><img alt="1631173988450" src="../img/1631173988450.png" /></p>
+<ul>
+<li>
+<p>请求下一页</p>
+</li>
+<li>
+<p>下一页的请求函数，<code>headers</code>等的处理，调用<code>json_parse</code>函数</p>
+</li>
+</ul>
+<p><img alt="1631174055923" src="../img/1631174055923.png" /></p>
+<ul>
+<li>
+<p>详情页内容解析，提取存储入库 </p>
+</li>
+<li>
+<p>对需要提取的字段，依次添加即可 <code>loader.add_value(key, value)</code></p>
+</li>
+</ul>
+<p><img alt="1631174166261" src="../img/1631174166261.png" /></p>
+<h3 id="5">5. 执行命令运行爬虫</h3>
+<ul>
+<li>
+<p>cmd执行 <code>scrapy crawl fpweb_1810</code>,  1810  为你的爬虫文件的编号,  也可执行<code>run</code>文件</p>
+</li>
+<li>
+<p><img alt="1631172669173" src="../img/1631172669173.png" /></p>
+</li>
+<li>
+<p><img alt="1631174419043" src="../img/1631174419043.png" /></p>
+</li>
+<li>
+<p>上述打印一些配置信息，以及爬虫编号，种子库，并发数等等 </p>
+</li>
+<li>
+<p>添加种子 运行文件 <code>add_prifile_爬虫名.py</code>（线上需要独立程序，不断往种子库中添加种子） </p>
+</li>
+<li>
+<p>种子添加成功后，可以看到如下图： </p>
+</li>
+<li>
+<p><img alt="1631174544524" src="../img/1631174544524.png" /></p>
+</li>
+<li>
+<p>去重效果，如下图： </p>
+<p><img alt="1631174570589" src="../img/1631174570589.png" /></p>
+</li>
+<li>
+<p>当没有可消耗的种子后，爬虫程序处于等待中...， 如下图： </p>
+<p><img alt="1631174605352" src="../img/1631174605352.png" /></p>
+</li>
+</ul>
+<h1 id="end">END</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 微信小程序">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                微信小程序
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%88%AC%E8%99%AB%E8%AE%B0%E5%BD%95/" class="md-footer__link md-footer__link--next" aria-label="下一页: 爬虫记录">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                爬虫记录
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

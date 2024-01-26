@@ -1,0 +1,2348 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ratel-plugin-dev/">
+      
+      
+        <link rel="next" href="../webview-js-hook/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Riru edxp - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#edxpmagisk" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Riru edxp
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Awesome reverse main
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Android
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QContainer-hook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QContainer中的Hook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android-base-knowledge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安卓逆向基础知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android-system-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android system start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apk-unpack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apk unpack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crack-mt-tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crack mt tcp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crack-webview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crack webview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hook-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大致原理思路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jni-function-bind/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jni function bind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycode-locate-tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关键代码定位
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mt-ctrip-hook-capture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mt ctrip hook capture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ratel-doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ratel doc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ratel-plugin-dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    平头哥插件开发教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Riru edxp
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webview-js-hook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JS Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xposed-appium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XposedAppium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xposed-hook-simple/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xposed hook simple
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xposed-introduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xposed安装时做了什么手脚
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../base/tools-and-environment/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../frida/frida-docs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Frida
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../js/browser-env-fix/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Js
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../qcontainer/device-fingerprint/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Qcontainer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../so/arm-registers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    So
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wechat/appbrand-compile/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wechat
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>因为最近在用EdXposed，对于magisk和riru很是好奇，之前也大致了解过edxp通过riru实现zygote注入进而完成ART Hook实现类Xposed，但是在准备看源码的时候发现不知道入口在哪，本来想找找有没有现成的大佬总结，发现貌似没有，于是秉着努力学习拉近差距的态度，自力更生，从magisk插件开发到riru插件到riru加载逻辑，一步步找到了edxp的代码入口。</p>
+<h1 id="edxpmagisk">Edxp如何编译成一个Magisk插件</h1>
+<p>根据面具的官方文档(https://topjohnwu.github.io/Magisk/guides.html)一个Magisk插件模块是/data/adb/modules下的一个文件夹，其中至少包含着以下几个文件：</p>
+<ul>
+<li>module.prop 模块标识</li>
+<li>post-fs-data.sh post-fs-data时所执行的脚本</li>
+<li>service.sh 启动脚本的首选文件</li>
+</ul>
+<p>EdXposed在gradle构建出产物时，会将整个项目打包成一个magisk module installer,该installer与magisk module的区别在于installer为一个zip压缩文件，同时包含META-INF文件夹，其中的update-binary.sh将作为安装前执行的脚本。</p>
+<p>但是我们在DoraDo中并没有搜到相关的module.prop文件，只能看到module.prop.tpl模版文件，那么这两个文件是如何关联的呢。</p>
+<p>在edxp-core的build.gradle中可以看到声明了一系列构建Task，从DoraDo的构建命令./gradlew clean :edxp-core:[zip|push]YahfaRelease开始追踪，</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>def zipTask = task(&quot;zip${backendCapped}${variantCapped}&quot;, type: Zip) {
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>                dependsOn prepareMagiskFilesTask
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>                archiveName &quot;${module_name}-${project.version}-${variantLowered}.zip&quot;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>                destinationDir file(&quot;$projectDir/release&quot;)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>                from &quot;$zipPathMagiskRelease&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>            }
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>            task(&quot;push${backendCapped}${variantCapped}&quot;, type: Exec) {
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>                dependsOn zipTask
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>                workingDir &quot;${projectDir}/release&quot;
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>                def commands = [&quot;adb&quot;, &quot;push&quot;,
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>                                &quot;${module_name}-${project.version}-${variantLowered}.zip&quot;,
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>                                &quot;/sdcard/&quot;]
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>                if (is_windows) {
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>                    commandLine &#39;cmd&#39;, &#39;/c&#39;, commands.join(&quot; &quot;)
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>                } else {
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>                    commandLine commands
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>                }
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>            }
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>        }
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>        // backward compatible
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>        task(&quot;zip${variantCapped}&quot;) {
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>            dependsOn &quot;zipYahfa${variantCapped}&quot;
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>        }
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>        task(&quot;push${variantCapped}&quot;) {
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>            dependsOn &quot;pushYahfa${variantCapped}&quot;
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a>        }
+</span></code></pre></div></td></tr></table></div>
+<p>可以发现 pushTask只是将构建产物推送到设备sdcard下，真正打包任务在zipTask中，其依赖于prepareMagiskFilesTask，该task的作用是：</p>
+<ul>
+<li>复制template_override目录下的META-INF和so文件</li>
+<li>替换和重写edconfig.tpl和module.prop.tpl，变成真正的module.prop</li>
+</ul>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>def prepareMagiskFilesTask = task(&quot;prepareMagiskFiles${backendCapped}${variantCapped}&quot;, type: Delete) {
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>                dependsOn prepareJarsTask, &quot;assemble${variantCapped}&quot;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>                delete file(zipPathMagiskRelease)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>                doFirst {
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>                    copy {
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>                        from &quot;${projectDir}/tpl/edconfig.tpl&quot;
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>                        into templateFrameworkPath
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>                        rename &quot;edconfig.tpl&quot;, &quot;edconfig.jar&quot;
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>                        expand(version: &quot;$version&quot;, backend: &quot;$backend&quot;)
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>                    }
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>                    copy {
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>                        from &quot;${projectDir}/tpl/module.prop.tpl&quot;
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>                        into templateRootPath
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>                        rename &quot;module.prop.tpl&quot;, &quot;module.prop&quot;
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>                        expand(moduleId: &quot;$magiskModuleId&quot;, backend: &quot;$backendCapped&quot;,
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>                                versionName: &quot;$version&quot;,
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>                                versionCode: &quot;$versionCode&quot;, authorList: &quot;$authorList&quot;)
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>                        filter(FixCrLfFilter.class, eol: FixCrLfFilter.CrLf.newInstance(&quot;lf&quot;))
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>                    }
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a>                }
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>                def libPathRelease = &quot;${buildDir}/intermediates/cmake/${variantLowered}/obj&quot;
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>                doLast {
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>                    copy {
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a>                        from &quot;${projectDir}/template_override&quot;
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a>                        into zipPathMagiskRelease
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a>                    }
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a>                    copy {
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a>                        from &quot;$libPathRelease/armeabi-v7a&quot;
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a>                        into &quot;$zipPathMagiskRelease/system/lib&quot;
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a>                    }
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>                    copy {
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>                        from &quot;$libPathRelease/arm64-v8a&quot;
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a>                        into &quot;$zipPathMagiskRelease/system/lib64&quot;
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a>                    }
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>                    copy {
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a>                        from &quot;$libPathRelease/x86&quot;
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a>                        into &quot;$zipPathMagiskRelease/system_x86/lib&quot;
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a>                    }
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a>                    copy {
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a>                        from &quot;$libPathRelease/x86_64&quot;
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a>                        into &quot;$zipPathMagiskRelease/system_x86/lib64&quot;
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a>                    }
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a>                }
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a>            }
+</span></code></pre></div></td></tr></table></div>
+<p>但是EdXposed作为一个Magisk插件，插件加载时所会执行的update-binary、post-fs-data.sh、customize.sh等脚本中并没有相关执行EdXp的命令，那么EdXposed是如何在Zygote进程加载时所执行呢。</p>
+<p>EdXposed实际上还是一个riru插件，即基于riru注入zygote进程时机和riru相关的API声明来实现zygote进程执行时的加载。</p>
+<h1 id="riru">Riru模块（插件）编译构建过程</h1>
+<p>Riru模块本质上是一个Magisk插件，额外的地方在于新增了一个目录/data/adb/riru/modules(旧版本在/data/misc/riru/modules)下多了一个插件目录，该目录的作用在于在riru加载时通过该目录名称加载对应的插件so，具体逻辑下面具体分析。</p>
+<p>首先看一个Riru模块如何编译构建的，入口依然是build.gradle，即从构建命令zipMagiskMoudle入手：</p>
+<blockquote>
+<p>源码：https://github.com/RikkaApps/Riru-ModuleTemplate/blob/master/module/build.gradle</p>
+</blockquote>
+<p>可以看到主要做了以下操作：
+1. 复制<span class="arithmatex">\(rootDir/template/magisk_module
+2. 复制\)</span>rootDir/template/magisk_module/riru.sh，替换其中占位符
+3. 生成module.prop
+4. 在riru目录下生成module.prop.new
+5. 复制native动态链接库
+6. 生成sha1sum签名
+7. zip压缩打包</p>
+<p>一句话总结：将项目下template/magisk_module下的如动态库、module.prop、post-fs-data.sh等magisk插件相关文件打包成magisk module install所需的zip格式。剩下的就是安装到手机中由Magisk进行加载。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>android.libraryVariants.all { variant -&gt;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>    def task = variant.assembleProvider.get()
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>    task.doLast {
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>        // clear
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>        delete { delete magiskDir }
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>        // copy from template
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>        copy {
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>            from &quot;$rootDir/template/magisk_module&quot;
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>            into magiskDir.path
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>            exclude &#39;riru.sh&#39;
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>        }
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>        // copy riru.sh
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>        copy {
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>            from &quot;$rootDir/template/magisk_module&quot;
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>            into magiskDir.path
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>            include &#39;riru.sh&#39;
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>            filter { line -&gt;
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>                line.replaceAll(&#39;%%%RIRU_MODULE_ID%%%&#39;, moduleId)
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>                        .replaceAll(&#39;%%%RIRU_MIN_API_VERSION%%%&#39;, moduleMinRiruApiVersion.toString())
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a>                        .replaceAll(&#39;%%%RIRU_MIN_VERSION_NAME%%%&#39;, moduleMinRiruVersionName)
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>            }
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>            filter(FixCrLfFilter.class,
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>                    eol: FixCrLfFilter.CrLf.newInstance(&quot;lf&quot;))
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>        }
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>        // copy .git files manually since gradle exclude it by default
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a>        Files.copy(file(&quot;$rootDir/template/magisk_module/.gitattributes&quot;).toPath(), file(&quot;${magiskDir.path}/.gitattributes&quot;).toPath())
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>        // generate module.prop
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>        def modulePropText = &quot;&quot;
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a>        magiskModuleProp.each { k, v -&gt; modulePropText += &quot;$k=$v\n&quot; }
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>        modulePropText = modulePropText.trim()
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>        file(&quot;$magiskDir/module.prop&quot;).text = modulePropText
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>        // generate module.prop for Riru
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>        def riruModulePropText = &quot;&quot;
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>        moduleProp.each { k, v -&gt; riruModulePropText += &quot;$k=$v\n&quot; }
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>        riruModulePropText = riruModulePropText.trim()
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a>        file(riruDir).mkdirs()
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a>        // module.prop.new will be renamed to module.prop in post-fs-data.sh
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a>        file(&quot;$riruDir/module.prop.new&quot;).text = riruModulePropText
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a>        // copy native files
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a>        def nativeOutDir = file(&quot;build/intermediates/cmake/$variant.name/obj&quot;)
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a>        file(&quot;$magiskDir/system&quot;).mkdirs()
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a>        file(&quot;$magiskDir/system_x86&quot;).mkdirs()
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a>        renameOrFail(file(&quot;$nativeOutDir/arm64-v8a&quot;), file(&quot;$magiskDir/system/lib64&quot;))
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50"></a>        renameOrFail(file(&quot;$nativeOutDir/armeabi-v7a&quot;), file(&quot;$magiskDir/system/lib&quot;))
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a>        renameOrFail(file(&quot;$nativeOutDir/x86_64&quot;), file(&quot;$magiskDir/system_x86/lib64&quot;))
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a>        renameOrFail(file(&quot;$nativeOutDir/x86&quot;), file(&quot;$magiskDir/system_x86/lib&quot;))
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a>        // generate sha1sum
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a>        fileTree(&quot;$magiskDir&quot;).matching {
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a>            exclude &quot;README.md&quot;, &quot;META-INF&quot;
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a>        }.visit { f -&gt;
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a>            if (f.directory) return
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a>            file(f.file.path + &quot;.sha256sum&quot;).text = calcSha256(f.file)
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a>        }
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a>    }
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a>    task.finalizedBy zipMagiskMoudle
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a>}
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a>task zipMagiskMoudle(type: Zip) {
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a>    from magiskDir
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a>    archiveName zipName
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a>    destinationDir outDir
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a>}
+</span></code></pre></div></td></tr></table></div>
+<h1 id="_1">模块加载过程</h1>
+<p>一个典型的riru插件的加载顺序可以简单理解为:</p>
+<p>update_binary -&gt; customize.sh -&gt; post-fs-data.sh </p>
+<p>其中customize.sh是riru重写update_binary进行执行的，其他都是遵循magisk的插件执行顺序。</p>
+<p>接下来就通过这些shell脚本的执行来找到riru是如何定位插件、解析插件、执行插件和完成zygote注入的。</p>
+<p>首先看riru是如何被magisk执行的，因为riru也是一个magisk插件，所以直接先看post-fs-data.sh，可以看到:
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>LIBRARIES_FILE=&#39;/system/etc/public.libraries.txt&#39;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>mkdir -p &quot;$MODDIR/system/etc&quot;
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>cp -f $LIBRARIES_FILE &quot;$MODDIR/$LIBRARIES_FILE&quot;
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>grep -qxF &#39;libriru.so&#39; &quot;$MODDIR/$LIBRARIES_FILE&quot; || echo &#39;libriru.so&#39; &gt;&gt; &quot;$MODDIR/$LIBRARIES_FILE&quot;
+</span></code></pre></div></td></tr></table></div></p>
+<p>这个版本的riru直接通过/system/etc/public.libraries.txt自动完成so的dlopen加载。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>PS：
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>riru目前存在了三种已知的app_process注入实现：
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>1. 最早通过替换libmemtrack.so
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>2. 后来通过/system/etc/public.libraries.txt
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>3. 目前通过native bridge即设置系统属性ro.dalvik.vm.native.bridge
+</span></code></pre></div></td></tr></table></div>
+<p>因此可以直接奔向riru的so，找到.init_array方法（__attribute__((constructor))），可以看到两个关键方法调用，分别为</p>
+<blockquote>
+<p>XHOOK_REGISTER(".*\libandroid_runtime.so$", jniRegisterNativeMethods);</p>
+</blockquote>
+<p>和</p>
+<blockquote>
+<p>load_modules();</p>
+</blockquote>
+<p>具体.init_array代码可以看main.cpp中：
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span>
+<span class="normal"><a href="#__codelineno-5-36">36</a></span>
+<span class="normal"><a href="#__codelineno-5-37">37</a></span>
+<span class="normal"><a href="#__codelineno-5-38">38</a></span>
+<span class="normal"><a href="#__codelineno-5-39">39</a></span>
+<span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span>
+<span class="normal"><a href="#__codelineno-5-42">42</a></span>
+<span class="normal"><a href="#__codelineno-5-43">43</a></span>
+<span class="normal"><a href="#__codelineno-5-44">44</a></span>
+<span class="normal"><a href="#__codelineno-5-45">45</a></span>
+<span class="normal"><a href="#__codelineno-5-46">46</a></span>
+<span class="normal"><a href="#__codelineno-5-47">47</a></span>
+<span class="normal"><a href="#__codelineno-5-48">48</a></span>
+<span class="normal"><a href="#__codelineno-5-49">49</a></span>
+<span class="normal"><a href="#__codelineno-5-50">50</a></span>
+<span class="normal"><a href="#__codelineno-5-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>extern &quot;C&quot; void constructor() __attribute__((constructor));
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>// _init_array libriru.so被dlopen后最先执行的函数
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>void constructor() {
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>#ifdef DEBUG_APP
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>    hide::hide_modules(nullptr, 0);
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>#endif
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>    if (getuid() != 0)
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>        return;
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>    char cmdline[ARG_MAX + 1];
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>    get_self_cmdline(cmdline, 0);
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a>    if (strcmp(cmdline, &quot;zygote&quot;) != 0
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>        &amp;&amp; strcmp(cmdline, &quot;zygote32&quot;) != 0
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>        &amp;&amp; strcmp(cmdline, &quot;zygote64&quot;) != 0
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>        &amp;&amp; strcmp(cmdline, &quot;usap32&quot;) != 0
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>        &amp;&amp; strcmp(cmdline, &quot;usap64&quot;) != 0) {
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a>        LOGW(&quot;not zygote (cmdline=%s)&quot;, cmdline);
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>        return;
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>    }
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a>    LOGI(&quot;Riru %s (%d) in %s&quot;, RIRU_VERSION_NAME, RIRU_VERSION_CODE, cmdline);
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a>    LOGI(&quot;config dir is %s&quot;, CONFIG_DIR);
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a>    if (access(CONFIG_DIR &quot;/disable&quot;, F_OK) == 0) {
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a>        LOGI(&quot;%s exists, do nothing&quot;, CONFIG_DIR &quot;/disable&quot;);
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a>        return;
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a>    }
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a>    read_prop();
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35"></a>    // 通过GOT表hook libandroid_runtime.so中对jniRegisterNativeMethods方法的调用，因为libandroid_runtime.so中所有JNI方法都是通过该方法进行注册，然后再通过手动调用registeNatives来替换
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36"></a>    // 因此通过hook该方法可以在com.android.internal.os.Zygote#nativeForkAndSpecialize和com.android.internal.os.Zygote#nativeForkSystemServer注册时进行替换
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37"></a>    // Riru也因此完成了zygote进程的注入
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38"></a>    XHOOK_REGISTER(&quot;.*\\libandroid_runtime.so$&quot;, jniRegisterNativeMethods);
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39"></a>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40"></a>    if (xhook_refresh(0) == 0) {
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a>        xhook_clear();
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42"></a>        LOGI(&quot;hook installed&quot;);
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a>    } else {
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a>        LOGE(&quot;failed to refresh hook&quot;);
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45"></a>    }
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46"></a>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47"></a>    // 加载插件
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48"></a>    load_modules();
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49"></a>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50"></a>    status::writeToFile();
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51"></a>}
+</span></code></pre></div></td></tr></table></div></p>
+<h2 id="xhook_register">XHOOK_REGISTER</h2>
+<p>这里XHOOK_REGISTER是一个宏定义，</p>
+<blockquote>
+<p>XHOOK_REGISTER(".*\libandroid_runtime.so$", jniRegisterNativeMethods);</p>
+</blockquote>
+<p>实际上相当于</p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>    if (xhook_register(&quot;.*\\libandroid_runtime.so$&quot;, jniRegisterNativeMethods, (void*) new_jniRegisterNativeMethods, (void **) &amp;old_jniRegisterNativeMethods) != 0) \
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>        LOGE(&quot;failed to register hook jniRegisterNativeMethods .&quot;); \
+</span></code></pre></div></td></tr></table></div>
+new_jniRegisterNativeMethods和old_jniRegisterNativeMethods则是通过NEW_FUNC_DEF宏定义来进行声明：
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>#define NEW_FUNC_DEF(ret, func, ...) \
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>    static ret (*old_##func)(__VA_ARGS__); \
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>    static ret new_##func(__VA_ARGS__)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>NEW_FUNC_DEF(int, jniRegisterNativeMethods, JNIEnv *env, const char *className,
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>             const JNINativeMethod *methods, int numMethods) {
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>    api::putNativeMethod(className, methods, numMethods);
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>    LOGD(&quot;jniRegisterNativeMethods %s&quot;, className);
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>    JNINativeMethod *newMethods = nullptr;
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>    if (strcmp(&quot;com/android/internal/os/Zygote&quot;, className) == 0) {
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>        // com/android/internal/os/Zygote注册时回调onRegisterZygote方法获取新的jniMethods列表进行替换
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>        newMethods = onRegisterZygote(env, className, methods, numMethods);
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a>    } else if (strcmp(&quot;android/os/SystemProperties&quot;, className) == 0) {
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a>        // hook android.os.SystemProperties#native_set to prevent a critical problem on Android 9
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>        // see comment of SystemProperties_set in jni_native_method.cpp for detail
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a>        // 回调onRegisterSystemProperties方法
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a>        newMethods = onRegisterSystemProperties(env, className, methods, numMethods);
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a>    }
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a>    int res = old_jniRegisterNativeMethods(env, className, newMethods ? newMethods : methods,
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a>                                           numMethods);
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a>    /*if (!newMethods) {
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a>        NativeMethod::jniRegisterNativeMethodsPost(env, className, methods, numMethods);
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a>    }*/
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a>    delete newMethods;
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a>    return res;
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a>}
+</span></code></pre></div></td></tr></table></div></p>
+<p>可以看到在com/android/internal/os/Zygote注册JNI方法时会回调onRegisterZygote方法获取新的jniMethods列表进行替换，在onRegisterZygote方法中主要替换了三个方法的fnPtr指针并兼容不同的安卓版本：
+- nativeForkAndSpecialize
+- nativeSpecializeAppProcess
+- nativeForkSystemServer</p>
+<p>这三个方法是应用进程或者系统服务进程被fork 出来的时候会调用的方法，这里以nativeForkAndSpecialize举例分析nativeForkAndSpecialize的AOP逻辑和模块中声明的forkAndSpecializePre/Post等系列方法如何被调用及调用时机。
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span>
+<span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span>
+<span class="normal"><a href="#__codelineno-8-38">38</a></span>
+<span class="normal"><a href="#__codelineno-8-39">39</a></span>
+<span class="normal"><a href="#__codelineno-8-40">40</a></span>
+<span class="normal"><a href="#__codelineno-8-41">41</a></span>
+<span class="normal"><a href="#__codelineno-8-42">42</a></span>
+<span class="normal"><a href="#__codelineno-8-43">43</a></span>
+<span class="normal"><a href="#__codelineno-8-44">44</a></span>
+<span class="normal"><a href="#__codelineno-8-45">45</a></span>
+<span class="normal"><a href="#__codelineno-8-46">46</a></span>
+<span class="normal"><a href="#__codelineno-8-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>jint nativeForkAndSpecialize_r(
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>        JNIEnv *env, jclass clazz, jint uid, jint gid, jintArray gids, jint runtime_flags,
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>        jobjectArray rlimits, jint mount_external, jstring se_info, jstring se_name,
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>        jintArray fdsToClose, jintArray fdsToIgnore, jboolean is_child_zygote,
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>        jstring instructionSet, jstring appDataDir, jboolean isTopApp, jobjectArray pkgDataInfoList,
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>        jobjectArray whitelistedDataInfoList, jboolean bindMountAppDataDirs, jboolean bindMountAppStorageDirs) {
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>    // 通过nativeForkAndSpecialize_pre和nativeForkAndSpecialize_post完成了nativeForkAndSpecialize方法的AOP
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>    nativeForkAndSpecialize_pre(env, clazz, uid, gid, gids, runtime_flags, rlimits, mount_external,
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a>                                se_info, se_name, fdsToClose, fdsToIgnore, is_child_zygote,
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a>                                instructionSet, appDataDir, isTopApp, pkgDataInfoList, whitelistedDataInfoList,
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a>                                bindMountAppDataDirs, bindMountAppStorageDirs);
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a>    jint res = ((nativeForkAndSpecialize_r_t *) JNI::Zygote::nativeForkAndSpecialize-&gt;fnPtr)(
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a>            env, clazz, uid, gid, gids, runtime_flags, rlimits, mount_external, se_info, se_name,
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a>            fdsToClose, fdsToIgnore, is_child_zygote, instructionSet, appDataDir, isTopApp, pkgDataInfoList,
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a>            whitelistedDataInfoList, bindMountAppDataDirs, bindMountAppStorageDirs);
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a>    nativeForkAndSpecialize_post(env, clazz, uid, res);
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a>    return res;
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a>}
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a>static void nativeForkAndSpecialize_pre(
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24"></a>        JNIEnv *env, jclass clazz, jint &amp;uid, jint &amp;gid, jintArray &amp;gids, jint &amp;runtime_flags,
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25"></a>        jobjectArray &amp;rlimits, jint &amp;mount_external, jstring &amp;se_info, jstring &amp;se_name,
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26"></a>        jintArray &amp;fdsToClose, jintArray &amp;fdsToIgnore, jboolean &amp;is_child_zygote,
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27"></a>        jstring &amp;instructionSet, jstring &amp;appDataDir, jboolean &amp;isTopApp, jobjectArray &amp;pkgDataInfoList,
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28"></a>        jobjectArray &amp;whitelistedDataInfoList, jboolean &amp;bindMountAppDataDirs, jboolean &amp;bindMountAppStorageDirs) {
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29"></a>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30"></a>    // 遍历执行每个模块的forkAndSpecializePre方法，这里可以知道，只需要在模块中声明forkAndSpecializePre方法，即可在com.android.internal.os.Zygote#forkAndSpecialize方法执行前被调用
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31"></a>    for (auto module : *get_modules()) {
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32"></a>        if (!module-&gt;hasForkAndSpecializePre())
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33"></a>            continue;
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34"></a>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35"></a>        if (module-&gt;hasShouldSkipUid() &amp;&amp; module-&gt;shouldSkipUid(uid))
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36"></a>            continue;
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37"></a>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38"></a>        if (!module-&gt;hasShouldSkipUid() &amp;&amp; shouldSkipUid(uid))
+</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39"></a>            continue;
+</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40"></a>
+</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41"></a>        module-&gt;forkAndSpecializePre(
+</span><span id="__span-8-42"><a id="__codelineno-8-42" name="__codelineno-8-42"></a>                env, clazz, &amp;uid, &amp;gid, &amp;gids, &amp;runtime_flags, &amp;rlimits, &amp;mount_external,
+</span><span id="__span-8-43"><a id="__codelineno-8-43" name="__codelineno-8-43"></a>                &amp;se_info, &amp;se_name, &amp;fdsToClose, &amp;fdsToIgnore, &amp;is_child_zygote,
+</span><span id="__span-8-44"><a id="__codelineno-8-44" name="__codelineno-8-44"></a>                &amp;instructionSet, &amp;appDataDir, &amp;isTopApp, &amp;pkgDataInfoList, &amp;whitelistedDataInfoList,
+</span><span id="__span-8-45"><a id="__codelineno-8-45" name="__codelineno-8-45"></a>                &amp;bindMountAppDataDirs, &amp;bindMountAppStorageDirs);
+</span><span id="__span-8-46"><a id="__codelineno-8-46" name="__codelineno-8-46"></a>    }
+</span><span id="__span-8-47"><a id="__codelineno-8-47" name="__codelineno-8-47"></a>}
+</span></code></pre></div></td></tr></table></div></p>
+<h2 id="load_modules">load_modules</h2>
+<p>load_modules解析如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-9-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-9-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-9-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-9-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-9-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-9-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-9-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-9-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-9-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-9-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-9-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-9-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-9-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-9-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-9-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-9-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-9-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-9-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-9-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-9-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-9-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-9-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-9-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-9-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-9-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-9-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-9-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-9-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-9-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-9-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-9-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-9-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-9-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-9-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-9-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-9-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-9-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-9-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-9-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-9-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-9-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-9-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-9-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-9-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-9-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-9-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-9-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-9-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-9-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-9-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-9-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-9-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-9-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-9-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-9-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-9-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-9-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-9-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-9-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-9-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-9-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-9-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-9-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-9-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-9-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-9-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-9-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-9-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-9-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-9-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-9-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-9-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-9-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-9-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-9-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-9-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-9-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-9-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-9-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-9-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-9-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-9-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-9-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-9-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-9-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-9-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-9-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-9-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-9-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-9-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-9-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-9-100">100</a></span>
+<span class="normal"><a href="#__codelineno-9-101">101</a></span>
+<span class="normal"><a href="#__codelineno-9-102">102</a></span>
+<span class="normal"><a href="#__codelineno-9-103">103</a></span>
+<span class="normal"><a href="#__codelineno-9-104">104</a></span>
+<span class="normal"><a href="#__codelineno-9-105">105</a></span>
+<span class="normal"><a href="#__codelineno-9-106">106</a></span>
+<span class="normal"><a href="#__codelineno-9-107">107</a></span>
+<span class="normal"><a href="#__codelineno-9-108">108</a></span>
+<span class="normal"><a href="#__codelineno-9-109">109</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>void load_modules() {
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>    DIR *dir;
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>    struct dirent *entry;
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>    char path[PATH_MAX];
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>    void *handle;
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    const int riruApiVersion = RIRU_API_VERSION;
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>    if (!(dir = _opendir(MODULES_DIR))) return;
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>    // 遍历/data/adb/riru/modules目录下的文件夹
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>    while ((entry = _readdir(dir))) {
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>        if (entry-&gt;d_type != DT_DIR) continue;
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>        // 获取文件夹名称
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>        auto name = entry-&gt;d_name;
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>        if (name[0] == &#39;.&#39;) continue;
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>        // 根据文件夹名称拼接so路径：/system/lib/libriru_%s.so，这一步操作也是在riru插件的customize.sh中完成
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>        snprintf(path, PATH_MAX, MODULE_PATH_FMT, name);
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>        if (access(path, F_OK) != 0) {
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>            PLOGE(&quot;access %s&quot;, path);
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a>            continue;
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a>        }
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>        handle = dlopen(path, 0);
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>        if (!handle) {
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>            LOGE(&quot;dlopen %s failed: %s&quot;, path, dlerror());
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>            continue;
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a>        }
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a>        // 找到so的init方法，这里也是为什么riru的官方文档中指出必须要有一个导出的init函数
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a>        // 如果没有init方法，则将不会被认为是一个合法的riru module，后续get_modules也无法获取到
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a>        auto init = (RiruInit_t *) dlsym(handle, &quot;init&quot;);
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a>        if (!init) {
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a>            LOGW(&quot;%s does not export init&quot;, path);
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a>            cleanup(handle, path);
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a>            continue;
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a>        }
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40"></a>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41"></a>        // 1. pass riru api version, return module&#39;s api version
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42"></a>        auto apiVersion = (int *) init((void *) &amp;riruApiVersion);
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43"></a>        if (apiVersion == nullptr) {
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44"></a>            LOGE(&quot;%s returns null on step 1&quot;, path);
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45"></a>            cleanup(handle, path);
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46"></a>            continue;
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47"></a>        }
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48"></a>
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49"></a>        if (*apiVersion &lt; RIRU_MIN_API_VERSION || *apiVersion &gt; RIRU_API_VERSION) {
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50"></a>            LOGW(&quot;unsupported API %s: %d&quot;, name, *apiVersion);
+</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51"></a>            cleanup(handle, path);
+</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52"></a>            continue;
+</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53"></a>        }
+</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54"></a>
+</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55"></a>        // 2. create and pass Riru struct by module&#39;s api version
+</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56"></a>        auto module = new RiruModule(strdup(name));
+</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57"></a>        module-&gt;handle = handle;
+</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58"></a>        module-&gt;apiVersion = *apiVersion;
+</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59"></a>
+</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60"></a>        if (*apiVersion == 9) {
+</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61"></a>            auto info = init_module_v9(module-&gt;token, init);
+</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62"></a>            if (info == nullptr) {
+</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63"></a>                LOGE(&quot;%s returns null on step 2&quot;, path);
+</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64"></a>                cleanup(handle, path);
+</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65"></a>                continue;
+</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66"></a>            }
+</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67"></a>            module-&gt;info(info);
+</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68"></a>        }
+</span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69"></a>
+</span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70"></a>        // 3. let the module to do some cleanup jobs
+</span><span id="__span-9-71"><a id="__codelineno-9-71" name="__codelineno-9-71"></a>        init(nullptr);
+</span><span id="__span-9-72"><a id="__codelineno-9-72" name="__codelineno-9-72"></a>
+</span><span id="__span-9-73"><a id="__codelineno-9-73" name="__codelineno-9-73"></a>        // 缓存插件信息到一个vector中，后续通过get_modules()方法才能找到对应的插件信息
+</span><span id="__span-9-74"><a id="__codelineno-9-74" name="__codelineno-9-74"></a>        get_modules()-&gt;push_back(module);
+</span><span id="__span-9-75"><a id="__codelineno-9-75" name="__codelineno-9-75"></a>
+</span><span id="__span-9-76"><a id="__codelineno-9-76" name="__codelineno-9-76"></a>        LOGI(&quot;module loaded: %s (api %d)&quot;, module-&gt;name, module-&gt;apiVersion);
+</span><span id="__span-9-77"><a id="__codelineno-9-77" name="__codelineno-9-77"></a>    }
+</span><span id="__span-9-78"><a id="__codelineno-9-78" name="__codelineno-9-78"></a>
+</span><span id="__span-9-79"><a id="__codelineno-9-79" name="__codelineno-9-79"></a>    closedir(dir);
+</span><span id="__span-9-80"><a id="__codelineno-9-80" name="__codelineno-9-80"></a>
+</span><span id="__span-9-81"><a id="__codelineno-9-81" name="__codelineno-9-81"></a>    status::getStatus()-&gt;hideEnabled = access(ENABLE_HIDE_FILE, F_OK) == 0;
+</span><span id="__span-9-82"><a id="__codelineno-9-82" name="__codelineno-9-82"></a>    if (status::getStatus()-&gt;hideEnabled) {
+</span><span id="__span-9-83"><a id="__codelineno-9-83" name="__codelineno-9-83"></a>        LOGI(&quot;hide is enabled&quot;);
+</span><span id="__span-9-84"><a id="__codelineno-9-84" name="__codelineno-9-84"></a>        auto modules = get_modules();
+</span><span id="__span-9-85"><a id="__codelineno-9-85" name="__codelineno-9-85"></a>        auto names = (const char **) malloc(sizeof(char *) * modules-&gt;size());
+</span><span id="__span-9-86"><a id="__codelineno-9-86" name="__codelineno-9-86"></a>        int names_count = 0;
+</span><span id="__span-9-87"><a id="__codelineno-9-87" name="__codelineno-9-87"></a>        for (auto module : *get_modules()) {
+</span><span id="__span-9-88"><a id="__codelineno-9-88" name="__codelineno-9-88"></a>            if (strcmp(module-&gt;name, MODULE_NAME_CORE) == 0) continue;
+</span><span id="__span-9-89"><a id="__codelineno-9-89" name="__codelineno-9-89"></a>            if (!module-&gt;supportHide) {
+</span><span id="__span-9-90"><a id="__codelineno-9-90" name="__codelineno-9-90"></a>                LOGI(&quot;module %s does not support hide&quot;, module-&gt;name);
+</span><span id="__span-9-91"><a id="__codelineno-9-91" name="__codelineno-9-91"></a>                continue;
+</span><span id="__span-9-92"><a id="__codelineno-9-92" name="__codelineno-9-92"></a>            }
+</span><span id="__span-9-93"><a id="__codelineno-9-93" name="__codelineno-9-93"></a>            names[names_count] = module-&gt;name;
+</span><span id="__span-9-94"><a id="__codelineno-9-94" name="__codelineno-9-94"></a>            names_count += 1;
+</span><span id="__span-9-95"><a id="__codelineno-9-95" name="__codelineno-9-95"></a>        }
+</span><span id="__span-9-96"><a id="__codelineno-9-96" name="__codelineno-9-96"></a>        hide::hide_modules(names, names_count);
+</span><span id="__span-9-97"><a id="__codelineno-9-97" name="__codelineno-9-97"></a>    } else {
+</span><span id="__span-9-98"><a id="__codelineno-9-98" name="__codelineno-9-98"></a>        PLOGE(&quot;access &quot; ENABLE_HIDE_FILE);
+</span><span id="__span-9-99"><a id="__codelineno-9-99" name="__codelineno-9-99"></a>        LOGI(&quot;hide is not enabled&quot;);
+</span><span id="__span-9-100"><a id="__codelineno-9-100" name="__codelineno-9-100"></a>    }
+</span><span id="__span-9-101"><a id="__codelineno-9-101" name="__codelineno-9-101"></a>
+</span><span id="__span-9-102"><a id="__codelineno-9-102" name="__codelineno-9-102"></a>    for (auto module : *get_modules()) {
+</span><span id="__span-9-103"><a id="__codelineno-9-103" name="__codelineno-9-103"></a>        if (module-&gt;hasOnModuleLoaded()) {
+</span><span id="__span-9-104"><a id="__codelineno-9-104" name="__codelineno-9-104"></a>            LOGV(&quot;%s: onModuleLoaded&quot;, module-&gt;name);
+</span><span id="__span-9-105"><a id="__codelineno-9-105" name="__codelineno-9-105"></a>            // 回调module的_onModuleLoaded方法
+</span><span id="__span-9-106"><a id="__codelineno-9-106" name="__codelineno-9-106"></a>            module-&gt;onModuleLoaded();
+</span><span id="__span-9-107"><a id="__codelineno-9-107" name="__codelineno-9-107"></a>        }
+</span><span id="__span-9-108"><a id="__codelineno-9-108" name="__codelineno-9-108"></a>    }
+</span><span id="__span-9-109"><a id="__codelineno-9-109" name="__codelineno-9-109"></a>}
+</span></code></pre></div></td></tr></table></div>
+<h1 id="edxposedriru">EdXposed如何依赖riru</h1>
+<p>EdXposed本身也是一个riru插件，但是如何证明呢。</p>
+<p>我们可以知道如果作为一个riru插件，必然需要
+1. 在/data/adb/riru/modules或者/data/misc/riru/modules下存在一个插件文件夹。
+2. 存在与插件文件夹相同名称的/system/lib/libriru_%s.so
+3. so中可能有init或者forkAndSpecializePre等zygote进程相关的方法</p>
+<p>在edxp-core中，依然通过build.gradle为入口分析zip打包的逻辑，可以看到也是一个标准的magisk module installer，其中customize.sh中有一行关键代码创建了riru插件的相关目录：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a># 创建riru的module目录，这里可以看出edxp同时是一个riru module，riru通过检测目录加载对应的libriru_xxx.so
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>[[ -d &quot;${RIRU_TARGET}&quot; ]] || mkdir -p &quot;${RIRU_TARGET}&quot; || abort &quot;! Can&#39;t mkdir -p ${RIRU_TARGET}&quot;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a># RIRU_TARGET变量的赋值过程
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>RIRU_PATH=&quot;/data/misc/riru&quot;
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a># 为libriru_edxp.so设置随机后缀, libriru_edxp.so -&gt; libriru_{randomNum}.so
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a># libriru_edxp.so由edxp-core:src/main/cpp/main相关c文件编译得出
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a># getRandomNameExist方法作用为获取一个/proc/sys/kernel/random/uuid不存在的四位随机数
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>RIRU_EDXP=&quot;$(getRandomNameExist 4 &quot;libriru_&quot; &quot;.so&quot; &quot;
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a>/system/lib
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a>/system/lib64
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a>&quot;)&quot;
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a>RIRU_MODULES=&quot;${RIRU_PATH}/modules&quot;
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a>RIRU_TARGET=&quot;${RIRU_MODULES}/${RIRU_EDXP}&quot;
+</span></code></pre></div></td></tr></table></div>
+<p>通过这段脚本可以看出edxp插件在magisk加载时创建了一个riru插件目录，并且把libriru_edxp.so重命名成一个随机后缀的so文件由riru进行加载。</p>
+<p>接着分析libriru_edxp.so，通过CMakeLists.txt可以知道是由edxp-core中编译得到，查看edxp-core/src/main/cpp/main/src/main.cpp中可以看到确实声明了riru中的一些方法模版钩子：
+- nativeForkAndSpecializePre
+- nativeForkAndSpecializePost
+- nativeForkSystemServerPre
+- nativeForkSystemServerPost
+- specializeAppProcessPre
+- specializeAppProcessPost
+- onModuleLoaded
+- shouldSkipUid</p>
+<p>等方法，一切都可以想明白了。接下来就是edxp如何进行ART Hook。</p>
+<h1 id="ps">PS</h1>
+<ol>
+<li><a href="https://github.com/AlienwareHe/riru-docs">riru-docs</a> :https://github.com/AlienwareHe/riru-docs</li>
+<li>目前的riru v22中可以看到一个riru module必须包含一个init导出函数，但是在edxp里并没有发现有init函数，在v19的riru中是没有init函数限制，而是校验module.prop。</li>
+<li>riru v22中提到切换到native bridge方式注入之后，会导致riru和模块的加载时机变晚，对于Xposed框架可能会有变化和影响。</li>
+</ol>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Starting v22.0, Riru has switched to &quot;native bridge&quot; (ro.dalvik.vm.native.bridge) to inject zygote, this will lead Riru and modules be loaded later (LoadNativeBridge vs __attribute__((constructor))).
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>For most modules, this should have no problem, but modules like Xposed frameworks may have to make changes.
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>Magisk may provider Riru-like features in the far future, and of course, it will have more strict restrictions, module codes will not be run in zygote. Maybe Xposed framework modules should prepare for this?
+</span></code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ratel-plugin-dev/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 平头哥插件开发教程">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                平头哥插件开发教程
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../webview-js-hook/" class="md-footer__link md-footer__link--next" aria-label="下一页: JS Bridge">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                JS Bridge
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

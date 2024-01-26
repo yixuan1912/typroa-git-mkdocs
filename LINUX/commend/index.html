@@ -1,0 +1,1800 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Hadoop/Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/">
+      
+      
+        <link rel="next" href="../linux%E9%87%8D%E7%BD%AEroot%E5%AF%86%E7%A0%81/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Commend - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scp" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Commend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            LINUX
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Commend
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Commend
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      scp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parted
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr替换字符串等
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blkiduuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      blkid显示块设备属性查看硬盘UUID号
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="blkid显示块设备属性查看硬盘UUID号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      功能描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      UUID作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令语法：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      选项含义：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看进程网速
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      shell 查看docker占用
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux%E9%87%8D%E7%BD%AEroot%E5%AF%86%E7%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux重置root密码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8source%20.bashrc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    设置自动source .bashrc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../NJPI.openstack%2C%E5%8D%95%E6%9C%BA%E7%89%88/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NJPI.openstack,单机版
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../NJPI.openstack2/01-/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NJPI.openstack2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../docker/%E6%9C%AA%E5%AE%8C%E6%88%90docker/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../redhat%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%28%E4%B9%A6%29/01%E7%8E%AF%E5%A2%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Redhat系统管理(书)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../shell/01vim%EF%BC%881%EF%BC%89/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../unubtu/%E5%AE%89%E8%A3%85ubuntu18/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Unubtu
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      scp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parted
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr替换字符串等
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blkiduuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      blkid显示块设备属性查看硬盘UUID号
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="blkid显示块设备属性查看硬盘UUID号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      功能描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      UUID作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令语法：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      选项含义：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看进程网速
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      shell 查看docker占用
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Commend</h1>
+
+<div class="toc">
+<ul>
+<li><a href="#scp">scp</a></li>
+<li><a href="#parted">Parted</a></li>
+<li><a href="#tr">tr替换字符串等</a></li>
+<li><a href="#blkiduuid">blkid显示块设备属性查看硬盘UUID号</a><ul>
+<li><a href="#_1">功能描述</a></li>
+<li><a href="#uuid">UUID作用</a></li>
+<li><a href="#_2">命令语法：</a></li>
+<li><a href="#_3">选项含义：</a></li>
+<li><a href="#_4">示例：</a></li>
+</ul>
+</li>
+<li><a href="#_5">查看进程网速</a></li>
+<li><a href="#shell-docker">shell 查看docker占用</a></li>
+</ul>
+</div>
+<h3 id="scp">scp</h3>
+<div class="language-BASH highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>-q:<span class="w">  </span>quiet<span class="w">     </span>不显示传输进度条。
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>-r:<span class="w">   </span>recuersive<span class="w">    </span>递归的
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>-p:<span class="w">   </span>properity<span class="w">    </span>保留属性
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>-v:<span class="w">   </span>verbose<span class="w">    </span>显示详细输出
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>-i:<span class="w">   </span>identity_file<span class="w">      </span>从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh<span class="w"> </span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>-P:<span class="w">  </span>port<span class="w">       </span>端口（大写P）
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c1"># scp file user@host:file    发送文件给别人</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1"># scp user@host:file         从别人下载文件到自己</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="parted">Parted</h3>
+<div class="language-BASH highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>帮助选项：
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>-h,<span class="w"> </span>--help<span class="w">                    </span>显示此求助信息<span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>-l,<span class="w"> </span>--list<span class="w">                    </span>列出所有设别的分区信息
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>-i,<span class="w"> </span>--interactive<span class="w">             </span>在必要时，提示用户<span class="w"> </span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>-s,<span class="w"> </span>--script<span class="w">                  </span>从不提示用户<span class="w"> </span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>-v,<span class="w"> </span>--version<span class="w">                 </span>显示版本
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>操作命令：
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>cp<span class="w"> </span><span class="o">[</span>FROM-DEVICE<span class="o">]</span><span class="w"> </span>FROM-MINOR<span class="w"> </span>TO-MINOR<span class="w">           </span><span class="c1">#将文件系统复制到另一个分区 </span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="nb">help</span><span class="w"> </span><span class="o">[</span>COMMAND<span class="o">]</span><span class="w">                                 </span><span class="c1">#打印通用求助信息，或关于 COMMAND 的信息 </span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>mklabel<span class="w"> </span>标签类型<span class="w">                               </span><span class="c1">#创建新的磁盘标签 (分区表) </span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>mkfs<span class="w"> </span>MINOR<span class="w"> </span>文件系统类型<span class="w">                        </span><span class="c1">#在 MINOR 创建类型为“文件系统类型”的文件系统 </span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>mkpart<span class="w"> </span>分区类型<span class="w"> </span><span class="o">[</span>文件系统类型<span class="o">]</span><span class="w"> </span>起始点<span class="w"> </span>终止点<span class="w">   </span><span class="c1">#创建一个分区 </span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>mkpartfs<span class="w"> </span>分区类型<span class="w"> </span>文件系统类型<span class="w"> </span>起始点<span class="w"> </span>终止点<span class="w">   </span><span class="c1">#创建一个带有文件系统的分区 </span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>move<span class="w"> </span>MINOR<span class="w"> </span>起始点<span class="w"> </span>终止点<span class="w">                       </span><span class="c1">#移动编号为 MINOR 的分区 </span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>name<span class="w"> </span>MINOR<span class="w"> </span>名称<span class="w">                                </span><span class="c1">#将编号为 MINOR 的分区命名为“名称” </span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>print<span class="w"> </span><span class="o">[</span>MINOR<span class="o">]</span><span class="w">                                  </span><span class="c1">#打印分区表，或者分区 </span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>quit<span class="w">                                           </span><span class="c1">#退出程序 </span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>rescue<span class="w"> </span>起始点<span class="w"> </span>终止点<span class="w">                           </span><span class="c1">#挽救临近“起始点”、“终止点”的遗失的分区 </span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a>resize<span class="w"> </span>MINOR<span class="w"> </span>起始点<span class="w"> </span>终止点<span class="w">                     </span><span class="c1">#改变位于编号为 MINOR 的分区中文件系统的大小 </span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>rm<span class="w"> </span>MINOR<span class="w">                                       </span><span class="c1">#删除编号为 MINOR 的分区 </span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="k">select</span><span class="w"> </span>设备<span class="w">                                    </span><span class="c1">#选择要编辑的设备 </span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="nb">set</span><span class="w"> </span>MINOR<span class="w"> </span>标志<span class="w"> </span>状态<span class="w">                            </span><span class="c1">#改变编号为 MINOR 的分区的标志</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-BASH highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span>
+<span class="normal"><a href="#__codelineno-2-70">70</a></span>
+<span class="normal"><a href="#__codelineno-2-71">71</a></span>
+<span class="normal"><a href="#__codelineno-2-72">72</a></span>
+<span class="normal"><a href="#__codelineno-2-73">73</a></span>
+<span class="normal"><a href="#__codelineno-2-74">74</a></span>
+<span class="normal"><a href="#__codelineno-2-75">75</a></span>
+<span class="normal"><a href="#__codelineno-2-76">76</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="m">1</span>、选择分区硬盘
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>首先类似fdisk一样，先选择要分区的硬盘，此处为/dev/hdd：<span class="w"> </span><span class="o">((</span>parted<span class="o">)</span>表示在parted中输入的命令，其他为自动打印的信息<span class="o">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># parted /dev/hdd</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>GNU<span class="w"> </span>Parted<span class="w"> </span><span class="m">1</span>.8.1
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>Using<span class="w"> </span>/dev/hdd
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>Welcome<span class="w"> </span>to<span class="w"> </span>GNU<span class="w"> </span>Parted!<span class="w"> </span>Type<span class="w"> </span><span class="s1">&#39;help&#39;</span><span class="w"> </span>to<span class="w"> </span>view<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>commands.
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="m">2</span>、创建分区
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>选择了/dev/hdd作为我们操作的磁盘，接下来需要创建一个分区表<span class="o">(</span>在parted中可以使用help命令打印帮助信息<span class="o">)</span>：
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mklabel
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>New<span class="w"> </span>disk<span class="w"> </span>label<span class="w"> </span>type?<span class="w"> </span>gpt<span class="w">    </span><span class="o">(</span>我们要正确分区大于2TB的磁盘，应该使用gpt方式的分区表，输入gpt后回车<span class="o">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="m">3</span>、完成分区操作
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>创建好分区表以后，接下来就可以进行分区操作了，执行mkpart命令，分别输入分区名称，文件系统和分区<span class="w"> </span>的起止位置
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mkpart
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>Partition<span class="w"> </span>name?<span class="w"> </span><span class="o">[]</span>?<span class="w"> </span>dp1
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>File<span class="w"> </span>system<span class="w"> </span>type?<span class="w"> </span><span class="o">[</span>ext2<span class="o">]</span>?<span class="w"> </span>ext3
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>Start?<span class="w"> </span><span class="m">0</span><span class="w">           </span>（可以用百分比表示，比如Start?<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>,<span class="w"> </span>End?<span class="w"> </span><span class="m">50</span>%）
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>End?<span class="w"> </span>500GB
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="m">4</span>、验证分区信息
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>分好区后可以使用print命令打印分区信息，下面是一个print的样例
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>print
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>Model:<span class="w"> </span>VBOX<span class="w"> </span>HARDDISK<span class="w"> </span><span class="o">(</span>ide<span class="o">)</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>Disk<span class="w"> </span>/dev/hdd:<span class="w"> </span>2199GB
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span>512B/512B
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>Partition<span class="w"> </span>Table:<span class="w"> </span>gpt
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>Number<span class="w"> </span>Start<span class="w"> </span>End<span class="w"> </span>Size<span class="w"> </span>File<span class="w"> </span>system<span class="w"> </span>Name<span class="w"> </span>Flags
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="m">1</span><span class="w"> </span><span class="m">17</span>.4kB<span class="w"> </span>500GB<span class="w"> </span>500GB<span class="w"> </span>dp1
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="m">5</span>、删除分区示例
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>如果分区错了，可以使用rm命令删除分区，比如我们要删除上面的分区，然后打印删除后的结果
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="o">(</span>parted<span class="o">)</span>rm<span class="w"> </span><span class="m">1</span><span class="w">               </span><span class="c1">#rm后面使用分区的号码，就是用print打印出来的Number</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>print
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>Model:<span class="w"> </span>VBOX<span class="w"> </span>HARDDISK<span class="w"> </span><span class="o">(</span>ide<span class="o">)</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>Disk<span class="w"> </span>/dev/hdd:<span class="w"> </span>2199GB
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span>512B/512B
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a>Partition<span class="w"> </span>Table:<span class="w"> </span>gpt
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>Number<span class="w"> </span>Start<span class="w"> </span>End<span class="w"> </span>Size<span class="w"> </span>File<span class="w"> </span>system<span class="w"> </span>Name<span class="w"> </span>Flags
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="m">6</span>、完整示例
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a>按照上面的方法把整个硬盘都分好区，下面是一个分完后的样例
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mkpart
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a>Partition<span class="w"> </span>name?<span class="w"> </span><span class="o">[]</span>?<span class="w"> </span>dp1
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a>File<span class="w"> </span>system<span class="w"> </span>type?<span class="w"> </span><span class="o">[</span>ext2<span class="o">]</span>?<span class="w"> </span>ext3
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a>Start?<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a>End?<span class="w"> </span>500GB
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mkpart
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50"></a>Partition<span class="w"> </span>name?<span class="w"> </span><span class="o">[]</span>?<span class="w"> </span>dp2
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a>File<span class="w"> </span>system<span class="w"> </span>type?<span class="w"> </span><span class="o">[</span>ext2<span class="o">]</span>?<span class="w"> </span>ext3
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a>Start?<span class="w"> </span>500GB
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a>End?<span class="w"> </span>2199GB
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>print
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a>Model:<span class="w"> </span>VBOX<span class="w"> </span>HARDDISK<span class="w"> </span><span class="o">(</span>ide<span class="o">)</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a>Disk<span class="w"> </span>/dev/hdd:<span class="w"> </span>2199GB
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span>512B/512B
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a>Partition<span class="w"> </span>Table:<span class="w"> </span>gpt
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a>Number<span class="w"> </span>Start<span class="w"> </span>End<span class="w"> </span>Size<span class="w"> </span>File<span class="w"> </span>system<span class="w"> </span>Name<span class="w"> </span>Flags
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="m">1</span><span class="w"> </span><span class="m">17</span>.4kB<span class="w"> </span>500GB<span class="w"> </span>500GB<span class="w"> </span>dp1
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="m">2</span><span class="w"> </span>500GB<span class="w"> </span>2199GB<span class="w"> </span>1699GB<span class="w"> </span>dp2
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="m">7</span>、格式化操作
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a>完成以后我们可以使用quit命令退出parted并使用系统的mkfs命令对分区进行格式化了。
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># fdisk -l</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a>WARNING:<span class="w"> </span>GPT<span class="w"> </span><span class="o">(</span>GUID<span class="w"> </span>Partition<span class="w"> </span>Table<span class="o">)</span><span class="w"> </span>detected<span class="w"> </span>on<span class="w"> </span><span class="s1">&#39;/dev/hdd&#39;</span>!<span class="w"> </span>The<span class="w"> </span>util<span class="w"> </span>fdisk<span class="w"> </span>doesn<span class="err">&#39;</span>t<span class="w"> </span>support<span class="w"> </span>GPT.<span class="w"> </span>Use<span class="w"> </span>GNU<span class="w"> </span>Parted.
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a>Disk<span class="w"> </span>/dev/hdd:<span class="w"> </span><span class="m">2199</span>.0<span class="w"> </span>GB,<span class="w"> </span><span class="m">2199022206976</span><span class="w"> </span>bytes
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="m">255</span><span class="w"> </span>heads,<span class="w"> </span><span class="m">63</span><span class="w"> </span>sectors/track,<span class="w"> </span><span class="m">267349</span><span class="w"> </span>cylinders
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="nv">Units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cylinders<span class="w"> </span>of<span class="w"> </span><span class="m">16065</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8225280</span><span class="w"> </span>bytes
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70"></a>Device<span class="w"> </span>Boot<span class="w"> </span>Start<span class="w"> </span>End<span class="w"> </span>Blocks<span class="w"> </span>Id<span class="w"> </span>System
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71"></a>/dev/hdd1<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">267350</span><span class="w"> </span><span class="m">2147482623</span>+<span class="w"> </span>ee<span class="w"> </span>EFI<span class="w"> </span>GPT
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># mkfs.ext3 /dev/hdd1</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># mkfs.ext3 /dev/hdd2</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># mkdir /dp1 /dp2</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># mount /dev/hdd1 /dp1</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="o">[</span>root@10.10.90.97<span class="w"> </span>~<span class="o">]</span><span class="c1"># mount /dev/hdd2 /dp2</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="tr">tr替换字符串等</h3>
+<ul>
+<li>```BASH
+  用法：tr [-cdst]... SET1 [SET2]
+  从标准输入中替换、缩减和/或删除字符，并将结果写到标准输出。</li>
+</ul>
+<p>-c, --complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换为 SET2
+  -d, --delete：删除指令字符
+  -s, --squeeze-repeats：缩减连续重复的字符成指定的单个字符
+  -t, --truncate-set1：削减 SET1 指定范围，使之与 SET2 设定长度相等
+  --help：显示程序用法信息
+  --version：显示程序本身的版本信息</p>
+<p>SET 是一组字符串，一般都可按照字面含义理解。解析序列如下：
+  \NNN  八进制值为NNN 的字符(1 至3 个数位)
+    \            反斜杠
+    \a            终端鸣响
+    \b            退格
+    \f            换页
+    \n            换行
+    \r            回车
+    \t            水平制表符
+    \v            垂直制表符
+    字符1-字符2   从字符1 到字符2 的升序递增过程中经历的所有字符
+    [字符<em>]       在SET2 中适用，指定字符会被连续复制直到吻合设置1 的长度
+    [字符</em>次数]   对字符执行指定次数的复制，若次数以 0 开头则被视为八进制数
+    [:alnum:]     所有的字母和数字
+    [:alpha:]     所有的字母
+    [:blank:]     所有呈水平排列的空白字符
+    [:cntrl:]     所有的控制字符
+    [:digit:]     所有的数字
+    [:graph:]     所有的可打印字符，不包括空格
+    [:lower:]     所有的小写字母
+    [:print:]     所有的可打印字符，包括空格
+    [:punct:]     所有的标点字符
+    [:space:]     所有呈水平或垂直排列的空白字符
+    [:upper:]     所有的大写字母
+    [:xdigit:]    所有的十六进制数
+    [=字符=]      所有和指定字符相等的字符</p>
+<p>1.替换字符串
+  # seq 9 |tr "\n" ","
+  1,2,3,4,5,6,7,8,9,</p>
+<p>2.删除多余的空行
+  # cat last.txt | tr -s '\n'</p>
+<p>3.删除指定的字符串
+  # cat test_openrc.sh |tr -d '#'                删除了#
+  # cat test_openrc.sh |tr -d '[a-z]#[0-9]'    删除了小写字母、#和数字</p>
+<p>4.大小写转换
+  # cat  test_openrc.sh |tr '[A-Z]'  '[a-z]'   大写转换为小写</p>
+<p>5.字符串去重
+  # cat  test_openrc.sh |tr -s '[0-9][A-Z]'    把连续的重复的数字和大写字母只保留了一个</p>
+<p>6.反向选择替换
+  # cat  test_openrc.sh |tr -c '[0-9]' ' '     把除了数字之外的字符串换成空格
+  # cat  test_openrc.sh |tr -c '[0-9]' ' ' |tr -d ' '   上面的命令+删掉空格
+  ```</p>
+<h3 id="blkiduuid">blkid显示块设备属性查看硬盘UUID号</h3>
+<h4 id="_1">功能描述</h4>
+<p>使用blkid命令可以用来查询系统的块设备（包括交换分区）所使用的文件系统类型、卷标、UUD等信息。　　　　</p>
+<p>在Linux下可以使用blkid命令对查询设备上所采用文件系统类型进行查询。blkid主要用来对系统的块设备(包括交换分区)所使用的文件系统类型、LABEL、UUID等信息进行查询。</p>
+<h4 id="uuid">UUID作用</h4>
+<p>UUID是一个标识你系统中的存储设备的字符串，其目的是帮助使用者唯一的确定系统中的所有存储设备，不管它们是什么类型的。它可以标识DVD驱动器，USB存储设备以及你系统中的硬盘设备等。</p>
+<p>特点：</p>
+<p>它是真正的唯一标志符</p>
+<p>Linux中的许多关键功能现在开始依赖于UUID</p>
+<p>UUID号：分区必须格式化后才会有UUID号。</p>
+<h4 id="_2"><strong>命令语法：</strong></h4>
+<p>blkid 分区设备</p>
+<h4 id="_3"><strong>选项含义：</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>选项</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-L&lt;卷标&gt;</td>
+<td>卷标转换为设备名</td>
+</tr>
+<tr>
+<td>-U<UUID></td>
+<td>UUID转换为设备名</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>探测低级别的超级块</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>收集有关I/O限制的信息</td>
+</tr>
+<tr>
+<td>-o&lt;格式&gt;</td>
+<td>按以下列输出格式 value:显示标签的值 device:只显示设备的名称 list:以用户友好的格式显示设备 udev：以“键=值”的方式显示，方便导入udev的环境 export:以“键=值”的方式显示，方便导入环境 full:显示所有标签</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>显示帮助信息</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_4">示例：</h4>
+<p>查看磁盘分区/dev/sda3的文件系统类型、卷标、UUID等信息</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>[root@localhost ~]# blkid /dev/sda3
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>/dev/sda3: UUID=&quot;e7adfeb9-8749-48cd-90cd-61de56c9af74&quot; TYPE=&quot;ext4&quot;
+</span></code></pre></div></td></tr></table></div>
+<p>加入管道符查找UUID号</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>[root@xuegod163 ~]# blkid | grep sdb1
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>/dev/sdb1: LABEL=&quot;cc&quot; UUID=&quot;0e77cda6-4c43-47a9-ae7e-c27661234760&quot; TYPE=&quot;ext4&quot;
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>[root@xuegod163 ~]# tune2fs -l /dev/sdb1 | grep UUID
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>Filesystem UUID: 0e77cda6-4c43-47a9-ae7e-c27661234760
+</span></code></pre></div></td></tr></table></div>
+<p>输出到自动挂载/etc/fstab配置文件</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>[root@localhost ~]# blkid /dev/sdb3 &gt;&gt; /etc/fstab
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>[root@xuegod163 ~]# vim /etc/fstab
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>UUID=0e77cda6-4c43-47a9-ae7e-c27661234760 /sdb1 ext4 defaults 0 0
+</span></code></pre></div></td></tr></table></div>
+<p>查看UUID是83ff032a-757e-4466-8d64-0885281ce22b的设备名</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>[root@localhost ~]# blkid -U 83ff032a-757e-4466-8d64-0885281ce22b
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>/dev/sda1
+</span></code></pre></div></td></tr></table></div>
+<p>查看卷标是boot的设备名</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>[root@localhost ~]# blkid -L boot
+</span></code></pre></div></td></tr></table></div>
+<p>查看磁盘分区/dev/sda1低级别的超级块信息</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>[root@localhost ~]# blkid -p /dev/sda1
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>/dev/sda1: UUID=&quot;83ff032a-757e-4466-8d64-0885281ce22b&quot; TYPE=&quot;xfs&quot; USAGE=&quot;filesystem&quot; PART_ENTRY_SCHEME=&quot;dos&quot; PART_ENTRY_TYPE=&quot;0x83&quot; PART_ENTRY_FLAGS=&quot;0x80&quot; PART_ENTRY_NUMBER=&quot;1&quot; PART_ENTRY_OFFSET=&quot;2048&quot; PART_ENTRY_SIZE=&quot;2097152&quot; PART_ENTRY_DISK=&quot;8:0&quot; 
+</span></code></pre></div></td></tr></table></div>
+<p>收集磁盘分区/dev/sda1有关I/O限制的信息</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>[root@localhost ~]# blkid -i /dev/sda1
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>DEVNAME=/dev/sda1
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>MINIMUM_IO_SIZE=512
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>PHYSICAL_SECTOR_SIZE=512
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>LOGICAL_SECTOR_SIZE=512
+</span></code></pre></div></td></tr></table></div>
+<p>显示磁盘所有标签</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>[root@localhost ~]# blkid -o full
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>/dev/mapper/centos-root: UUID=&quot;f74ee8de-84a2-49cb-82e3-1c5fef2cd92b&quot; TYPE=&quot;xfs&quot; 
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>/dev/sda2: UUID=&quot;2FqB5r-teLk-miR5-c46S-ceCy-ySxa-K1hk17&quot; TYPE=&quot;LVM2_member&quot; 
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>/dev/sda1: UUID=&quot;83ff032a-757e-4466-8d64-0885281ce22b&quot; TYPE=&quot;xfs&quot; 
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>/dev/mapper/centos-swap: UUID=&quot;274d2ea0-deba-4be9-9f32-c080efd68096&quot; TYPE=&quot;swap&quot; 
+</span></code></pre></div></td></tr></table></div>
+<p>查看所有磁盘分区的文件系统类型、卷标、UUID等信息</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>[root@localhost ~]# blkid
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>/dev/mapper/centos-root: UUID=&quot;f74ee8de-84a2-49cb-82e3-1c5fef2cd92b&quot; TYPE=&quot;xfs&quot; 
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>/dev/sda2: UUID=&quot;2FqB5r-teLk-miR5-c46S-ceCy-ySxa-K1hk17&quot; TYPE=&quot;LVM2_member&quot; 
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>/dev/sda1: UUID=&quot;83ff032a-757e-4466-8d64-0885281ce22b&quot; TYPE=&quot;xfs&quot; 
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>/dev/mapper/centos-swap: UUID=&quot;274d2ea0-deba-4be9-9f32-c080efd68096&quot; TYPE=&quot;swap&quot; 
+</span></code></pre></div></td></tr></table></div>
+<p>查看所有磁盘分区的UUID</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>[root@localhost ~]# blkid -s UUID
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>/dev/mapper/centos-root: UUID=&quot;f74ee8de-84a2-49cb-82e3-1c5fef2cd92b&quot; 
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>/dev/sda2: UUID=&quot;2FqB5r-teLk-miR5-c46S-ceCy-ySxa-K1hk17&quot; 
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>/dev/sda1: UUID=&quot;83ff032a-757e-4466-8d64-0885281ce22b&quot; 
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>/dev/mapper/centos-swap: UUID=&quot;274d2ea0-deba-4be9-9f32-c080efd68096&quot; 
+</span></code></pre></div></td></tr></table></div>
+<p>查看/dev/sda1磁盘分区的UUID</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>[root@localhost ~]# blkid -s UUID /dev/sda1
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>/dev/sda1: UUID=&quot;83ff032a-757e-4466-8d64-0885281ce22b&quot; 
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_5">查看进程网速</h3>
+<p><img alt="image-20231023233405865" src="./img/image-20231023233405865.png" /></p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="o">[</span>root@JUHOST-64Wkw9<span class="w"> </span>~<span class="o">]</span><span class="c1"># nethogs -h</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>usage:<span class="w"> </span>nethogs<span class="w"> </span><span class="o">[</span>-V<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>seconds<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span>mode<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>count<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>device<span class="w"> </span><span class="o">[</span>device<span class="w"> </span><span class="o">[</span>device<span class="w"> </span>...<span class="o">]]]</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">        </span>-V<span class="w"> </span>:<span class="w"> </span>prints<span class="w"> </span>version.
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">        </span>-h<span class="w"> </span>:<span class="w"> </span>prints<span class="w"> </span>this<span class="w"> </span>help.
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">        </span>-b<span class="w"> </span>:<span class="w"> </span>bughunt<span class="w"> </span>mode<span class="w"> </span>-<span class="w"> </span>implies<span class="w"> </span>tracemode.
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">        </span>-d<span class="w"> </span>:<span class="w"> </span>delay<span class="w"> </span><span class="k">for</span><span class="w"> </span>update<span class="w"> </span>refresh<span class="w"> </span>rate<span class="w"> </span><span class="k">in</span><span class="w"> </span>seconds.<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span><span class="m">1</span>.
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">        </span>-v<span class="w"> </span>:<span class="w"> </span>view<span class="w"> </span>mode<span class="w"> </span><span class="o">(</span><span class="nv">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>KB/s,<span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>total<span class="w"> </span>KB,<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>total<span class="w"> </span>B,<span class="w"> </span><span class="nv">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>total<span class="w"> </span>MB<span class="o">)</span>.<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span><span class="m">0</span>.
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">        </span>-c<span class="w"> </span>:<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>updates.<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>unlimited<span class="o">)</span>.
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">        </span>-t<span class="w"> </span>:<span class="w"> </span>tracemode.
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">        </span>-p<span class="w"> </span>:<span class="w"> </span>sniff<span class="w"> </span><span class="k">in</span><span class="w"> </span>promiscious<span class="w"> </span>mode<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="o">)</span>.
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">        </span>-s<span class="w"> </span>:<span class="w"> </span>sort<span class="w"> </span>output<span class="w"> </span>by<span class="w"> </span>sent<span class="w"> </span>column.
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">   </span>-a<span class="w"> </span>:<span class="w"> </span>monitor<span class="w"> </span>all<span class="w"> </span>devices,<span class="w"> </span>even<span class="w"> </span>loopback/stopped<span class="w"> </span>ones.
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">        </span>device<span class="w"> </span>:<span class="w"> </span>device<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>monitor.<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>all<span class="w"> </span>interfaces<span class="w"> </span>up<span class="w"> </span>and<span class="w"> </span>running<span class="w"> </span>excluding<span class="w"> </span>loopback
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a>When<span class="w"> </span>nethogs<span class="w"> </span>is<span class="w"> </span>running,<span class="w"> </span>press:
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w"> </span>q:<span class="w"> </span>quit
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w"> </span>s:<span class="w"> </span>sort<span class="w"> </span>by<span class="w"> </span>SENT<span class="w"> </span>traffic
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w"> </span>r:<span class="w"> </span>sort<span class="w"> </span>by<span class="w"> </span>RECEIVE<span class="w"> </span>traffic
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w"> </span>m:<span class="w"> </span>switch<span class="w"> </span>between<span class="w"> </span>total<span class="w"> </span><span class="o">(</span>KB,<span class="w"> </span>B,<span class="w"> </span>MB<span class="o">)</span><span class="w"> </span>and<span class="w"> </span>KB/s<span class="w"> </span>mode
+</span></code></pre></div></td></tr></table></div>
+<h2 id="shell-docker">shell 查看docker占用</h2>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>docker<span class="w"> </span>stats<span class="w"> </span>--no-stream
+</span></code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../Hadoop/Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Hive SQL 语法大全">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Hive SQL 语法大全
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../linux%E9%87%8D%E7%BD%AEroot%E5%AF%86%E7%A0%81/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linux重置root密码">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Linux重置root密码
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

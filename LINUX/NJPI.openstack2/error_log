@@ -1,0 +1,255 @@
+
+
+/etc/mysql配置文件
+
+主机名，ip解析文件
+
+防火墙
+
+
+
+
+
+controller：
+
+iptables: /usr/lib/sysctl.d/00-system.conf使之生效 sysctl -p
+
+```shell
+   net.bridge.bridge-nf-call-ip6tables = 1
+   net.bridge.bridge-nf-call-iptables = 1
+```
+
+
+
+**compute：**
+
+iptables: /usr/lib/sysctl.d/00-system.conf使之生效 sysctl -p
+
+net.bridge.bridge-nf-call-ip6tables = 0.
+net.bridge.bridge-nf-call-iptables = 0
+net.bridge.bridge-nf-call-arptables = 0
+
+**controller:**
+
+/etc/sysctl.conf
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+
+
+
+```php
+# 安装dashboard时，，这里的配置为：
+OPENSTACK_NEUTRON_NETWORK = {
+    ...
+    'enable_router': True,
+    'enable_quotas': False,
+    'enable_distributed_router': False,
+    'enable_ha_router': False,
+    'enable_lb': False,
+    'enable_firewall': False,
+    'enable_vpn': False,
+    'enable_fip_topology_check': False,
+}
+```
+
+
+
+QA1
+
+配置dashboard
+
+如果网页访问dashboard显示400、Bad Requests
+
+vi  /etc/openstack-dashboard/local_settings
+
+```php
+ #允许所有主机访问仪表板
+  ALLOWED_HOSTS = ['*', ]
+```
+
+```php
+TIME_ZONE = "Asia/Shanghai"
+```
+
+
+
+QA2
+
+### cinder
+
+[root@controller ~]# openstack volume service list
+
+Unable to establish connection to http://controller:8776/v2/14f4be54ad1d419da595b480700244a4/os-services: ('Connection aborted.', BadStatusLine("''",))
+
+controller节点：尝试重启http和memcache服务
+
+ｃｏｍｐｕｔｅ节点：　[root@compute ~]# systemctl restart openstack-cinder-volume.service target.service
+
+
+
+QA3
+
+conpute： nova：2019-12-01 22:48:29.542 1963 ERROR oslo.messaging._drivers.impl_rabbit [-] [14618dfb-e526-4dd7-8e1a-fdccfda43316] AMQP server on controller:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 4 seconds.: error: [Errno 111] ECONNREFUSED
+
+- grep -r 'error' /var/log/nova/nova-conductor.log
+
+2019-12-03 03:19:51.819 1063 ERROR oslo_db.sqlalchemy.engines DBConnectionError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query') [SQL: u'SELECT 1'] (Background on this error at: http://sqlalche.me/e/e3q8)
+
+就查询数据库：
+
+[解决办法](https://blog.silversky.moe/works/openstack-lanuch-instance-infinite-scheduling)
+
+SELECT * FROM nova_api.cell_mappings WHERE created_at LIKE BINARY '%openstack%' OR updated_at LIKE BINARY '%openstack%' OR id LIKE BINARY '%openstack%' OR uuid LIKE BINARY '%openstack%' OR name LIKE BINARY '%openstack%' OR transport_url LIKE BINARY '%openstack%' OR database_connection LIKE BINARY '%openstack%' ;
+
+数据库更新字段：
+
+`update cell_mappings set transport_url="rabbit://openstack:123456@controller"  where id=2;`
+
+
+
+QA4
+
+compute:
+
+如果出现Booting from hard disk GBUB
+
+/etc/nova/nova.config  添加
+
+[libvirt]
+ 6315 virt_type = qemu
+ 6316 cpu_mod=none
+
+重启
+
+
+
+QA5
+
+controller：
+
+ss -ntl
+
+没有192.168.10.17:3306的话就检查 /etc/my.cnf配置文件
+
+
+
+QA6
+
+创建实例错误 Nova does not support Cinder API version 2
+
+![](img\1575455088384.png)
+
+compute节点：
+
+```shell
+$ grep -i 'error' /var/log/nova/nova-compute.log
+
+2019-12-04 05:00:18.059 1475 ERROR nova.compute.manager [instance: b9915004-4ee4-4703-b2e0-9855b956bd13]     raise exception.UnsupportedCinderAPIVersion(version=version)
+2019-12-04 05:00:18.059 1475 ERROR nova.compute.manager [instance: b9915004-4ee4-4703-b2e0-9855b956bd13] UnsupportedCinderAPIVersion: Nova does not support Cinder API version 2
+2019-12-04 05:00:18.059 1475 ERROR nova.compute.manager [instance: b9915004-4ee4-4703-b2e0-9855b956bd13] 
+2019-12-04 05:00:22.822 1475 ERROR nova.compute.manager [req-ffd4ac00-fa1c-4cc3-a9cd-5320f8f8d5ae 8371710f588b4f03bcb0051c5e222edd 14f4be54ad1d419da595b480700244a4 - default default] [instance: b9915004-4ee4-4703-b2e0-9855b956bd13] Build of instance b9915004-4ee4-4703-b2e0-9855b956bd13 aborted: Nova does not support Cinder API version 2: BuildAbortException: Build of instance b9915004-4ee4-4703-b2e0-9855b956bd13 aborted: Nova does not support Cinder API version 2
+
+
+
+$ grep -i 'error' /var/log/cinder/volume.log
+2019-12-04 04:25:54.359 1337 WARNING oslo_db.sqlalchemy.engines [req-5d7a9579-71cf-4d84-82bd-ddc200808666 - - - - -] SQL connection failed. 10 attempts left.: DBConnectioError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'controller' ([Errno 111] ECONNREFUSED)") (Background on this error at: http://sqlalche.me/e/e3q8)
+```
+
+
+
+
+
+controller节点
+
+```shell
+$ grep -i 'error' /var/log/cinder/scheduler.log
+
+2019-12-04 04:11:11.466 1091 ERROR oslo.messaging._drivers.impl_rabbit [-] [e6a7358e-7577-4605-9eb7-15710d2fff34] AMQP server on controller:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 8 seconds.: error: [Errno 111] ECONNREFUSED
+```
+
+创建实例时先不创建新的volume，创建好后从volume启动
+
+
+
+# CentOS7 minimal openstack pike
+
+1. 计算节点的 `/var/log/nova/nova-compute.log`出现：`ERROR oslo_service.service AccessRefused: (0, 0): (403) ACCESS_REFUSED - Login was refused using authentication mechanism AMQPLAIN. For details see the broker logfile.` 
+
+> 在控制节点中：
+>  查看 `rabbitmq` 用户：`rabbitmqctl list_users`
+>  
+>
+> 
+>
+> ![img](https:////upload-images.jianshu.io/upload_images/4753721-0139e176731ed4ae.png?imageMogr2/auto-orient/strip|imageView2/2/w/328/format/webp)
+>
+> image.png
+>
+>  发现没有 
+>
+> ```
+> openstack
+> ```
+>
+>  用户,那就重新创建：
+>
+> ```
+> rabbitmqctl add_user openstack 123456
+> rabbitmqctl set_permissions openstack ".*" ".*" ".*"
+> ```
+
+1. 创建 `instance`失败,`/var/log/nova/nova-conductor.log`中显示`Setting instance to ERROR state.: NoValidHost_Remote: No valid host was found.`,而且找不到其他错
+
+> 有可能是`计算节点`能提供的磁盘空间比`flavor`小。这种情况应该是安装 `CentOS7` 的时候选择了自动分区，导致根磁盘没有分配到足够的空间。所以应该重装计算节点系统，不选自动分区。
+
+1.  `admin-openrc` 登录失败
+
+> 有可能是 `admin-openrc` 脚本问题,应该在每个 `export`项最后面添加一个空格，这样才能使多条环境变量创建正常。
+>  
+>
+> 
+>
+> ![img](https:////upload-images.jianshu.io/upload_images/4753721-e956200e01f128fd.png?imageMogr2/auto-orient/strip|imageView2/2/w/833/format/webp)
+>
+> image.png
+>
+>  执行：
+>
+> ```
+> . admin-openrc
+> ```
+>
+> 
+>
+> ![img](https:////upload-images.jianshu.io/upload_images/4753721-e99310c4cf077c86.png?imageMogr2/auto-orient/strip|imageView2/2/w/292/format/webp)
+>
+> image.png
+>
+>  查看变量：
+>
+> ```
+> echo $OS_PROJECT_DOMAIN_NAME $OS_USER_DOMAIN_NAME $OS_PROJECT_NAME $OS_USERNAME $OS_PASSWORD $OS_AUTH_URL $OS_IDENTITY_API_VERSION $OS_IMAGE_API_VERSION
+> ```
+>
+> 
+>
+> ![img](https:////upload-images.jianshu.io/upload_images/4753721-fa063607da687b2f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1114/format/webp)
+>
+> image.png
+
+1.  `sh`填充数据库失败,`/var/log/keystone/keystone.log`报错`Unhandled error: OperationalError: (pymysql.err.OperationalError) (1045, u"Access denied for user 'keystone'@'controller' (using password: YES)")` 
+
+> 登录数据库：`mysql -uroot -p123456`
+>  添加地址`controller`的权限：`GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'controller' IDENTIFIED BY '123456'
+
+
+
+
+
+
+
+
+
+
+

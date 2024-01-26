@@ -1,0 +1,1963 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02.%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2%E3%80%81%E5%86%B3%E7%AD%96%E6%A0%91%E3%80%81%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">
+      
+      
+        <link rel="next" href="../../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>03 回归和聚类 - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#31" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03 回归和聚类
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 框架运行说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chromedriver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chromedriver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webdriver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webdriver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微信小程序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A1%86%E6%9E%B6%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    框架说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%88%AC%E8%99%AB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    爬虫记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%80%86%E5%90%91-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向 app
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%80%86%E5%90%91-js/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向 js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Py-100Days/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Py 100Days
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-md%E7%AC%94%E8%AE%B0/01-matlab%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据分析 md笔记
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_12" id="__nav_8_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_12">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01.机器学习算法介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2%E3%80%81%E5%86%B3%E7%AD%96%E6%A0%91%E3%80%81%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02.网格搜索、决策树、随机森林
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    03 回归和聚类
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    03 回归和聚类
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1线性回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1线性回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      广义线性模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归步骤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2过拟合与欠拟合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2过拟合与欠拟合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化类别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3线性回归改进-岭回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3线性回归改进-岭回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.岭回归API：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.正则化程度的变化，对结果的影响
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4逻辑回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4逻辑回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归的损失函数称为 对数损失函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化损失函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      精确率与召回率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocauc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROC曲线与AUC指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚类 k-means算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="聚类 k-means算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-means性能评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      K-means总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1线性回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1线性回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      广义线性模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归步骤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2过拟合与欠拟合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2过拟合与欠拟合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化类别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3线性回归改进-岭回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3线性回归改进-岭回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.岭回归API：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.正则化程度的变化，对结果的影响
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4逻辑回归
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4逻辑回归">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归的损失函数称为 对数损失函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化损失函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑回归API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      精确率与召回率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocauc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROC曲线与AUC指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚类 k-means算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="聚类 k-means算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-means性能评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      K-means总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>03 回归和聚类</h1>
+
+<h3 id="31">3.1线性回归</h3>
+<blockquote>
+<p>定义：线性回归利用回归方程对一个或者多个自变量(特征值)与因变量(目标值)之间关系进行建模的一种分析方式。其中自变量可以为一个或多个。</p>
+<p>一元线性回归(单变量线性回归)：涉及的变量只有一个</p>
+<p>多元线性回归：设计的变量有两个或者两个以上 <img alt="1661929178483" src="../img/1661929178483.png" /></p>
+</blockquote>
+<h4 id="_1">广义线性模型</h4>
+<ul>
+<li>线性模型：</li>
+<li>自变量x是一次的（具有线性关系）：y=w1x1 + w2x2 + …… + b</li>
+<li>
+<p>参数是一次的（不具有线性关系，但是还是线性模型）：y=w1x1 + w2x1^2 + w3x1^3 + …… + b</p>
+</li>
+<li>
+<p>线性模型与线性关系的关系：</p>
+</li>
+<li>线性关系一定是线性模型</li>
+<li>线性模型不一定具有线性关系</li>
+</ul>
+<h4 id="_2">回归步骤</h4>
+<ol>
+<li>
+<p>算法：线性回归</p>
+</li>
+<li>
+<p>选择损失函数(最小二乘法)</p>
+</li>
+</ol>
+<p><img alt="1661929275627" src="../img/1661929275627.png" /></p>
+<p><img alt="1661929286122" src="../img/1661929286122.png" /></p>
+<ol>
+<li>
+<p>优化损失函数，使得损失W最小</p>
+</li>
+<li>
+<p>正规方程：</p>
+<p>理解：X为特征值矩阵，y为目标值矩阵</p>
+<p>缺点：特征过于复杂时，求解速度很慢</p>
+<p><img alt="1663247948198" src="../img/1663247948198.png" /></p>
+</li>
+<li>
+<p>梯度下降：</p>
+</li>
+</ol>
+<p><img alt=" 1661929492599" src="../img/1661929492599.png" /></p>
+<p>​           梯度下降过程：</p>
+<p><img alt="1663248879875" src="../img/1663248879875.png" /></p>
+<p><img alt="1663248903691" src="../img/1663248903691.png" /></p>
+<p><img alt="1663248914295" src="../img/1663248914295.png" /></p>
+<p><img alt="1663248938191" src="../img/1663248938191.png" /></p>
+<ul>
+<li>API</li>
+</ul>
+<p><img alt="1663249388166" src="../img/1663249388166.png" /></p>
+<ul>
+<li>回归性能评估，使用均方误差评价机制</li>
+</ul>
+<blockquote>
+<p>y^i为预测值，-y为真实值</p>
+</blockquote>
+<ul>
+<li><img alt="1663250142869" src="../img/1663250142869.png" /></li>
+<li>
+<p><img alt="1663250169630" src="../img/1663250169630.png" /></p>
+</li>
+<li>
+<p>拓展-关于优化方法 GD、SGD、SAD</p>
+</li>
+<li>GD：梯度下降(Gradient Descent)，原始的梯度下降法需要计算所有样本的值才能够得出梯度，计算量大，所以才会有优化方法</li>
+<li>SGD：随机梯度下降(Stochastic gradient descent)是一个优化方法。它在一次迭代时只考虑一个训练样本。<ul>
+<li>优点：搞笑、容易实现</li>
+<li>缺点：SGD需要许多超参数：比如正则项参数、迭代数。SGD对于特征标准化是敏感的。</li>
+</ul>
+</li>
+<li>SAG：随机平均梯度下降法(Stochastic Average Gradient)，由于收敛的速度太慢，所以提出了SAG等基于梯度下降的算法<ul>
+<li>Scikit-learn：岭回归、逻辑回归等当中都有SAG优化</li>
+</ul>
+</li>
+</ul>
+<h3 id="32">3.2过拟合与欠拟合</h3>
+<ul>
+<li>
+<p>欠拟合：学习到的特征过少</p>
+</li>
+<li>
+<p>解决：增加一些特征数量</p>
+</li>
+<li>
+<p>过拟合：学习到的特征过多，存在一些嘈杂的特征，模型过于复杂，只适合于训练集的数据。</p>
+</li>
+<li>
+<p>解决：使用正则化</p>
+<blockquote>
+<p>针对回归，一般选择正则化。但是其他的机器学习算法也有可能出现这样的问题，这时候就需要我们自己去做更多的特征选择，比如 删除或者合并一些特征。</p>
+</blockquote>
+</li>
+<li>
+<p>过拟合与欠拟合图例：</p>
+</li>
+</ul>
+<p>​   <img alt="1663306163584" src="../img/1663306163584.png" /></p>
+<h4 id="_3">正则化类别</h4>
+<ul>
+<li>
+<p>L2正则化(损失函数 + λ惩罚项，更常用)</p>
+</li>
+<li>
+<p>作用：可以使其中一些W的值变得很小，都接近于0，等于削弱某个特征的影响</p>
+</li>
+<li>
+<p>优点：越小的参数说明模型越简单，越简单的模型越不容易产生过拟合</p>
+</li>
+<li>
+<p>Ridge回归(岭回归)</p>
+</li>
+<li>
+<p>加入L2正则化后的损失函数 J(W)：</p>
+<p><img alt="1663306909327" src="../img/1663306909327.png" /></p>
+</li>
+<li>
+<p>L1正则化(损失函数 +  λ|惩罚项|)</p>
+</li>
+<li>作用：可以使得其中的一些W系数直接为0，删除这个特征的影响</li>
+<li>LASSO回归</li>
+</ul>
+<h3 id="33-">3.3线性回归改进-岭回归</h3>
+<p>岭回归也是一种线性回归，只不过在算法建立回归方程的时候加入了正则化的限制，从而达到解决过拟合的问题</p>
+<h5 id="1api">1.岭回归API：</h5>
+<ul>
+<li>sklearn.linear_model.Ridge(alpha=1.0, fit_intercept=True,solver="auto",normalize=False)</li>
+<li>具有2正则化的线性回归</li>
+<li>alpha:正则化力度，也叫 λ<ul>
+<li>λ取值:0~1  1~10</li>
+</ul>
+</li>
+<li>solver:会根据数据自动选择优化方法<ul>
+<li>sag:如果数据集、特征都比较大，选择该随机梯度下降优化</li>
+</ul>
+</li>
+<li>normalize:数据是否进行标准化<ul>
+<li>normalize=False:可以在fit之前调用preprocessing.StandardScaler标准化数据</li>
+</ul>
+</li>
+<li>Ridge.coef_:回归权重</li>
+<li>Ridge.intercept_:回归偏置</li>
+</ul>
+<h5 id="2">2.正则化程度的变化，对结果的影响</h5>
+<p><img alt="1663308642761" src="../img/1663308642761.png" /></p>
+<h3 id="34">3.4逻辑回归</h3>
+<p>逻辑回归(Logistic Regression)是机器学习中的一种分类模型，逻辑回归是一种分类算法，虽然名字中带有回归，但是它与回归之间有一定的联系。由于算法的简单和高效，在实际中应用非常广泛。</p>
+<blockquote>
+<p>逻辑回归一般用于解决二分类问题</p>
+</blockquote>
+<h4 id="_4">原理</h4>
+<ol>
+<li>输入：逻辑回归的输入就是一个线性回归的结果</li>
+</ol>
+<p><img alt="1663314319130" src="../img/1663314319130.png" /></p>
+<ol>
+<li>
+<p>激活函数</p>
+</li>
+<li>
+<p>sigmoid函数( 1/1 + e^(-x) )</p>
+</li>
+</ol>
+<p><img alt="1663314375077" src="../img/1663314375077.png" /></p>
+<ul>
+<li>线性回归的结果会输入到sigmoid的x中，从而得出输出：[0, 1]区间中的一个概率值，默认的预置为0.5</li>
+</ul>
+<p><img alt="1663314889859" src="../img/1663314889859.png" /></p>
+<h4 id="_5">逻辑回归过程</h4>
+<p><img alt="1663315070858" src="../img/1663315070858.png" /></p>
+<h4 id="_6">逻辑回归的损失函数称为 对数损失函数</h4>
+<p>分段计算式子：</p>
+<p><img alt="1663315165999" src="../img/1663315165999.png" /></p>
+<p>由于分段的式子不好计算，所以引入 完整的损失函数(完整的损失函数在分段条件下和分段式子的结果是一样的)：</p>
+<p><img alt="1663315221952" src="../img/1663315221952.png" /></p>
+<p>损失函数计算过程：把真实结果带入到上式即可</p>
+<p><img alt="1663315383891" src="../img/1663315383891.png" /></p>
+<h4 id="_7">优化损失函数</h4>
+<p>同样可以使用线性回归中使用固定方法，梯度下降优化算法，去减少损失函数的值。</p>
+<h4 id="api">逻辑回归API</h4>
+<ul>
+<li>sklearn.linear_model.LogisticRegression(solver='liblinear', penalty='l2', C =1.0)</li>
+<li>solver:优化求解方式（默认开源的liblinear库实现，内部使用了坐标轴下降法来迭代优化损失函数)<ul>
+<li>sag:根据数据集自动选择，随机平均梯度下降</li>
+</ul>
+</li>
+<li>penalty:正则化的种类</li>
+<li>C: 正则化力度</li>
+</ul>
+<blockquote>
+<p>默认将类别数量少的当做正例</p>
+</blockquote>
+<p><strong>LogisticRegression方法相当于SGDClassifier(Ioss="log",penalty=" "),SGDClassifier实现了一个普通的随机梯度下降学习，也支持平均随机梯度下降法(ASGD)，可以通过设置</strong>
+<strong>average=True。而使用LogisticRegression(实现了SAG)</strong></p>
+<h4 id="_8">精确率与召回率</h4>
+<ol>
+<li><strong>混淆矩阵</strong></li>
+</ol>
+<p>在分类任务下，预测结果与真实结果之间存在四种不同的组合，构成混淆矩阵(适用于多分类)、</p>
+<p>TP: True Positive</p>
+<p>FN: False Negative</p>
+<p><img alt="1663327417028" src="../img/1663327417028.png" /></p>
+<ol>
+<li>
+<p><strong>精确率(Precision)与召回率(Recall)</strong></p>
+</li>
+<li>
+<p>精确率：预测结果为正例样本中真实为正例的比例</p>
+</li>
+</ol>
+<p><img alt="1663327587929" src="../img/1663327587929.png" /></p>
+<ul>
+<li>
+<p>召回率：真实为正例样本中预测结果为正例的比例</p>
+</li>
+<li>
+<p>F1-score: 反应模型的稳健性</p>
+</li>
+</ul>
+<p><img alt="1663327798506" src="../img/1663327798506.png" /></p>
+<ol>
+<li><strong>API</strong></li>
+<li>sklearn.metrics.classification_report(y_true, y_pred, labels=口,target_names=None )</li>
+<li>y_true: 真实目标值</li>
+<li>y_pred: 估计器预测目标值</li>
+<li>labels:指定类别对应的数字</li>
+<li>target_names:目标类别名称</li>
+<li>return:每个类别精确率与召回率</li>
+</ol>
+<h4 id="rocauc">ROC曲线与AUC指标</h4>
+<p>可用于评估样本分布不均衡的情况</p>
+<ol>
+<li>
+<p><strong>TPR与FPR</strong></p>
+</li>
+<li>
+<p>TPR：TP / (TP + FN)：所有真实类别为1的样本中，预测类别为1的比例</p>
+</li>
+<li>
+<p>FPR：FP / (FP + TN)：所有真实类别为0的样本中，预测类别为1的比例</p>
+</li>
+<li>
+<p><strong>ROC曲线</strong></p>
+</li>
+</ol>
+<p>当FPRate与TPRate相等是，就是中间的红色虚线，此时不论真实类别是0还是1，分类器的预测结果都是1，此时的AUC=0.5。</p>
+<p><img alt="1663329694630" src="../img/1663329694630.png" /></p>
+<ol>
+<li>
+<p><strong>AUC指标</strong></p>
+</li>
+<li>
+<p>AUC的概率意义是随机取一对正负样本，正样本得分大于负样本的概率</p>
+</li>
+<li>AUC的最小值为0.5，最大值为1，取值越高越好</li>
+<li>AUC=1，完美分类器，采用这个预测模型时，不管设定什么阈值都能得出完美预测。绝大多数预测的场合，不存在完美分类器。</li>
+<li>0.5&lt;AUC&lt;1，优于随机猜测。这个分类器（模型）妥善设定阈值的话，能有预测价值。</li>
+</ol>
+<blockquote>
+<p>AUC的值在 [0.5, 1]之间，越接近1表示越好</p>
+</blockquote>
+<ol>
+<li><strong>API</strong></li>
+<li>from sklearn.metrics import roc_auc_score</li>
+<li>roc_auc_score(y_true, y_score)</li>
+<li>计算ROC曲线面积，即AUC值</li>
+<li>y_true:每个样本的真实类别，必须为0(反例),1(正例)标谦</li>
+<li>
+<p>y_score:预测得分，可以是正类的估计概率、置信值或者分类器方法的返回值</p>
+</li>
+<li>
+<p>eg（模拟在评估样本分布不均衡的情况下）</p>
+</li>
+<li>
+<p>总共有100个人，如果有99个样本癌症，1个样本非癌症–样本不均衡</p>
+<p>不管怎样全都预测为正例(默认癌症为正例)-则该模型是一个不负责任的模型
+    准确率:99/100=99%
+    召回率: 99/99 = 100%精确率:99%
+    F1-score: 2*99%/ 199% = 99.497%</p>
+<p>​  AUC:0.5(不好的模型)
+ ​      TPR = 100%
+ ​      FPR = 1 / 1 = 100%</p>
+</li>
+</ol>
+<h3 id="k-means">聚类 k-means算法</h3>
+<ul>
+<li>
+<p>k-means是无监督学习，没有目标值，一般用于分类</p>
+</li>
+<li>
+<p>无监督学习包括：</p>
+</li>
+<li>聚类：</li>
+<li>k-means(k均值聚类)</li>
+<li>降维：</li>
+<li>PCA</li>
+</ul>
+<h4 id="_9">原理</h4>
+<ol>
+<li>随机设置K个特征空间内的点作为初始的聚类中心（初始点为均值点）</li>
+<li>对于其他每个点计算到K个中心的距离，未知的点选择最近的一个聚类中心点作为标记类别</li>
+<li>接着对着标记的聚类中心之后，重新计算出每个聚类的新中心点（平均值)</li>
+<li>如果计算得出的新中心点与原中心点一样，那么结束，否则重新进行第二步过程</li>
+</ol>
+<h4 id="k-means_1">k-means性能评估</h4>
+<ol>
+<li><strong>轮廓系数</strong>(1 &gt;= SCi &gt;= -1，越接近1越好)</li>
+</ol>
+<p><img alt="1663332554591" src="../img/1663332554591.png" /></p>
+<blockquote>
+<p>注:对于每个点 i 为已聚类数据中的样本，b_i 为 i 到其它族群的所有样本的距离最小值, a_i 为 i 到本身簇的距离平均值。最终计算出所有的样本点的轮廓系数平均值</p>
+</blockquote>
+<ul>
+<li>轮廓系数最好要使得，外部距离最大化，内部距离最小化，即 高内聚、低耦合</li>
+</ul>
+<p><img alt="1663332595827" src="../img/1663332595827.png" /></p>
+<h4 id="k-means_2">K-means总结</h4>
+<ul>
+<li>特点分析：采用迭代式算法，直观易懂且非常使用</li>
+<li>缺点：容易收敛到局部最优解（即初始特征点k在一起的情况），可采用多次聚类去随机取k点，选取不收敛的情况</li>
+</ul>
+<h3 id="_10">总结</h3>
+<p><img alt="1663334177091" src="../img/1663334177091.png" /></p>
+<p><img alt="1663334201923" src="../img/1663334201923.png" /></p>
+<p><img alt="1663334245050" src="../img/1663334245050.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../02.%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2%E3%80%81%E5%86%B3%E7%AD%96%E6%A0%91%E3%80%81%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 02.网格搜索、决策树、随机森林">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                02.网格搜索、决策树、随机森林
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 1.云计算技术与应用">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                1.云计算技术与应用
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1447 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../arm-registers/">
+      
+      
+        <link rel="next" href="../ida/%E6%AF%8F%E5%A4%A9%E4%B8%80%E4%B8%AAIDA%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E5%85%AD%EF%BC%89%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Elf study - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linking-view" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Elf study
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Awesome reverse main
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../android/QContainer-hook/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Android
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../base/tools-and-environment/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../frida/frida-docs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Frida
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../js/browser-env-fix/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Js
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../qcontainer/device-fingerprint/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Qcontainer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    So
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            So
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arm-registers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安卓中常用的ARCH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Elf study
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Elf study
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-header-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section Header Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shstrtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .shstrtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textbss-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .text和.bss section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .symtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynsymtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .dynsymtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relrela-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .rel和.rela section
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".rel和.rela section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reldynrelplt" class="md-nav__link">
+    <span class="md-ellipsis">
+      .rel.dyn和.rel.plt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../ida/%E6%AF%8F%E5%A4%A9%E4%B8%80%E4%B8%AAIDA%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E5%85%AD%EF%BC%89%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ida
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wechat/appbrand-compile/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wechat
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-header-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section Header Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shstrtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .shstrtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textbss-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .text和.bss section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .symtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynsymtab-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .dynsymtab section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relrela-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      .rel和.rela section
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".rel和.rela section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reldynrelplt" class="md-nav__link">
+    <span class="md-ellipsis">
+      .rel.dyn和.rel.plt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>ELF文件：可执行可链接文件 </p>
+<p>ELF文件在磁盘中和在内存中是不同的形式存在，对应着链接视图和执行视图。</p>
+<p>无论是哪个视图，<strong>ELF hader</strong>都是必不可少的部分，接着根据不同视图，可能为不同 的Section部分或Program部分。ELFHeader记录着Section和Program部分的信息以及ELF文件的属性，因此不过多描述。</p>
+<h1 id="linking-view">linking view 连接试图</h1>
+<p>从连接视图来看，一个ELF文件会包含有多个Section，为了描述这些Section的信息和方便索引，还有一个Section Header Table。</p>
+<h2 id="section-header-table">Section Header Table</h2>
+<p>SHT是个结构体数组，每个结构体对应着一项Section
+* sh_name section表名，保存的是在.shstrtab中的偏移量
+* sh_type
+* sh_flags
+* sh_addr
+* sh_offset
+* sh_size</p>
+<h2 id="shstrtab-section">.shstrtab section</h2>
+<p>Section Header String Table，存储Section名称用到的字符串信息。</p>
+<p>PS：ELF文件可能包含多个String Table Sectino，例如.strtab section（存储.symtab符号表用到的字符串）、.dynstr section（存储.dynsym符号表用到的字符串）</p>
+<h2 id="textbss-section">.text和.bss section</h2>
+<p>.text section：用于存储程序的指令。简单点说，程序的机器指令就放在这个section中。。</p>
+<p>.bss section：bss是block storage segment的缩写。ELF规范中，.bss section包含了一块内存区域，这块区域在ELF文件被加载到进程空间时会由系统创建并设置这块内存的内容为0。注意，.bss section在ELF文件里不占据任何文件的空间，所以其sh_type为SHF_NOBITS（取值为8），它只是在ELF加载到内存的时候会分配一块由sh_size指定大小的内存。一般用于存储全局变量。</p>
+<h2 id="symtab-section">.symtab section</h2>
+<p>.symtab section是ELF中非常重要的一个section，里边存储的是符号表（SymbolTable）。在链接的过程中需要把多个不同的目标文件合并在一起，不同的目标文件相互之间会引用变量和函数。在链接过程中，我们将函数和变量统称为符号，函数名和变量名就是符号名。.symtab section的类型为SHT_SYMTAB。一般而言，符号表主要用于编译链接，也可以参与动态库的加载。</p>
+<h2 id="dynsymtab-section">.dynsymtab section</h2>
+<p>.symtab section往往包含了全部的符号表信息，但不是其中所有符号信息都会参与动态链接，所以ELF还专门定义一个.dynsym section（类型为SHT_DYNSYM），这个section存储的仅是动态链接需要的符号信息。</p>
+<h2 id="relrela-section">.rel和.rela section</h2>
+<p>访问全局变量的操作通常会被编译器翻译成访问内存地址的指令。然而，可重定位文件中的节只记录了它在文件中的位置，而不像段一样记录它在内存中的位置，因此我们并不知道文件中定义的全局变量的内存地址。除此之外，如果一个文件引用了另一个文件定义的全局变量，那么直到将它们链接起来之前，我们都不可能知道这个全局变量的内存地址。
+进一步地说，直到最终链接成可执行文件时，我们才能知道全局变量和函数的内存地址，在此之前我们始终无法生成访问它们的指令。</p>
+<p>在静态链接（动态链接则是plt表和got表）中ELF 文件的做法是：仍然按照正常的流程生成访问这些全局变量和函数的指令，但是在内存地址部分填写 0，并且将这些占位 0 的出现的位置记录在 ELF 文件中。在确定了所有这些符号的内存地址后，将占位 0 改成正确的内存地址。</p>
+<p>如果访问的是全局数组中的某个元素或者全局结构的某个成员，我们会将元素或成员的偏移量当作占位符写在内存地址出现的地方。在确定了符号的内存地址后，将这两者相加就可以得到正确的内存地址。这个偏移量被称作 addon 。</p>
+<p>记录这些占位符的位置就是重定位表，重定位最主要的作用就是将符号的使用之处和符号的定义之处关联起来。</p>
+<p>链接器Linker在处理目标文件时，需要对代码段和数据段中绝对地址引用的位置进行重定位，对于每个需要重定位的代码段或数据段，都会有一个相应的重定位表。比如”.rel.text”就是针对”.text”的重定位表，”.rel.data”就是针对”.data”的重定位表。例如使用objdump -r解析时可以看到，重定位表中会包含：
+* offset：重定位的入口偏移，对于可重定位文件来说，这个值是该 重定位入口所要修正的位置的第一个 字节相对段起始的偏移。对于 可执行文件或者共享文件来说，这个值是所有修正的位置的 第一个字节的虚拟地址。
+* value：要重定位的函数或者变量名称
+* 重定位时的地址计算方式
+* addon</p>
+<p>常见的地址计算方式有：
+*  R_386_32 符号内存地址 + Addon
+*  R_386_PC32 符号内存地址 + Addon -PC</p>
+<p>如何将符号的使用之处和它的定义之处关联起来呢，方法有两种，</p>
+<p>·编译链接过程中，最终生成可执行文件或动态库文件时，编译链接器将根据ELF文件中的重定位表计算最终的符号的位置。</p>
+<p>·加载动态库时，加载器也会根据重定位信息修改对应的符号使用之处，使得动态库能正常工作。</p>
+<p>rela和rel的区别在于.rel 格式的重定位表将 addon 写在内存地址出现的位置，当作占位符，如同前面描述的一样；而 .rela 格式的重定位表将 addon 写在重定位表中，而不是被重定位的位置上。。</p>
+<h3 id="reldynrelplt">.rel.dyn和.rel.plt</h3>
+<p>动态链接的文件中，有专门的重定位表分别叫做.rel.dyn和.rel.plt。</p>
+<p>前者是对数据引用的修正，所修正的位置位于.got以及数据段。</p>
+<p>后者是对函数引用的修正，所修正的位置位于.got</p>
+<h1 id="execution-view">execution view 执行视图</h1>
+<p>Execution View中ELF必须包含Program Header Table（以后简称PH Table）。和Section Header Table相对应，PH Table描述的是segment的信息。</p>
+<p>PHT中几个关键字段
+* p_offset:该segment位于文件的起始位置
+* p_filesz:该segment在文件中占据的大小，可以为0，因为segment是由section组成的，有些section在文件中不占据空间，比如前文提到的.bss section。p_offset和p_filesz决定了Section到Segement之间的映射关系，区间落在[p_offset，p_offset+p_filesz]范围内的Section属于同一个Segment。</p>
+<p>·ELF文件真正核心的内容其实是包含在一个个的Section中。了解Section的类型、内部对应的数据结构及功能对于掌握ELF有着至关重要的作用。</p>
+<p>·当ELF文件加载到内存中时，ELF文件不同的Section会根据PH Table的映射关系映射到进程的虚拟内存空间中去。这时的Section就会以Segment的样子呈现出来。</p>
+<p>另外，结合Linking View和本节的内容可知，要实现一个ELF文件的解析有两种方式。·基于Linking View的方式：即根据Section Header Table解析Section。这时只要按基于文件的偏移量来读取不同Section的内容，再根据Section对应的数据结构来解析它就可以。这种方式适用于类似readelf这样的工具。</p>
+<p>·基于Execution View的方式：即先打开文件，然后逐个将PH Table（ProgramHeader Table）中的Segment映射到（利用mmap系统调用）对应的虚拟内存地址（p_vaddr）上去。然后就可以遍历Segment的内容。不过，由于Segment可由多个Section组成，在解析这样的Segment之时，不免还是需要借助Section HeaderTable。这种方法比基于Linking View的方式麻烦一些，但Android里的oatdump工具就是用这种方法解析oat文件的。</p>
+<h1 id="global-offset-table">Global Offset Table</h1>
+<p>源码编译成ELF文件后，代码就被翻译成了机器指令。而函数调用对应的指令就是指示CPU先跳到该函数所在的内存地址，然后执行后面的指令。所以，对于函数调用而言，最关键之处莫过于确定该函数的入口在内存中的地址了。那么，如何确定这个函数的地址[插图]呢？</p>
+<p>一种很直观的方法是编译时确定。如果编译时就能计算出某个函数的地址，这个问题就非常简单了。比如main函数调用test函数，如果test函数在编译时得到其入口地址为0x00009000（虚拟地址）的话。那么，对应的调用指令可能就是"call 0x00009000"。但现实中这种做法很不实用，原因有很多，比如：</p>
+<ul>
+<li>如果一个程序使用多个动态库，编译器很难为所有函数都确定一个绝对地址。</li>
+<li>出于安全考虑，操作系统加载动态库到内存的时候并不会使用固定的位置，而是会基于一个随机数来计算最终的加载位置。如此，0x00009000这个地址不太可能是test函数在内存后的真正地址。并且，test的真实地址每次随着动态库加载都可能不一样。</li>
+</ul>
+<p>ELF规范中的GOT表就是用于解决此问题的。</p>
+<p>GOT表也是一个Section，GOT表对应的section名为.got，每一项存储的是该ELF文件用到的符号（函数或变量）的地址。</p>
+<p><img alt="GOT表" src="http://oss.alienhe.cn/20200907195857.png" /></p>
+<p>值得注意的是，GOT第2项和第3项内容由interpreter程序设置，</p>
+<p>即GOT[1]由runtime linker设置，Program Header中索引号为1的元素，其类型为PT_INTERP，值为/linux64/ld-linux-x86-64.so.2。这个东西其实就是链接器ld。当可执行程序使用动态库的时候，编译器会将ld的信息放到ELF对应位置上。当可执行程序被操作系统加载和准备执行之时，操作系统发现该程序有PT_INTERP类型的segment，就会先跳转到ld的entry point执行（注意，ld也是一个ELF文件）。也就是说，对于使用动态库的可执行程序，操作系统首先执行的是ld，而不是可执行程序本身。当然，操作系统还会把和待执行的目标程序信息一起告诉ld。ld则负责加载那些执行时需要的动态库（是根据可执行程序ELF文件里的.dynsym表等信息来处理），设置好GOT等对应项。最后，系统的控制权将交还给可执行程序。这时，我们的程序才真正运行起来。</p>
+<p>GOT[2]为runtime linker对应的处理函数用于处理符号的解析，一般称之为Resolver。</p>
+<p>GOT其余表项存储符号（函数或变量）的地址。特别注意：其余表项中的值将由Resolver动态填写。即，当调用者第一次访问这些符号的时候，将触发Interpreter的Resolver函数被调用，该函数将计算符号的最终地址，然后填写到GOT对应项中。而符号地址的计算方法依赖于ELF文件中重定位和符号表中的一些信息。</p>
+<p>但是问题来了，GOT表既然存储的是符号的绝对地址，但是这些地址又是从哪儿来和什么时候计算得来的呢。</p>
+<p>前面说到GOT[1]存储着ld的地址，ld来计算符号的绝对地址，但是绝对地址的计算是什么时候计算出来呢，真的是全都在ld执行时就已经计算完毕吗？</p>
+<p>其实不是，一般而言，符号地址计算有两个时机：</p>
+<ul>
+<li>
+<p>ld将控制权交给可执行程序之前。此时，ld已经加载了依赖的动态库，而且也知道这些动态库加载到内存的虚拟地址，这样就可以计算出所有需要的符号的地址。如果要使用这种方法的话，需要设置环境变量LD_BIND_NOW（exportLD_BIND_NOW=1）。对于运行中调用dlopen来加载so文件的程序而言，就需设置dlopen的flag参数为RTLOAD_NOW。这种做法的一个主要缺点在于它使得那些大量依赖动态库的程序的加载时间变长。</p>
+</li>
+<li>
+<p>用的时候再计算。相比上面一种方式而言，这种方式可以让ld尽快把控制权交给可执行程序本身，从而提升程序启动速度。如果要使用这种方式，需要设置环境变量LD_BIND_NOT（ld默认采用这种策略）。而对于dlopen来说，设置flag为RTLOAD_LAZY即可。</p>
+</li>
+</ul>
+<p>但是程序本身是不知道ld到底会使用哪种方法的，所以编译器生成的二进制文件必须同时支持这两种方法。这是如何做到的呢？现在请出第二个辅助手段，PLT。</p>
+<h1 id="procedure-linkage-table">Procedure Linkage Table</h1>
+<p>Procedure Linkage  Table简称PLT，也是一种表结构，不过其表项存储的是一段小小的代码，这段代码能帮助我们触发符号地址的计算以及跳转到正确的符号地址上。类似这种跳转作用的函数，一般比喻为跳板函数Trampoline，在了解inline hook时也会经常接触到。</p>
+<p><img alt="PLT" src="http://oss.alienhe.cn/20200907200151.png" />
+* PLT[0]存储的是跳转到GOT表Resolver的指令。
+* PLT[1]存储的是跳转到符号对应GOT表中的内容，如果该符号的地址还未计算，该内容存储的其实是一条用于将计算 这个符号地址所需的参数压栈的指令的地址，然后PLT[1]接着执行到PLT[0]即resolver。如果这个符号地址已经计算过，那么就直接跳到目标地址上了。</p>
+<p><img alt="GOT表和PLT表配合流程" src="http://oss.alienhe.cn/20200907200354.png" /></p>
+<h1 id="gothook">GOT表Hook流程</h1>
+<p>GOT表Hook的目标是找到对应GOT项位置，替换目标地址。
+假如我们已经知道目标函数的内存地址，那么我们可以：
+1. 首先我们需要找到GOT表在ELF文件中的偏移位置，因为GOT表也是个Section，通过ELF Header中e_shoff即 section header偏移进入section header  table中，然后遍历每一个sh_name（需要到.shstrtab中找具体的字符串字面量，.shstrtab也是个section，通过遍历判断sh_type是否是SHT_STRTAB找到），判断是否为got表。
+2. 或者直接通过Elf Header中e_shstrndx索引到shstrtab位置。
+3. 这样我们便可以找到.got表在elf文件中的偏移量，配合在maps文件找到的模块基地址，就可以定位到进程so中GOT表的位置了。
+4. 拿到目标函数的地址，遍历.got表进行 匹配找到对应表项替换即可。</p>
+<p>还有一种解决方案是通过.rel.plt表来定位GOT表。
+1. 找到.rel(a).plt，遍历对应的符号
+2. 上.symtab中查找符号对应的名字在.strtab中的偏移 
+3. 上.strtab中查找符号具体的值。</p>
+<h1 id="_1">参考</h1>
+<p>https://zhougy0717.github.io/2020/01/05/%E9%80%9A%E8%BF%87%E4%BF%AE%E6%94%B9GOT%E8%A1%A8%EF%BC%8Chook_glibc%E5%87%BD%E6%95%B0/</p>
+<p>http://nicephil.blinkenshell.org/my_book/ch07s05.html</p>
+<p>https://gameinstitute.qq.com/community/detail/101487</p>
+<p>https://felixzhang00.github.io/2016/12/24/2016-12-24-ELF%E6%96%87%E4%BB%B6%E8%A3%85%E8%BD%BD%E9%93%BE%E6%8E%A5%E8%BF%87%E7%A8%8B%E5%8F%8Ahook%E5%8E%9F%E7%90%86/</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../arm-registers/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 安卓中常用的ARCH">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                安卓中常用的ARCH
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ida/%E6%AF%8F%E5%A4%A9%E4%B8%80%E4%B8%AAIDA%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E5%85%AD%EF%BC%89%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 每天一个IDA小技巧（六）交叉引用">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                每天一个IDA小技巧（六）交叉引用
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2819 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E5%9B%9E%E5%BD%92%E5%92%8C%E8%81%9A%E7%B1%BB/">
+      
+      
+        <link rel="next" href="../Q%26A/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>1.云计算技术与应用 - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.云计算技术与应用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Hadoop/00-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            云计算
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1.云计算技术与应用
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1.云计算技术与应用
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      每次重启后需要检查时间同步，或者等待时间同步，和等待服务启动成功
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      openstack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openstack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. 安装过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. IAAS云平台搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. IAAS云平台搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdir-optcentos-optiaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir /opt/centos /opt/iaas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-o-loop-centos-7-x86_64-dvd-1511iso-centos" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount -o loop CentOS-7-x86_64-DVD-1511.iso centos/
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-o-loop-xiandian-iaas-v20iso-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount -o loop XianDian-IaaS-v2.0.iso iaas/
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mount -o loop XianDian-IaaS-v2.0.iso iaas/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keystone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keystone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nova
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutron
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. IAAS云平台运维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. IAAS云平台运维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keystone_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keystone运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nova运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutron运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heat运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rabbitmq运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      KVM运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据加密管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder排错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance排错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      工程总结报告
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Hadoop搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Hadoop搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Hadoop运维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.Hadoop运维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop集群用户的常用命令。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      archive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      distcp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      fs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsck" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsck
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      jar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      pipes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classname" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLASSNAME
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLASSNAME">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hdfs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hbase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q%26A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      每次重启后需要检查时间同步，或者等待时间同步，和等待服务启动成功
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      openstack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openstack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. 安装过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. IAAS云平台搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. IAAS云平台搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdir-optcentos-optiaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir /opt/centos /opt/iaas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-o-loop-centos-7-x86_64-dvd-1511iso-centos" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount -o loop CentOS-7-x86_64-DVD-1511.iso centos/
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-o-loop-xiandian-iaas-v20iso-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount -o loop XianDian-IaaS-v2.0.iso iaas/
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mount -o loop XianDian-IaaS-v2.0.iso iaas/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keystone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keystone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nova
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutron
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-iaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. IAAS云平台运维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. IAAS云平台运维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keystone_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keystone运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nova运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutron运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heat运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rabbitmq运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      KVM运维
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据加密管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cinder_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinder排错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glance排错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      工程总结报告
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Hadoop搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Hadoop搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Hadoop运维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.Hadoop运维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop集群用户的常用命令。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      archive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      distcp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      fs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsck" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsck
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      jar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      pipes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classname" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLASSNAME
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLASSNAME">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hdfs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hbase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="toc">
+<ul>
+<li><a href="#_1">每次重启后需要检查时间同步，或者等待时间同步，和等待服务启动成功</a></li>
+<li><a href="#openstack">openstack</a><ul>
+<li><a href="#0">0. 安装过程</a></li>
+<li><a href="#1-iaas">1. IAAS云平台搭建</a><ul>
+<li><a href="#_2">基础环境</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#mkdir-optcentos-optiaas">mkdir /opt/centos /opt/iaas</a></li>
+<li><a href="#mount-o-loop-centos-7-x86_64-dvd-1511iso-centos">mount -o loop CentOS-7-x86_64-DVD-1511.iso centos/</a></li>
+<li><a href="#mount-o-loop-xiandian-iaas-v20iso-iaas">mount -o loop XianDian-IaaS-v2.0.iso iaas/</a><ul>
+<li><a href="#_3">环境变量配置</a></li>
+<li><a href="#_4">数据库</a></li>
+<li><a href="#keystone">Keystone</a></li>
+<li><a href="#glance">Glance</a></li>
+<li><a href="#nova">Nova</a></li>
+<li><a href="#neutron">Neutron</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#cinder">Cinder</a></li>
+<li><a href="#2-iaas">2. IAAS云平台运维</a><ul>
+<li><a href="#_5">数据库管理</a></li>
+<li><a href="#keystone_1">Keystone运维</a></li>
+<li><a href="#nova_1">Nova运维</a></li>
+<li><a href="#cinder_1">Cinder运维</a></li>
+<li><a href="#swift">Swift</a></li>
+<li><a href="#glance_1">Glance运维</a></li>
+<li><a href="#neutron_1">Neutron运维</a></li>
+<li><a href="#heat">Heat运维</a></li>
+<li><a href="#rabbitmq">Rabbitmq运维</a></li>
+<li><a href="#kvm">KVM运维</a></li>
+<li><a href="#_6">数据加密管理</a></li>
+<li><a href="#cinder_2">Cinder排错</a></li>
+<li><a href="#glance_2">Glance排错</a></li>
+<li><a href="#_7">工程总结报告</a></li>
+</ul>
+</li>
+<li><a href="#hadoop">Hadoop</a><ul>
+<li><a href="#1hadoop">1.Hadoop搭建</a><ul>
+<li><a href="#_8">基本环境</a></li>
+</ul>
+</li>
+<li><a href="#2hadoop">2.Hadoop运维</a><ul>
+<li><a href="#_9">常用命令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#hadoop_1">Hadoop集群用户的常用命令。</a></li>
+<li><a href="#archive">archive</a></li>
+<li><a href="#distcp">distcp</a></li>
+<li><a href="#fs">fs</a></li>
+<li><a href="#fsck">fsck</a></li>
+<li><a href="#jar">jar</a></li>
+<li><a href="#job">job</a></li>
+<li><a href="#pipes">pipes</a></li>
+<li><a href="#version">version</a></li>
+<li><a href="#classname">CLASSNAME</a><ul>
+<li><a href="#hdfs">Hdfs</a></li>
+<li><a href="#mapreduce">MapReduce</a></li>
+<li><a href="#hbase">Hbase</a></li>
+<li><a href="#hive">Hive</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">每次重启后需要检查时间同步，或者等待时间同步，和等待服务启动成功</h2>
+<h2 id="openstack">openstack</h2>
+<blockquote>
+<p>全国卷：https://blog.51cto.com/13846778/2507753</p>
+<p><strong>注意</strong>： 时间同步，需要自己检查同步，不然一些服务可能出错</p>
+</blockquote>
+<h3 id="0">0. 安装过程</h3>
+<div class="language-BASH highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># 仅主机网卡（100.10）做控制网卡，NAT（200.10）做外网网卡</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1"># controller</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>hostname
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>ip
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>hosts
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>firewalld
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>yum
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>ftp<span class="w">  </span>vsftp
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>iaas-xiandian
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>/etc/xiandian/openrc.sh<span class="w">  </span>两节点
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>iaas-pre-host.sh
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>iaas-install-mysql.sh
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>iaas-install-keystone.sh
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>iaas-install-glance.sh
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>iaas-install-nova-controller.sh<span class="w"> </span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>iaas-install-neutron-controller.sh
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>iaas-install-neutron-controller-gre.sh<span class="w"> </span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>iaas-install-dashboard.sh<span class="w"> </span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>iaas-install-cinder-controller.sh
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>iaas-install-swift-controller.sh
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>iaas-install-trove.sh<span class="w">                 </span><span class="c1"># thca</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>iaas-install-heat.sh<span class="w"> </span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>iaas-install-ceilometer-controller.sh<span class="w"> </span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>/etc/xiandian/openrc.sh
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a>iaas-pre-host.sh
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a>iaas-install-nova-compute.sh
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>iaas-install-neutron-compute.sh<span class="w"> </span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a>iaas-install-neutron-compute-gre.sh
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>iaas-install-cinder-compute.sh
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>iaas-install-swift-compute.sh
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a>iaas-install-ceilometer-compute.sh
+</span></code></pre></div></td></tr></table></div>
+<h3 id="1-iaas">1. IAAS云平台搭建</h3>
+<h4 id="_2">基础环境</h4>
+<ul>
+<li>
+<p>```bash
+    按以下要求设置主机名、防火墙及SELinux：
+    设置控制节点主机名为controller，计算节点主机名为compute；
+    # hostnamectl set-hostname controller  <br />
+    # hostnamectl set-hostname compute
+    关闭控制节点和计算节点的防火墙，设置开机不启动；
+    # systemctl stop firewalld    <br />
+    # systemctl disable firewalld
+    设置控制节点和计算节点的SELinux为Permissive模式；
+    # getenforce 
+    退出SecureCRT，重新通过ssh连接各节点服务器；
+    ctrl+D 
+    （1） 使用命令查询控制节点和计算节点的主机名、防火墙是否处于关闭状态及SELinux的状态。以文本形式依次将命令行及查询信息提交到答题框。
+    # hostname  <br />
+    # systemctl status firewalld
+    # getenforce    sten</p>
+<p>（2） 在控制节点上通过SecureFX上传两个镜像文件CentOS-7-x86_64-DVD-1511.iso, XianDian-IaaS-v2.1.iso到opt下，通过命令行创建两个目录/opt/centos,/opt/iaas,并将以上镜像文件分别挂载到上述两个目录下，在答题框依次提交上述的命令以及执行结果；</p>
+<h1 id="mkdir-optcentos-optiaas">mkdir /opt/centos /opt/iaas</h1>
+<h1 id="mount-o-loop-centos-7-x86_64-dvd-1511iso-centos">mount -o loop CentOS-7-x86_64-DVD-1511.iso centos/</h1>
+<p>mount: /dev/loop0 is write-protected, mounting read-only</p>
+<h1 id="mount-o-loop-xiandian-iaas-v20iso-iaas">mount -o loop XianDian-IaaS-v2.0.iso iaas/</h1>
+<p>mount: /dev/loop1 is write-protected, mounting read-only</p>
+</li>
+</ul>
+<p>（3）   配置控制节点本地yum源文件local.repo，搭建ftp服务并配置根目录为指向存放yum源的路径；配置计算节点yum源文件ftp.repo，使用控制节点ftp服务作为yum源，其中节点的地址以主机名表示；
+  # cat /etc/yum.repos.d/local.repo 
+  [centos]
+  name=centos
+  baseurl=file:///opt/centos
+  gpgcheck=0
+  enabled=1
+  [iaas]
+  name=iaas
+  baseurl=file:///opt/iaas/iaas-repo
+  gpgcheck=0
+  enabled=1</p>
+<p># cat /etc/vsftpd/vsftpd.conf | grep "anon"
+  anon_root=/opt/</p>
+<p># cat /etc/yum.repos.d/ftp.repo 
+  [centos]
+  name=centos
+  baseurl=ftp://controller/centos
+  gpgcheck=0
+  enabled=1
+  [iaas]
+  name=iaas
+  baseurl=ftp://controller/iaas/iaas-repo
+  gpgcheck=0
+  enabled=1</p>
+<p>(4) 时间同步
+  iaas-pre-host.sh 后
+  [root@controller ~]# cat /etc/ntp.conf 
+  restrict -4 default kod notrap nomodify
+  restrict -6 default kod notrap nomodify
+  restrict 0.0.0.0
+  restrict ::1
+  restrict 192.168.200.0 mask 255.255.255.0 nomodify notrap
+  server 127.127.1.0
+  fudge 127.127.1.0 stratum 8
+  #server 0.centos.pool.ntp.org iburst
+  #server 1.centos.pool.ntp.org iburst
+  #server 2.centos.pool.ntp.org iburst
+  #server 3.centos.pool.ntp.org iburst
+  [root@controller ~]# systemctl restart ntpd</p>
+<p>[root@compute ~]# cat /etc/ntp.conf
+  restrict 127.0.0.1 
+  restrict ::1
+  restrict 192.168.200.10 mask 255.255.255.0 nomodify notrap
+  server 192.168.200.10 iburst
+  #server 0.centos.pool.ntp.org iburst
+  #server 1.centos.pool.ntp.org iburst
+  #server 2.centos.pool.ntp.org iburst
+  #server 3.centos.pool.ntp.org iburst</p>
+<p>然后可以尝试停止ntpd服务，然后用ntpdate进行时间同步检查， 最后的数越小越精确
+  [root@compute ~]# ntpdate controller
+   9 Sep 01:04:59 ntpdate[2306]: adjust time server 192.168.200.10 offset 0.000378 sec
+  [root@compute ~]# systemctl restart ntpd
+  ```</p>
+<h4 id="_3">环境变量配置</h4>
+<ul>
+<li>```BASH
+  # sed  -i  -e   "s/PASS=/PASS=000000/"  -e "s/^#//"  /etc/xiandian/openrc.sh</li>
+</ul>
+<p>HOST_IP=192.168.100.10
+  HOST_NAME=controller
+  HOST_IP_NODE=192.168.100.20
+  HOST_NAME_NODE=compute
+  RABBIT_USER=openstack
+  RABBIT_PASS=000000
+  DB_PASS=000000
+  DOMAIN_NAME=demo
+  ADMIN_PASS=000000
+  DEMO_PASS=000000
+  KEYSTONE_DBPASS=000000
+  GLANCE_DBPASS=000000
+  GLANCE_PASS=000000
+  NOVA_DBPASS=000000
+  NOVA_PASS=000000
+  NEUTRON_DBPASS=000000
+  NEUTRON_PASS=000000
+  METADATA_SECRET=000000
+  INTERFACE_NAME=eno33554976    enp4s0f1||enp9s0  #（外网网卡名（NAT））
+  CINDER_DBPASS=000000
+  CINDER_PASS=000000
+  BLOCK_DISK=sda3
+  TROVE_DBPASS=000000
+  TROVE_PASS=000000
+  SWIFT_PASS=000000
+  OBJECT_DISK=sda4
+  STORAGE_LOCAL_NET_IP=192.168.100.20
+  HEAT_DBPASS=000000
+  HEAT_PASS=000000
+  CEILOMETER_DBPASS=000000
+  CEILOMETER_PASS=000000
+  AODH_DBPASS=000000
+  AODH_PASS=000000
+  ```</p>
+<h4 id="_4">数据库</h4>
+<ul>
+<li>
+<p>```bash
+    （1） 使用脚本安装数据库服务
+  [root@controller ~]# /usr/local/bin/iaas-install-mysql.sh</p>
+<p>（2） 以root用户登录数据库
+  [root@controller ~]# mysql -uroot -p000000</p>
+<p>（3） 查询数据库mysql中所有表的信息
+  MariaDB [(none)]&gt; use mysql;
+  MariaDB [mysql]&gt; show tables;</p>
+<p>（4） 查询表user中的host，user，paassword信息
+  MariaDB [mysql]&gt; select  host,user,password  from user;</p>
+<p>（5） 使用脚本安装keystone服务。将keystone的数据库导出到当前路径下并命名为keystone.sql，查询文件keystone.sql的前五行。
+  [root@controller ~]# mysqldump -uroot -p000000 keystone &gt; keystone.sql
+  [root@controller ~]# head -n 5 keystone.sql</p>
+</li>
+</ul>
+<p>```</p>
+<h4 id="keystone">Keystone</h4>
+<ul>
+<li><code>bash
+  根据平台安装步骤安装至keystone认证服务，在控制节点使用提供的脚本iaas-install-keystone.sh安装
+  keystone组件，admin-openrc.sh 文件在/etc/keystone/下。使用openstack 相关命令，查询用户列表信息
+  # iaas-install-keystone.sh
+  source 认证
+  [root@controller ~]# source /etc/keystone/admin-openrc.sh 
+  # openstack user list
+  使用openstack 相关命令，查询admin用户信息
+  # openstack user show admin</code></li>
+</ul>
+<h4 id="glance">Glance</h4>
+<ul>
+<li><code>bash
+  1.使用脚本安装glance服务，使用systemctl命令查询glance组件中所有服务的状态。
+  # iaas-install-glance.sh 
+  # systemctl status openstack-glance*
+  2.使用glance 相关命令查询glance镜像列表，并查询CentOS7.2镜像（镜像可自行上传）的详细信息
+  上传镜像
+  # glance image-create --name "XianDian-SDN" --disk-format qcow2 --container-format bare --progress &lt; /opt/XianDian-SDN.qcow2
+  # glance image-list
+  # glance image-show 57d51744-e5c0-45bf-90a1-5d3f02f34bac</code></li>
+</ul>
+<h4 id="nova">Nova</h4>
+<ul>
+<li><code>bash
+  1.使用脚本安装nova服务。使用nova相关命令查询计算节点虚拟机监控器状态。
+  [root@controller ~]# iaas-install-nova-controller.sh
+  [root@compute ~]# iaas-install-nova-compute.sh
+  [root@controller ~]# nova hypervisor-stats</code></li>
+</ul>
+<h4 id="neutron">Neutron</h4>
+<ul>
+<li>```bash
+  1.使用脚本安装neutron服务，并配置为GRE网络
+  [root@controller ~]# iaas-install-neutron-controller.sh
+  [root@compute ~]# iaas-install-neutron-compute.sh
+  [root@controller ~]# iaas-install-neutron-controller-gre.sh
+  [root@compute ~]# iaas-install-neutron-compute-gre.sh</li>
+</ul>
+<p>2.创建云主机外部网络为ext-net,类型gre，外部的 共享的，子网为ext-subnet，虚拟机浮动IP网段为192.168.200.100 ~ 192.168.200.200，网关为192.168.200.1;
+  # neutron net-create ext-net  --router:external
+  # neutron subnet-create  ext-net  --name ext-subnet  --allocation-pool start=192.168.200.10,end=192.168.200.200 --disable-dhcp --gateway 192.168.200.1  192.168.200.0/24</p>
+<p>3.创建云主机隧道网络int-net1，类型gre，子网为int-subnet1，虚拟机子网IP网段为10.0.0.100 ~ 10.0.0.200，网关为10.0.0.1；
+  # neutron net-create  int-net1
+  # neutron subnet-create  int-net1  --name int-subnet1  --allocation-pool start=10.0.0.100,end=10.0.0.200  --enable-dhcp --gateway 10.0.0.1  10.0.0.0/24</p>
+<p>4.创建云主机隧道网络int-net2，子网为int-subnet2，虚拟机子网IP网段为10.0.1.100 ~ 10.0.1.200，网关为10.0.1.1;
+  # neutron net-create int-net2
+  # neutron  subnet-create   int-net2  --name int-subnet2   --allocation-pool start=10.0.1.100,end=10.0.1.200 --enable-dhcp  --gateway 10.0.1.1  10.0.1.0/24</p>
+<p>5.添加名为ext-router的路由器，配置路由接口地址，完成隧道网络int-net1和外部网络ext-net的连通。
+  # neutron router-create  ext-router
+  # neutron  router-gateway-set ext-router  ext-net
+  # neutron  router-interface-add  ext-router  int-subnet1</p>
+<p>6.使用neutron相关命令查询所创建路由的详细信息。依次将操作命令和返回结果以文本形式提交到答题框。
+  # neutron router-show ext-router</p>
+<p>7.使用相关命令查询所创建子网的列表信息，并查看内网子网的详细信息。
+  # neutron subnet-list
+  # neutron subnet-show  df801f44-9f4a-4481-9424-081326474069</p>
+<p>```</p>
+<h4 id="dashboard">Dashboard</h4>
+<ul>
+<li><code>bash
+ 1.使用脚本安装dashboard服务，使用curl命令查询网址http://192.168.100.10/dashboard。
+  # iaas-install-dashboard.sh
+  # curl    -L http://192.168.100.10/dashboard/       # -L (Follow redirects遵循重定向)</code></li>
+</ul>
+<h4 id="cinder">Cinder</h4>
+<blockquote>
+<p>would like to raise ValueError here, but there are just too many unrecognized (obsolete?)</p>
+<p>controller的cinder-volumes状态为DOWN，想在这里提出ValueError，但是项目中有太多无法识别的(过时的?)配置选项</p>
+</blockquote>
+<ul>
+<li>```BASH
+  parted /dev/sda
+  (parted) mkpart /dev/sda4
+  File system type?  [ext2]?
+  Start? 600G
+  End? 1400G</li>
+</ul>
+<p>(parted) mkpart /dev/sda5
+  File system type?  [ext2]?
+  Start? 1401G
+  End? 2300G</p>
+<p>分区后：
+  # lsblk
+  NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+  sda               8:0    0   3.7T  0 disk 
+  ├─sda1            8:1    0     1M  0 part 
+  ├─sda2            8:2    0   500M  0 part /boot
+  ├─sda3            8:3    0 511.8G  0 part 
+  │ ├─centos-root 253:0    0   500G  0 lvm  /
+  │ └─centos-swap 253:1    0  11.8G  0 lvm  [SWAP]
+  ├─sda4            8:4    0 745.1G  0 part   # 对应环境变量cinder
+  └─sda5            8:5    0 837.3G  0 part   # 对应环境变量swift</p>
+<p>[root@controller ~]# iaas-install-cinder-controller.sh
+  [root@compute ~]# iaas-install-cinder-compute.sh
+  [root@controller ~]# iaas-install-swift-controller.sh
+  #  iaas-install-swift-compute.sh
+  trove、heat、ceilometer*2、alarm
+  ```</p>
+<h3 id="2-iaas">2. IAAS云平台运维</h3>
+<blockquote>
+<p>1.按以下配置在云平台中创建云主机，完成本任务下的相关试题后关闭云主 机。 </p>
+<p>云主机1： </p>
+<p>（1）名称：IaaS </p>
+<p>（2）镜像文件：Xiandian-IaaS-All.qcow2 </p>
+<p>（3）云主机类型：4cpu、8G 内存、100G 硬盘 </p>
+<p>（4）网络：网络 1：int-net1，绑定浮动 IP </p>
+<p>网络 2：int-net2 </p>
+<p>注：该镜像已安装 IaaS 平台所有可能使用的组件，用于完成 IaaS 平台相关 运维操作题，必须按以上配置信息配置接入两个网络才能保证云主机运行正常。 根据题目要求，连接相应的云主机或各节点服务器，进行以下答题。</p>
+<p>云主机2：</p>
+<p>（1）名称：SDN</p>
+<p>（2）镜像文件：centos_7-x86_64_xiandian.qcow2</p>
+<p>（3）云主机类型：m1.small</p>
+<p>（4）网络：int-net1，绑定浮动ip</p>
+<p>连接相应的云主机，进行以下答题。</p>
+</blockquote>
+<h4 id="_5">数据库管理</h4>
+<ul>
+<li>```bash
+  1.登录IaaS云主机，进入数据库，创建本地用户examuser，密码为000000，然后查询mysql数据库中的user表的host，user，password字段。最后赋予这个用户所有数据库的“查询”“删除”“更新”“创建”的本地权限。
+  # MariaDB [(none)]&gt; create user 'examuser'@'localhost' identified by '000000';
+  # MariaDB [(none)]&gt; use mysql
+  # MariaDB [mysql]&gt; select host,user,password from user;
+  # MariaDB [mysql]&gt; grant select,delete,update,create on <em>.</em> to examuser@"localhost" identified by "000000";</li>
+</ul>
+<p>2.使用数据库的相关命令查询数据库的编码方式
+  # mysql&gt; show variables like 'char%';     （character_set_database）
+  查看默认引擎  # mysql&gt; show variables like 'storage_engine';
+  查看mysql支持的存储引擎 # mysql&gt; show variables like 'have%''；</p>
+<p>3.进入数据库keystone，通过user表和local_user表做联合更新，u用来做user表别名，lu用来做local_user表别名，sql语句更新neutron用户的enabled状态为0, 更新语句中user表在local_user前面。
+  # MariaDB [keystone]&gt; update user u join local_user lu on u.id=lu.user_id set u.enabled=0 where lu.name='neutron';</p>
+<p>4.进入数据库 keystone，通过 user 表和 local_user 表做联合查询，u 用来做 user 表别名，lu用来做 local_user 表别名，两表联合查询 nova 用户的 enabled 状态,查询语句中 user 表在local_user 前面
+  # MariaDB [keystone]&gt; select name enabled from user u ,local_user lu where u.id=lu.user_id and lu.name='nova';</p>
+<p>5.使用一条命令将keystone的数据库导出为当前路径下的keystone.sql文件，并使用命令查询文件keystone.sql的大小
+  # mysqldump -uroot -p000000 keystone &gt; keystone.sql
+  # ll keystone.sql</p>
+<p>```</p>
+<h4 id="keystone_1">Keystone运维</h4>
+<ul>
+<li>```bash
+  1.在keystone中创建用户testuser，密码为password，创建好之后，使用命令修改testuser的状态为down，并查看testuser的详细信息，
+  # openstack user create --domain demo --password password testuser
+  +-----------+----------------------------------+
+  | Field     | Value                            |
+  +-----------+----------------------------------+
+  | domain_id | 90477266390143399b2c38419f3b866b |
+  | enabled   | True                             |
+  | id        | 7a7701ab736d42e1a8ab739df42b0925 |
+  | name      | testuser                         |
+  +-----------+----------------------------------+
+  # openstack user set --disable testuser
+  # openstack user show testuser
+  +-----------+----------------------------------+
+  | Field     | Value                            |
+  +-----------+----------------------------------+
+  | domain_id | 90477266390143399b2c38419f3b866b |
+  | enabled   | False                            |
+  | id        | 7a7701ab736d42e1a8ab739df42b0925 |
+  | name      | testuser                         |
+  +-----------+----------------------------------+</li>
+</ul>
+<p>2.将 testuser 用户分配给 admin 项目，赋予用户 user 的权限
+  # openstack role add --user testuser --project admin user
+  3.通过openstack相关命令获取token值
+  # openstack token issue</p>
+<p>4.查询认证服务的查询端点信息
+  # openstack endpoint list</p>
+<p>5.将keystone 的数据库导出为当前路径下的 keystone.sql 文件，并使用 cat 命令查询文件keystone.sql
+  # mysqldump -uroot -p000000 keystone &gt; keystone.sql
+  # cat keystone.sql</p>
+<p>```</p>
+<h4 id="nova_1">Nova运维</h4>
+<ul>
+<li>```bash
+  登录IaaS云主机，使用nova相关命令，查询nova所有的监控列表，并查看ID为1的监控主机的详细信息
+  # nova hypervisor-list
+  +----+---------------------+-------+---------+
+  | ID | Hypervisor hostname | State | Status  |
+  +----+---------------------+-------+---------+
+  | 1  | compute             | up    | enabled |
+  +----+---------------------+-------+---------+
+  # nova hypervisor-show 1</li>
+</ul>
+<p>2.修改云平台中默认项目的实例配额为15个
+  # nova quota-class-update --instance 15 default
+  # nova quota-defaults 
+  +-----------------------------+-------+
+  | Quota                       | Limit |
+  +-----------------------------+-------+
+  | instances                   | 15    |
+  | cores                       | 20    |
+  | ram                         | 51200 |
+  | floating_ips                | 10    |
+  | fixed_ips                   | -1    |
+  | metadata_items              | 128   |
+  | injected_files              | 5     |
+  | injected_file_content_bytes | 10240 |
+  | injected_file_path_bytes    | 255   |
+  | key_pairs                   | 100   |
+  | security_groups             | 10    |
+  | security_group_rules        | 20    |
+  | server_groups               | 10    |
+  | server_group_members        | 10    |
+  +-----------------------------+-------+</p>
+<p>3.修改云平台中默认每个tenant的实例注入文件大小配额为20480个
+  # nova quota-class-update --injected-file 20480 default
+  | injected_file_content_bytes | 20480 |
+  # nova quota-class-show default</p>
+<p>4.通过 nova 的相关命令创建云主机类型 clouds，内存为 1024，硬盘为 20G，虚拟内核数量为 2
+  # nova flavor-create  clouds auto 1024 20 2</p>
+<p>5.使用nova命令，创建一个云主机vm-test，使用cirros镜像，自行连接网络；
+  # nova boot --flavor m1.small --image CentOS_6.5_x86_64_XD.qcow2 --nic net-id=c5221f87-5f27-4fb0-9e31-08269c104676 vm-test
+  上面只有三个参数，因为安全组和可用域可以不指定，使用默认的
+  # nova boot --flavor name            #指定flavor               nova flavor-list
+  --image id                       #image                   nova image-list
+  --nic net-id=id                  #net-id                  nova network-list
+  --security-groups id                 #security-groups-id      nova secgroup-list
+  --availability-zone nova:compute     #可用域  在制定的区域:hosts  nova service-list
+  vm-test                               #vm名字
+  nova list                         #查看虚机</p>
+<p>openstack命令创建：
+  # openstack server create   三个参数和名字</p>
+<p>6.使用 openstack 相关命令，启动一个云主机， 云主机类型使用 m1.small，镜像使用 centos6.5，云主机名称为 xxxtest，并 使用 openstack 命令查看此云主机的详细信息。
+  # openstack server create --flavor m1.small --image examimage --nic net-id=c5221f87-5f27-4fb0-9e31-08269c104676 xxxtest
+  # openstack server show xxxtest</p>
+<p>7.使用nova相关命令查询nova资源使用情况的信息
+  # # nova usage-list </p>
+<p>8.绑定浮动ip到实例上
+  # nova floating-ip-list 
+  # nova add-floating-ip vm-hadoop_slaver1 192.168.100.104
+  ```</p>
+<h4 id="cinder_1">Cinder运维</h4>
+<ul>
+<li>```BASH
+  1.使用命令查看当前卷组信息，使用lvcreate命令，创建名称为BlockVloume，大小为2G的lvm逻辑卷，查询该逻辑卷详细信息
+  (vgs   lvs)
+  # lvcreate -n BlockVloume -L 2G cinder-volumes
+  # lvdisplay</li>
+</ul>
+<p>2.使用“pvcreate”命令创建物理卷，然后通过“vgextend”命令将该物理卷增加到已有的
+  块存储卷组中
+  # parted /dev/vda
+  # vgcreate /dev/vda1
+  # vgextend  cinder-volumes  /dev/vda1</p>
+<p>3.创建名为“lvm”的卷类型,然后创建一块带“lvm”标识的云硬盘，名称为 BlockVloume，
+  大小为 2G，查询该云硬盘详细信息
+  # cinder  type-create lvm --is-public true
+  # cinder  create --display-name BlockVloume  --volume-type lvm 2
+  # cinder show 6b232c83-ea04-4e8d-9d42-ed79f57d0a4d</p>
+<p>4.通过命令行创建云硬盘 volume1，大小为 2G，将其设置为只读，查询该云硬盘详细信息
+  # cinder  create --display-name volume1 2
+  # cinder readonly-mode-update volume1 True
+  # cinder show 48d7edba-ba7c-4dc4-a86d-2bfdaaa84cde</p>
+<p>5.使用cinder命令创建一个名叫jiami的云硬盘类型，然后将这个类型设置为encrypted，使用jiami这个类型创建一个云硬盘叫encryptionvolume，大小为1G
+  # cinder type-create jiami
+  # cinder encryption-type-create jiami LuksEncryptor
+  # cinder create --name encryptionvolume --volume-type jiami 1</p>
+<p>6.(1)登录 http://192.168.100.10/dashboard，创建云主机名为“vm_extend”，镜像使用
+  “centos6.5”， flavor 使用“m1.medium”；
+  （2）登录“vm_extend”云主机，从该主机的硬盘“/dev/vda”中分出一个 10G 的分区，
+  使用这个分区将云主机“vm_extend”根目录所在逻辑分区扩容 5G；
+  （3）在云主机上用 df -h 命令查看挂载信息。
+  # fisk /dev/vda      添加一个分区
+  # reboot             centos6.5需要重启
+  [root@host-10-0-0-113 ~]# lsblk
+  NAME                        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+  vda                         252:0    0   40G  0 disk 
+  ├─vda1                      252:1    0  500M  0 part /boot
+  ├─vda2                      252:2    0  7.5G  0 part 
+  │ ├─VolGroup-lv_root (dm-0) 253:0    0  6.7G  0 lvm  /
+  │ └─VolGroup-lv_swap (dm-1) 253:1    0  816M  0 lvm  [SWAP]
+  ├─vda3                      252:3    0  4.8G  0 part 
+  └─vda4                      252:4    0  9.6G  0 part 
+  [root@host-10-0-0-113 ~]# mkfs.xfs /dev/vda3 
+  [root@host-10-0-0-113 ~]# pvcreate /dev/vda3
+    Physical volume "/dev/vda3" successfully created
+  [root@host-10-0-0-113 ~]# vgextend VolGroup /dev/vda3
+    Volume group "VolGroup" successfully extended
+  [root@host-10-0-0-113 ~]# vgs
+    VG       #PV #LV #SN Attr   VSize  VFree 
+    VolGroup   2   2   0 wz--n- 10.8g 4.8g
+  [root@host-10-0-0-113 ~]# lvextend -L +5G /dev/mapper/VolGroup-lv_root
+    Extending logical volume lv_root to 11.71 GiB
+    Logical volume lv_root successfully resized
+  # 重新加载硬盘， xfs格式需要 xfs_growfs /dev/mapper/VolGroup-lv_root 
+  [root@host-10-0-0-113 ~]# resize2fs /dev/mapper/VolGroup-lv_root 
+  resize2fs 1.41.12 (17-May-2010)
+  Filesystem at /dev/mapper/VolGroup-lv_root is mounted on /; on-line resizing required
+  old desc_blocks = 1, new_desc_blocks = 1
+  Performing an on-line resize of /dev/mapper/VolGroup-lv_root to 3332096 (4k) blocks.
+  The filesystem on /dev/mapper/VolGroup-lv_root is now 3332096 blocks long.
+  [root@host-10-0-0-113 ~]# df -h
+  Filesystem                    Size  Used Avail Use% Mounted on
+  /dev/mapper/VolGroup-lv_root   6G  827M   5G   7% /
+  tmpfs                         1.9G     0  1.9G   0% /dev/shm
+  /dev/vda1                     485M   32M  428M   7% /boot</p>
+<p>```</p>
+<h4 id="swift">Swift</h4>
+<ul>
+<li>```BASH
+  1.登录IaaS云主机，创建swifter用户，并创建swift租户，将swifter用户规划到swift租户下，赋予swifter用户使用swift服务的权限，并通过该用户在swift中创建mycontainer容器
+  # openstack user create swifter --password 000000 --domain xiandian 
+  # openstack project create swift --domain xiandian
+  # openstack role add --user swifter --project swift admin
+  # swift -A  http://controlller:35357/v3  --os-username swifter --os-user-domain-name xiandian --os-project-name swift --os-project-domain-name xiandian  --os-password 000000 post mycontainer</li>
+</ul>
+<p>2.使用 admin 账号在 swift 中创建 mycontainer 容器
+  # swift -U admin:admin -K 000000  post mycontainer</p>
+<p>3.使用命令查看 swift 服务状态，然后创建一个容器，并使用命令查看容器列表。
+  # openstack-status  | grep swift
+  # swift post container1
+  # swift list</p>
+<p>4.使用 swift 相关命令查看一个容器的状态，然后往这个容器中上传一个文件（文件可以自行创建）。
+  # swift stat container1
+  # swift upload  container1 test.txt</p>
+<p>5.使用 swift 相关命令，查询 swift 对象存储服务可以存储的单个文件大小的最大值。
+  # swift capabilities</p>
+<p>6.登录 iaas 云主机，使用 openstack 命令，创建一个容器，并查询，上传一个文件（可自行创建）到这个容器中，并查询。
+  # openstack container create container2
+  # openstack container show container2
+  # openstack object create container2 test.txt   上传对象（文件）
+  # openstack object list container2</p>
+<p>```</p>
+<h4 id="glance_1">Glance运维</h4>
+<ul>
+<li>```BASH
+  1.使用镜像文件CentOS_6.5_x86_64_XD.qcow2创建glance镜像xiandian6.5，格式为qcow2。
+  查看glance配置文件，找到默认的镜像存储目录，进入到存储目录中，使用qemu命令查看刚才上传的镜像的信息,将操作命令和返回结果以文本形式提交到答题框。
+  # glance image-create \
+  --name "xiandian6.5" \
+  --disk-format qcow2 \
+  --container bare \
+  --progress &lt; /opt/iaas/images/CentOS_6.5_x86_64_XD.qcow2
+  # cat /etc/glance/glance-api.conf |grep image|grep -Ev '<sup>#|</sup>$'
+  filesystem_store_datadir = /var/lib/glance/images/
+  # cd /var/lib/glance/images/
+  # qemu-img info 4993a163-c6de-4fcd-9032-c45be06ee913</li>
+</ul>
+<p>2.上传完毕后，通过一条组合命令获取镜像列表信息，该组合命令包含：
+  （1）使用curl命令获取镜像列表信息；
+  （2）使用openstack相关命令获取的token值；
+  （3）仅使用awk命令且用空格作为分隔符获取token具体参数值。 
+  # curl -i -H "X-Auth-Token:$(openstack token issue | awk -F "|" '/\sid\s/{print $3}')" http://controller:9292/v2/images
+  -s（silent）  -H （header） -i (参数打印出服务器回应的 HTTP 标头)</p>
+<p># curl -i -H "X-Auth-Token:$(openstack token issue | awk -F "|" '/\sid\s/{print $3}')" http://controller:9292/v2/images |sed 's/,/\n/g'
+  加了sed替换，为换行显示，方便查看</p>
+<p>3.通过一条组合命令获取该镜像详细信息，该组合命令要求：
+  （1）不能使用任何 ID 作为参数；
+  （2）使用 openstack 相关命令获取详细信息；
+  （3）使用 glance 相关命令获取镜像对应关系；
+  （4）仅使用 awk 命令且用“|”作为分隔符获取 ID 值。
+  # openstack image show <code>glance image-list |awk -F '|' '/xiandian6.5/ {print $2}'</code></p>
+<p>4.使用curl的方法，查询glance image api 的状态和版本信息。</p>
+<p>5.使用systemctl 相关命令，在一条命令中查询glance组件中所有服务的状态信息
+  # systemctl | grep glance</p>
+<p>```</p>
+<h4 id="neutron_1">Neutron运维</h4>
+<ul>
+<li>```BASH
+  1.使用neutron相关命令查询网络服务的列表信息,并查询网络服务DHCP agent的详细信息
+  # neutron agent-list
+  # neutron agent-show 75aa4432-93be-494f-abdb-a57fea9933f0</li>
+</ul>
+<p>2.使用 neutron 相关命令查询网络服务的列表信息，并已下图的形式打印出来
+  # neutron agent-list -c binary -c agent_type -c alive</p>
+<p>3.仅使用 neutron 相关命令查询网络服务的列表信息中的“binary”一列
+  # neutron agent-list -c binary</p>
+<p>4.使用 ovs-vswitchd 管理工具的相关命令查询计算节点的网桥列表信息
+  # ovs-vsctl   list-br</p>
+<p>5.使用 ovs-vswitchd 管理工具的相关命令查询控制节点的网桥 br-ex 的端口列表信息
+  # ovs-vsctl list-ports br-ex</p>
+<p>6.neutron命令创建网络和子网
+  # neutron net-create --shared --provider:physical_network net172_16_1 --provider:network_type flat cheng
+  # neutron subnet-create --name cheng --allocation-pool start=172.16.1.101,end=172.16.1.250 --dns-nameserver 223.5.5.5 --gateway 172.16.1.254 cheng 172.16.1.0/24</p>
+<p># neutron net-list
+  # neutron subnet-list
+  ```</p>
+<h4 id="heat">Heat运维</h4>
+<ul>
+<li>```bash
+  1.登录iaas云主机，使用heat相关命令，查询heat最新版本模板的功能列表，将操作命令和返回结果以文本形式提交到答题框。
+  # heat template-version-list 
+  | heat_template_version.2016-04-08     | hot  |
+  +--------------------------------------+------+
+  # heat template-function-list heat_template_version.2016-04-08</li>
+</ul>
+<p>2.从考试系统附件下载 server.yml 文件，通过命令行使用 server.yml 文件创建栈 mystack，指定配置参数为镜像 centos7、网络 int-net2
+  # neutron net-list
+  # glance image-list
+  # heat stack-create -f server.yml  -P ImageID=f93e836c-4905-433f-8f01-97391eb62d7c -P NetID=41cbb614-0071-4818-b8d7-230bc7d6f9af mystack
+  ```</p>
+<h4 id="rabbitmq">Rabbitmq运维</h4>
+<ul>
+<li>```bash
+  登录“iaas_all”云主机。
+  （1）使用rabbitmqctl命令创建用户xiandian-admin，密码为admin；
+  # rabbitmqctl add_user xiandian-admin admin</li>
+</ul>
+<p>（2）给xiandian-admin用户创建administrator角色并查询；
+  设置用户角色：rabbitmqctl set_user_tags {username} {tag ...}
+  Tag可以为 administrator,monitoring, management
+  # rabbitmqctl set_user_tags xiandian-admin administrator</p>
+<p>（3）授予用户xiandian-admin对本机所有资源可写可读可执行的权限，查询xiandian-admin用户的授权信息。 然后查询xiandian-admin 用户的授权信息
+  set_permissions [-p <vhost>] <user> <conf> <write> <read>
+  # rabbitmqctl set_permissions xiandian-admin '.<em>' '.</em>' '.*'
+  # rabbitmqctl list_user_permissions xiandian-admin</p>
+<p>4.使用rabbitmqctl命令查询集群状态
+  # rabbitmqctl cluster_status</p>
+<p>```</p>
+<h4 id="kvm">KVM运维</h4>
+<ul>
+<li>```bash
+  1.登录compute节点，使用命令将KVM进程绑定到特定的0-5号cpu上。
+  # pgrep -lo kvm
+  21701 qemu-kvm
+  # taskset -pc 0-5 21701</li>
+</ul>
+<p>2.在物理云平台查询云主机IaaS在KVM中的真实实例名，在计算节点使用virsh命令找到该实例名对应的domain-id，使用该domain-id查看云主机IaaS的cpu使用信息
+  # nova show test1
+  OS-EXT-SRV-ATTR:instance_name        | instance-0000001a
+  # virsh domid instance-0000001a
+  # virsh vcpuinfo 5</p>
+<p>3.在物理云平台查询云主机 IaaS 在 KVM 中的真实实例名，在计算节点使用 virsh 命令找到该实例名对应的 domain-id，使用该 domain-id 关闭云主机 IaaS
+  [root@controller ~]# nova list
+  [root@controller ~]# nova show  IaaS|grep instance
+  [root@compute ~]# virsh domid instance-00000007
+  [root@compute ~]# virsh shutdown 8</p>
+<p>4.登录 controller 节点，首先查看当前系统有多少大页，然后设置大页数量为 20 并查看，其次使用命令使配置永久生效，最后将大页挂载到/dev/hugepages/上。
+  [root@controller ~]# cat /proc/meminfo|grep HugePages
+  [root@controller ~]# echo 20 &gt; /proc/sys/vm/nr_hugepages
+  [root@controller ~]# cat /proc/meminfo|grep HugePages
+  [root@controller ~]# sysctl -w vm.nr_hugepages=20
+  [root@controller ~]# mount -t hugetlbfs hugetlbfs /dev/hugepages/</p>
+<p>```</p>
+<h4 id="_6">数据加密管理</h4>
+<ul>
+<li>```bash
+  前提：按要求配置静态fixed_key，使cinder和nova组件可以使用加密过的Block Storage卷服务，配置好之后，创建一个卷类型叫luks，并把这个类型配置为加密类型，cipher使用“aes-xts-plain64”，key_size使用“512”，control-location使用“front-end”，Provider使用“nova.volume.encryptors.luks.LuksEncryptor”。</li>
+</ul>
+<p>（1）登录“iaas_all”云主机，创建两块云硬盘，分别叫“unencrypted volume”和“encrypted volume”大小都是1G，前者不加密，后者使用luks加密卷类型；
+  # fdisk /dev/sdd                      #创建磁盘 
+  # cryptsetup luksFormat /dev/sdd    #加密磁盘
+  WARNING!
+  This will overwrite data on /dev/sdd irrevocably.
+  Are you sure? (Type uppercase yes): YES     #大写YES
+  Enter passphrase:                           #密码长度最少8位，不能太简单
+  Verify passphrase: 
+  ```</p>
+<h4 id="cinder_2">Cinder排错</h4>
+<ul>
+<li><code>bash
+  在云平台后台管理的过程中块存储功能无法使用，错误现象为创建的云硬盘状态为error。找出错误原因，进行修复，修复之后创建云硬盘，查询云硬盘的详细信息。依次将错误的内容、修复的操作以及查询到信息以文本形式提交到答题框。</code></li>
+</ul>
+<h4 id="glance_2">Glance排错</h4>
+<ul>
+<li>```bash
+  在云平台后台管理的过程中无法上传镜像，找出错误原因，并进行修复，修复之后使用cirros-0.3.4-x86_64-disk.img创建名为cirros的镜像，查询镜像的详细信息。依次将错误的内容、修复的操作以及查询到的信息以文本形式提交到答题框。</li>
+</ul>
+<p>```</p>
+<h4 id="_7">工程总结报告</h4>
+<ul>
+<li><img alt="image-20200916130928560" src=".\img\image-20200916130928560.png" /></li>
+</ul>
+<div class="language-BASH highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="m">1</span>.绘制IaaS平台的架构组件图，组件包含本次项目实施中涉及到的IaaS组件服务，架构组件绘制各组件之间的关系。并对架构图进行解释说明。
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>组件包括Horizon、Neutron、Cinder、Nova、Glance、Swift、Cinder、Ceilmeter、Keystone、Heat、Sahara。
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>解释说明：控制面板同每个服务都有调用关系，Keystone和每个服务都有认证管理。Neutron为VM提供网络服务、Cinder为VM提供快存储、Swift提供云存储、Glance为VM提供镜像、Nova是VM操作的调度引擎。Ceilometer是监控服务，Heat是模板服务。Sahara是大数据集群部署服务。
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># fdisk /dev/sdb       创建硬盘</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># pvcreate /dev/sdb1   创建</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># pvcreate /dev/sdc1</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># vgcreate vgtest /dev/sdb1 /dev/sdc1</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># lvcreate -L 1G -n &#39;encrypted-volume&#39; cinder-volumes</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="hadoop">Hadoop</h2>
+<h3 id="1hadoop">1.Hadoop搭建</h3>
+<p><del><em>xml文件</em></del></p>
+<p><del><em>yum源    yum update</em></del></p>
+<blockquote>
+<p>大数据平台的搭建采用分布式方式部署，部署在云平台的两台虚拟机上，规划大数据平台的部署架构，云主机1部署大数据平台master节点，云主机2部署大数据平台slaver节点。按以下配置在云平台中创建云主机，完成第二部分的相关试题后关闭云主机。</p>
+<p>云主机1：</p>
+<p>（1）名称：master</p>
+<p>（2）镜像文件：hadoop_master_centos7_x86_xiandian_images-v04.qcow2</p>
+<p>（3）云主机类型：4CPU、8G内存、10G硬盘</p>
+<p>(4) 网络：网络1：int-net1，绑定浮动IP</p>
+<p>云主机2：</p>
+<p>（1）名称：slaver</p>
+<p>（2）镜像文件：hadoop_slaver1_centos7_x86_xiandian_images-v04.qcow2</p>
+<p>（3）云主机类型：2CPU、4G内存、10G硬盘</p>
+<p>(4) 网络：网络1：int-net1，绑定浮动IP</p>
+</blockquote>
+<h4 id="_8">基本环境</h4>
+<ul>
+<li><img alt="" src=".\img\image-20200722104743389.png" /></li>
+</ul>
+<div class="language-BASh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="m">1</span>.更改两台主机的hosts（ip为绑定的网络接口的ip，并非浮动ip）
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1"># cat  /etc/hosts</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="m">127</span>.0.0.1<span class="w">   </span>localhost<span class="w"> </span>localhost.localdomain<span class="w"> </span>localhost4<span class="w"> </span>localhost4.localdomain4
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>::1<span class="w">         </span>localhost<span class="w"> </span>localhost.localdomain<span class="w"> </span>localhost6<span class="w"> </span>localhost6.localdomain6
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="m">10</span>.0.0.107<span class="w"> </span>master
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="m">10</span>.0.0.105<span class="w"> </span>slaver1
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="m">2</span>.检查ntp、ambari-server是否启动和slaver1的ntpdate状态
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>master<span class="w">  </span><span class="c1"># systemctl status ntpd</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>slaver1<span class="w"> </span><span class="c1"># ntpdate master</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>master<span class="w">  </span><span class="c1"># systemctl status ambari-server</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="m">3</span>.检查Transparent<span class="w"> </span>Huge<span class="w"> </span>Pages状态
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1"># cat /sys/kernel/mm/transparent_hugepage/defrag </span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="m">4</span>.登录网页http：//master：8080修改MapReduce2和Hive配置参数中有黄色三角提示的项
+</span></code></pre></div></td></tr></table></div>
+<h3 id="2hadoop">2.Hadoop运维</h3>
+<h4 id="_9">常用命令</h4>
+<ul>
+<li>
+<blockquote>
+<h1 id="hadoop_1">Hadoop集群用户的常用命令。</h1>
+<h1 id="archive">archive</h1>
+<p>创建一个hadoop档案文件。参考 Hadoop Archives.
+用法：hadoop archive -archiveName NAME -p <parent path>  <src>* <dest></p>
+<h1 id="distcp">distcp</h1>
+<p>递归地拷贝文件或目录。参考DistCp指南以获取等多信息。
+用法：hadoop distcp <srcurl> <desturl></p>
+<h1 id="fs">fs</h1>
+<p>用法：hadoop fs [GENERIC_OPTIONS] [COMMAND_OPTIONS]
+运行一个常规的文件系统客户端。</p>
+<h1 id="fsck">fsck</h1>
+<p>运行HDFS文件系统检查工具。参考Fsck了解更多。
+用法：hadoop fsck [GENERIC_OPTIONS] <path> [-move | -delete | -openforwrite] [-files [-blocks [-locations | -racks]]]</p>
+<h1 id="jar">jar</h1>
+<p>运行jar文件。用户可以把他们的Map Reduce代码捆绑到jar文件中，使用这个命令执行。
+用法：hadoop jar <jar> [mainClass] args...</p>
+<h1 id="job">job</h1>
+<p>用于和Map Reduce作业交互和命令。
+用法：hadoop job [GENERIC_OPTIONS] [-submit <job-file>] | [-status <job-id>] | [-counter <job-id> <group-name> <counter-name>] | [-kill <job-id>] | [-events <job-id> <from-event-#> &lt;#-of-events&gt;] | [-history [all] <jobOutputDir>] | [-list [all]] | [-kill-task <task-id>] | [-fail-task <task-id>]</p>
+<h1 id="pipes">pipes</h1>
+<p>运行pipes作业。
+用法：hadoop pipes [-conf <path>] [-jobconf <key=value>, <key=value>, ...] [-input <path>] [-output <path>] [-jar <jar file>] [-inputformat <class>] [-map <class>] [-partitioner <class>] [-reduce <class>] [-writer <class>] [-program <executable>] [-reduces <num>]</p>
+<h1 id="version">version</h1>
+<p>打印版本信息。
+用法：hadoop version</p>
+<h1 id="classname">CLASSNAME</h1>
+<p>hadoop脚本可用于调调用任何类。
+用法：hadoop CLASSNAME
+运行名字为CLASSNAME的类。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>在Hadoop集群中，只有hdfs用户才有对HDFS文件系统的管理权限，当其它用户对文件系统进行操作，需要给其赋予相应的权限，这里为了方便操作，将所有用户的读写执行权限全部放开，命令如下：
+ su hdfs
+$ hadoop fs -chmod  -R 777 /
+$ hadoop fs -ls /</p>
+</blockquote>
+<h4 id="hdfs">Hdfs</h4>
+<ul>
+<li>```BASH
+  1.在HDFS文件系统的根目录下使用一条命令创建递归目录“1daoyun/file”，将附件中的BigDataSkills.txt文件，上传到1daoyun/file目录中，并使用HDFS文件系统检查工具检查文件是否受损，以文本形式提交以上操作命令和输出结果到答题框中。
+  [root@master ~]# hadoop fs -mkdir -p /1daoyun/file
+  [root@master ~]# hadoop fs -put   /opt/MapReduce/BigDataSkills.txt /1daoyun/file
+  [root@master ~]# hadoop fsck /1daoyun/file/BigDataSkills.txt</li>
+</ul>
+<p>2.HDFS文件系统的根目录下存在一个/apps的文件目录，要求开启该目录的可创建快照功能，并为该目录文件创建快照，快照名为apps_1daoyun，使用相关命令查看该快照的列表信息。
+  [hdfs@master root]$ hdfs dfsadmin -allowSnapshot /apps
+  [hdfs@master root]$ hdfs dfs -createSnapshot /apps apps_1daoyun
+  [hdfs@master root]$ hadoop fs -ls /apps/.snapshot</p>
+<p>3.为了防止操作人员误删文件，HDFS文件系统提供了回收站的功能，但过多的垃圾文件会占用大量的存储空间。要求在先电大数据平台的WEB界面将HDFS文件系统回收站中的文件彻底删除的时间间隔为7天，以文本形式提交修改的文件名称、参数信息和参数值到答题框中。
+  # hafs中的fs.trash.interval配置修改为10080</p>
+<p>4.Hadoop集群中的主机在某些情况下会出现宕机或者系统损坏的问题，一旦遇到这些问题，HDFS文件系统中的数据文件难免会产生损坏或者丢失，为了保证HDFS文件系统的可靠性，现需要在先电大数据平台的WEB界面将集群的冗余复制因子修改为5，以文本形式提交修改的参数信息和参数值到答题框中。
+  # hdfs中的Block replication配置选项修改为5</p>
+<p>5.使用命令查看hdfs文件系统中/tmp目录下的目录个数，文件个数和文件总大小，将操作命令和返回结果以文本形式提交到答题框。
+  [hdfs@master 2.4.3.0-227]$ hadoop fs -count -h /tmp     -h(人性化地显示大小)
+             8            1              1.7 K /tmp</p>
+<p>```</p>
+<h4 id="mapreduce">MapReduce</h4>
+<ul>
+<li>```BASH
+  1.在集群节点中/usr/hdp/2.4.3.0-227/hadoop-mapreduce/目录下，存在一个案例JAR包hadoop-mapreduce-examples.jar。运行JAR包中的PI程序来进行计算圆周率π的近似值，要求运行5次Map任务，每个Map任务的投掷次数为5，运行完成后以文本形式提交以上操作命令和输出结果到答题框中。
+  [root@master ~]# hadoop jar /usr/hdp/2.4.3.0-227/hadoop-mapreduce/hadoop-mapreduce-examples-2.7.1.2.4.3.0-227.jar pi 5 5</li>
+</ul>
+<p>2.运行JAR包中的wordcount程序来对/1daoyun/file/BigDataSkills.txt文件进行单词计数，将运算结果输出到/1daoyun/output目录中，使用相关命令查询单词计数结果，以文本形式提交以上操作命令和输出结果到答题框中。
+  [hdfs@master   hadoop-mapreduce]$ cd /usr/hdp/2.4.3.0-227/hadoop-mapreduce/ </p>
+<p>[hdfs@master   hadoop-mapreduce]$ hadoop jar hadoop-mapreduce-examples.jar wordcount /1daoyun/file/BigDataSkills.txt /1daoyun/output</p>
+<p>[hdfs@master root]$ hadoop fs -ls /1daoyun/output
+  Found 2 items
+  -rw-r--r--   3 hdfs hdfs          0 2019-03-28 12:54 /1daoyun/output/_SUCCESS
+  -rw-r--r--   3 hdfs hdfs        147 2019-03-28 12:54 /1daoyun/output/part-r-00000</p>
+<p>[hdfs@master root]$ hadoop fs -cat /1daoyun/output/part-r-00000</p>
+<p>3.当Hadoop集群启动的时候，会首先进入到安全模式的状态，该模式默认30秒后退出。当系统处于安全模式时，只能对HDFS文件系统进行读取，无法进行写入修改删除等的操作。现假设需要对Hadoop集群进行维护，需要使集群进入安全模式的状态，并检查其状态。
+  [root@master hadoop-mapreduce]# su hdfs
+  [hdfs@master hadoop-mapreduce]$ /bin/hdfs dfsadmin -safemode enter
+  Safe mode is ON
+  [hdfs@master hadoop-mapreduce]$ /bin/hdfs dfsadmin -safemode leave
+  Safe mode is OFF</p>
+<p>4.在集群节点中/usr/hdp/2.4.3.0-227/hadoop-mapreduce/目录下，存在一个案例JAR包hadoop-mapreduce-examples.jar。运行JAR包中的sudoku程序来计算下表中数独运算题的结果。运行完成后以文本形式提交以上操作命令和输出结果到答题框中。
+  [hdfs@master hadoop-mapreduce]$ hadoop jar hadoop-mapreduce-examples.jar sudoku <input文件>      # 暂无input文件，无法运行</p>
+<p>5.在集群节点中/usr/hdp/2.4.3.0-227/hadoop-mapreduce/目录下，存在一个案例JAR包hadoop-mapreduce-examples.jar。运行JAR包中的grep程序来统计文件系统中BigDataSkills.txt文件中“Hadoop”出现的次数，统计完成后，查询统计结果信息。
+  [hdfs@master hadoop-mapreduce]$ hadoop jar hadoop-mapreduce-examples.jar grep /1daoyun/test.txt /1daoyun/grep_output if    # 格式：hadoop jar jar包 grep(包程序) input_file output_path word</p>
+<p>```</p>
+<h4 id="hbase">Hbase</h4>
+<ul>
+<li>```BASH
+  1.启动先电大数据平台的Hbase数据库，其中要求使用master节点中的RegionServer。在LinuxShell中启动Hbaseshell，查看HBase的版本信息。（数据库命令语言全部使用小写格式）
+  hbase(main):001:0&gt; version
+  1.1.2.2.4.3.0-227, rUnknown, Fri Sep  9 23:34:30 UTC 2016</li>
+</ul>
+<p>2.在HBase数据库中创建表xiandian_user，列族为info，创建完成后查看xiandian_user表的描述信息。然后开启HBase的安全认证功能，在HBase Shell中设置root用户拥有表xiandian_user的读写与执行的权限，设置完成后，使用相关命令查看其权限信息。将上述所有操作命令（相关数据库命令语言请全部使用小写格式）和返回结果以文本形式提交到答题框。
+  [root@master ~]# hbase shell
+  hbase(main):001:0&gt; create 'xiandian_user','info'
+  hbase(main):003:0&gt; describe 'xiandian_user'
+  hbase(main):001:0&gt; grant 'root','RWX','xiandian_user'
+  hbase(main):002:0&gt; user_permission 'xiandian_user'</p>
+<p>```</p>
+<h4 id="hive">Hive</h4>
+<ul>
+<li>```BASH
+  1.启动先电大数据平台的Hive数据仓库，启动Hvie 客户端，通过Hive查看hadoop所有文件路径。
+  [root@master ~]# hive
+  hive&gt; dfs -ls /;</li>
+</ul>
+<p>2.使用Hive工具来统计phy_course_xd.txt文件中某高校报名选修各个体育科目的总人数，其中phy_course_xd.txt数据结构如表4-2-1所示，选修科目字段为opt_cour，将统计的结果导入到表phy_opt_count中，通过SELECT语句查询表phy_opt_count内容，将统计语句以及查询命令和输出结果以文本形式提交到答题框。
+                            表4-2-1
+  stname(string)    stID(int)   class(string)   opt_cour(string)
+  # hive&gt; create phy_opt_count (stname string,stID int,class string,opt_cour string) row format delimited fields terminated by '\t';     # 似乎可以不要lines terminated by '\n'</p>
+<p># hive&gt; load data local inpath '/root/phy_course_xd.txt' into table phy_opt_count;</p>
+<p># hive&gt; select * from phy_opt_count;</p>
+<p>3.在Hive数据仓库将系统日志weblog_entries.txt中分开的request_date和request_time字段进行合并，并以一个下划线“_”进行分割，如下图所示，其中weblog_entries.txt的数据结构如下所示。
+  md5(STRING)   url(STRING) request_date (STRING)   request_time (STRING)   ip(STRING)</p>
+<p># hive&gt; DROP TABLE IF EXISTS weblog_entries;
+  # hive&gt; CREATE EXTERNAL TABLE weblog_entries (
+      &gt; md5 STRING,
+      &gt; url STRING,
+      &gt; request_date STRING,
+      &gt; request_time STRING,
+      &gt; ip STRING
+      &gt; )
+      &gt; ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+      &gt; LINES TERMINATED BY '\n'
+      &gt; LOCATION '/data/hive/weblog/';
+  # hive&gt; load data local inpath '/root/tmp/weblog_entries.txt' into table weblog_entries;
+  # hive &gt; SELECT concat_ws('_', request_date, request_time) &gt; FROM weblog_entries;</p>
+<p>4.使用Hive工具来统计phy_course_xd.txt文件中某高校报名选修各个体育科目的总人数，其中phy_course_xd.txt数据结构如表4-2-1所示，选修科目字段为opt_cour，将统计的结果导入到表phy_opt_count中，通过SELECT语句查询表phy_opt_count内容，将统计语句以及查询命令和输出结果以文本形式提交到答题框。
+    表4-2-1 数据结构
+    stname(string)  stID(int)   class(string)   opt_cour(string)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5.在Hive数据仓库将系统日志weblog_entries.txt中分开的request_date和request_time字段进行合并，并以一个下划线“_”进行分割，如下图所示，其中weblog_entries.txt的数据结构如下表所示。将以上操作命令和输出结果以文本形式提交到答题框。
+</code></pre></div></td></tr></table></div>
+<p>md5(STRING)   url(STRING) request_date (STRING)   request_time (STRING)   ip(STRING)
+  # hive&gt; DROP TABLE IF EXISTS weblog_entries;
+  # hive&gt; CREATE EXTERNAL TABLE weblog_entries (
+        &gt; md5 STRING,
+        &gt; url STRING,
+        &gt; request_date STRING,
+        &gt; request_time STRING,
+        &gt; ip STRING
+        &gt; )
+        &gt; ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+        &gt; LINES TERMINATED BY '\n'
+        &gt; LOCATION '/data/hive/weblog/';
+    # hive&gt; load data local inpath '/root/tmp/weblog_entries.txt' into table weblog_entries;
+    # hive &gt; SELECT concat_ws('_', request_date, request_time) &gt; FROM weblog_entries;</p>
+<p>```</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E5%9B%9E%E5%BD%92%E5%92%8C%E8%81%9A%E7%B1%BB/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 03 回归和聚类">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                03 回归和聚类
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Q%26A/" class="md-footer__link md-footer__link--next" aria-label="下一页: Q&amp;A">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Q&A
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2795 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../C%2B%2B/first/">
+      
+      
+        <link rel="next" href="../01-Hadoop-3.3.0-Centos7-64bit_%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>数据库范式建模 - Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="/" title="Docs" class="md-header__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数据库范式建模
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Docs" class="md-nav__button md-logo" aria-label="Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C%2B%2B/first/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Hadoop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    数据库范式建模
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Hadoop-3.3.0-Centos7-64bit_%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Hadoop 3.3.0 Centos7 64bit 编译安装详解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Hive3%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Hive3安装
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spark Local环境部署
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hive-SQL%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hive SQL 语法大全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LINUX/commend/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LINUX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../awesome-reverse-main/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Awesome reverse main
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../other/adb/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../python/Linux-%E6%A1%86%E6%9E%B6%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E4%BA%91%E8%AE%A1%E7%AE%97/1.%E4%BA%91%E8%AE%A1%E7%AE%97%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    云计算
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E5%8D%97%E5%B7%A5/java/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    南工
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../%E8%99%9A%E6%8B%9F%E5%8C%96/01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    虚拟化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">数据库范式建模</h1>
+<ul>
+<li>星形模型</li>
+</ul>
+<p><img src="img/image-20230720175527596.png" alt="image-20230720175527596" style="zoom:50%;" /></p>
+<ul>
+<li>雪花模型</li>
+</ul>
+<p><img alt="image-20230720175737353" src="../img/image-20230720175737353.png" /></p>
+<h1 id="_2">数仓分层设计</h1>
+<p><img src="img/image-20230720174710934.png" alt="image-20230720174710934" style="zoom:70%;" /></p>
+<p><img src="img/image-20230720175826633.png" alt="image-20230720175826633" style="zoom:50%;" /></p>
+<h1 id="hadoop">Hadoop三大组件：</h1>
+<ol>
+<li>
+<p>HDFS</p>
+</li>
+<li>
+<p>主从架构：<img src="img/image-20230721160712362.png" alt="image-20230721160712362" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>分布式文件存储系统，可以通过网络访问文件，设置文件备份数量，缺点：占用存储较大</p>
+</li>
+<li>
+<p>MapReduce</p>
+</li>
+<li>
+<p>是Hadoop中的分布式计算组件</p>
+</li>
+<li>
+<p>分为Map和Reduce接口，Map：主要提供数据的并行计算，Reduce：主要提供数据的聚合，汇总得到结果。</p>
+</li>
+<li>
+<p>运行机制：将执行的任务分为多个 Map 任务和 Reduce 任务，然后将他们分配到对应的机器上去执行。</p>
+</li>
+<li>
+<p>MapReduce基于yarn运行</p>
+</li>
+<li>
+<p>Yarn</p>
+</li>
+<li>
+<p>主从架构：<img src="img/image-20230721160746310.png" alt="image-20230721160746310" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>作用：集群的资源调度</p>
+</li>
+<li>通过创建容器来占用资源，让应用运行在容器内</li>
+<li>辅助角色：<ul>
+<li>代理服务器（ProxyServer）：应用程序代理，Yarn在公网运行时，可能会被网络工具，开启后可以提高安全性</li>
+<li>历史服务器（JobHistoryServer）：记录Yarn运行过的应用程序历史信息记录</li>
+</ul>
+</li>
+</ol>
+<h1 id="1-hadoop">1. Hadoop命令记录</h1>
+<h2 id="11-hadoop">1.1 Hadoop系统基础命令</h2>
+<ul>
+<li>启动系统全部的软件</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># start-all.sh </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>Starting<span class="w"> </span>namenodes<span class="w"> </span>on<span class="w"> </span><span class="o">[</span>node1<span class="o">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>上一次登录：三<span class="w"> </span>6月<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">10</span>:14:32<span class="w"> </span>CST<span class="w"> </span>2023从<span class="w"> </span><span class="m">10</span>.10.10.1pts/0<span class="w"> </span>上
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>Starting<span class="w"> </span>datanodes
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>上一次登录：三<span class="w"> </span>6月<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">10</span>:14:50<span class="w"> </span>CST<span class="w"> </span>2023pts/0<span class="w"> </span>上
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>Starting<span class="w"> </span>secondary<span class="w"> </span>namenodes<span class="w"> </span><span class="o">[</span>node2<span class="o">]</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>上一次登录：三<span class="w"> </span>6月<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">10</span>:14:53<span class="w"> </span>CST<span class="w"> </span>2023pts/0<span class="w"> </span>上
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>Starting<span class="w"> </span>resourcemanager
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>上一次登录：三<span class="w"> </span>6月<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">10</span>:14:56<span class="w"> </span>CST<span class="w"> </span>2023pts/0<span class="w"> </span>上
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>Starting<span class="w"> </span>nodemanagers
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>上一次登录：三<span class="w"> </span>6月<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">10</span>:14:59<span class="w"> </span>CST<span class="w"> </span>2023pts/0<span class="w"> </span>上
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>hdfs</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># 显示hdfs文件系统的根目录</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -ls /</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>Found<span class="w"> </span><span class="m">3</span><span class="w"> </span>items
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>drwxr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>supergroup<span class="w">          </span><span class="m">0</span><span class="w"> </span><span class="m">2023</span>-06-08<span class="w"> </span><span class="m">22</span>:55<span class="w"> </span>/Temp
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>drwx------<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>supergroup<span class="w">          </span><span class="m">0</span><span class="w"> </span><span class="m">2023</span>-06-08<span class="w"> </span><span class="m">23</span>:00<span class="w"> </span>/tmp
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>drwxr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>supergroup<span class="w">          </span><span class="m">0</span><span class="w"> </span><span class="m">2023</span>-06-08<span class="w"> </span><span class="m">23</span>:00<span class="w"> </span>/user
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1"># 创建文件</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -mkdir -p /T/t.sh</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -ls /T</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>items
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>drwxr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>supergroup<span class="w">          </span><span class="m">0</span><span class="w"> </span><span class="m">2023</span>-06-14<span class="w"> </span><span class="m">10</span>:16<span class="w"> </span>/T/t.sh
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="c1"># 显示本地文件系统</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -ls file:///</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>Found<span class="w"> </span><span class="m">20</span><span class="w"> </span>items
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>dr-xr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>root<span class="w">      </span><span class="m">24576</span><span class="w"> </span><span class="m">2023</span>-06-08<span class="w"> </span><span class="m">17</span>:36<span class="w"> </span>file:///bin
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>dr-xr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span><span class="m">2023</span>-06-07<span class="w"> </span><span class="m">23</span>:50<span class="w"> </span>file:///boot
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>drwxr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">3200</span><span class="w"> </span><span class="m">2023</span>-06-14<span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>file:///dev
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a>drwxr-xr-x<span class="w">   </span>-<span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">8192</span><span class="w"> </span><span class="m">2023</span>-06-14<span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>file:///etc
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>....
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="c1"># put上传文件到hdfs</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -put anaconda-ks.cfg /Temp</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -ls /Temp</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>items
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a>-rw-r--r--<span class="w">   </span><span class="m">3</span><span class="w"> </span>root<span class="w"> </span>supergroup<span class="w">       </span><span class="m">1217</span><span class="w"> </span><span class="m">2023</span>-06-14<span class="w"> </span><span class="m">10</span>:30<span class="w"> </span>/Temp/anaconda-ks.cfg
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="c1"># get下载hdfs文件到本地</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -get /Temp .</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># ls</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>anaconda-ks.cfg<span class="w">  </span>Temp
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="c1"># 副本和block</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="c1"># 上传文件时修改副本数</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop dfs -D dfs.replication=2 -put test.txt /temp</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="c1"># 修改已存在的副本数</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hadoop fs -setrep 2 /temp/test.txt</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="c1"># 检查文件状态</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="o">[</span>root@node1<span class="w"> </span>~<span class="o">]</span><span class="c1"># hdfs fsck path [-files [-blocks [-location]]]</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>MapReduce</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">[</span>root@node1<span class="w"> </span>mapreduce<span class="o">]</span><span class="c1"># hadoop jar hadoop-mapreduce-examples-3.3.0.jar pi 10 10</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>Hive</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># metastore 前台启动  关闭ctrl+c</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>metastore
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1"># metastore 前台启动开启debug日志</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>metastore<span class="w"> </span>--hiveconf<span class="w"> </span>hive.root.logger<span class="o">=</span>DEBUG,console<span class="w">  </span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># metastore 后台启动 进程挂起  关闭使用jps+ kill -9</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>metastore<span class="w"> </span>&gt;metastore.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1"># hiveserver2</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>hiveserver2<span class="w"> </span>&gt;hiveserver2.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1">#注意 启动hiveserver2需要一定的时间  不要启动之后立即beeline连接 可能连接不上</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>beeline：SQL客户端</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># 进入beeline</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>/export/server/apache-hive-3.1.2-bin/bin/beeline
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1"># 链接node1的hive</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>beeline&gt;<span class="w"> </span>!<span class="w"> </span>connect<span class="w"> </span>jdbc:hive2://node1:10000
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>beeline&gt;<span class="w"> </span>root
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>beeline&gt;<span class="w"> </span>直接回车
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>load：加载文件</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># 从本地加载(复制)  [OVERWRITE]:可选，覆盖表的内容</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>load<span class="w"> </span>data<span class="w"> </span><span class="nb">local</span><span class="w"> </span>inpath<span class="w"> </span><span class="s1">&#39;/root/Hive-data/students.txt&#39;</span><span class="w"> </span><span class="o">[</span>OVERWRITE<span class="o">]</span><span class="w"> </span>into<span class="w"> </span>table<span class="w"> </span>database_name.table_name<span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># 从hdfs文件系统加载（移动）</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>load<span class="w"> </span>data<span class="w"> </span>inpath<span class="w"> </span><span class="s1">&#39;/tmp/students.txt&#39;</span><span class="w"> </span><span class="o">[</span>OVERWRITE<span class="o">]</span><span class="w"> </span>into<span class="w"> </span>table<span class="w"> </span>database_name.table_name<span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="2-hive">2. Hive数据库</h1>
+<blockquote>
+<p>基于MapReduce，将SQL转换为MapReduce来运行</p>
+</blockquote>
+<h2 id="21hive">2.1启动Hive</h2>
+<ol>
+<li>启动metastore服务</li>
+</ol>
+<p>元数据服务，存储表的基本信息，有哪些表，分隔符，数据类型等等</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">#后台启动 进程挂起  关闭使用jps+ kill -9</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>metastore<span class="w"> </span>&gt;<span class="w"> </span>/export/server/hive.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>启动hiveserver2服务</li>
+</ol>
+<p>Hive的ThriftServer服务，提供接口给别的客户端连接使用hive</p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">#注意 启动hiveserver2需要一定的时间  不要启动之后立即beeline连接 可能连接不上</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>hiveserver2<span class="w"> </span>&gt;<span class="w"> </span>/export/server/hiveserver2.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>beeline客户端连接</li>
+</ol>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># 打开beeline</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>/export/server/apache-hive-3.1.2-bin/bin/beeline
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="c1"># 访问node1</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>beeline&gt;<span class="w"> </span>!<span class="w"> </span>connect<span class="w"> </span>jdbc:hive2://node1:10000
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>beeline&gt;<span class="w"> </span>root
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>beeline&gt;<span class="w"> </span>直接回车
+</span></code></pre></div></td></tr></table></div>
+<h2 id="22">2.2 内部表和外部表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">创建</th>
+<th style="text-align: left;">存储位置</th>
+<th style="text-align: left;">删除数据</th>
+<th style="text-align: left;">理念</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">内部表</td>
+<td style="text-align: left;">CREATE TABLE ....</td>
+<td style="text-align: left;">Hive管理，默认位置：/user/hive/warehouse</td>
+<td style="text-align: left;">删除<code>元数据</code>和<code>数据</code></td>
+<td style="text-align: left;">Hive管理的表，持久使用</td>
+</tr>
+<tr>
+<td style="text-align: left;">外部表</td>
+<td style="text-align: left;">CREATE EXTERNAL TABLE .... LOCALTION ...</td>
+<td style="text-align: left;">随意，由<code>LOCALTION</code>关键字指定</td>
+<td style="text-align: left;">仅删除<code>元数据</code></td>
+<td style="text-align: left;">临时表，外部数据使用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="23">2.3 基本函数</h2>
+<ul>
+<li>```hive
+  -----------------Hive 常用的内置函数----------------------</li>
+</ul>
+<p>-- 显示有哪些函数
+  show functions;
+  # 查看函数的介绍
+  describe function extended count;</p>
+<p>------------String Functions 字符串函数------------
+  select length("temp");
+  select reverse("itcast");</p>
+<p>select concat("angela", "baby");
+  --带分隔符字符串连接函数：concat_ws(separator, [string | array(string)]+)
+  select concat_ws('.', 'www', array('itcast', 'cn'));
+  -- 统计长度
+  select length(column_name) from table;
+  -- 小写
+  select lower(column_name) from table;
+  select upper(column_name) from table;  -- 大写
+  -- 去除收尾的空格
+  select trim('   aaa  ') from table;</p>
+<p>--字符串截取函数：substr(str, pos[, len]) 或者  substring(str, pos[, len])
+  select substr("angelababy", -2); --pos是从1开始的索引，如果为负数则倒着数
+  select substr("angelababy", 2, 2);
+  --分割字符串函数: split(str, regex)
+  --split针对字符串数据进行切割  返回是数组array  可以通过数组的下标取内部的元素 注意下标从0开始的
+  select split('apache hive', ' ');
+  select split('apache hive', ' ')[0];
+  select split('apache hive', ' ')[1];</p>
+<p>-- 加密
+  select mask_hash('hadoop');  -- hash加密,返回16进制
+  select hash('aaa');  -- hash加密，返回数字
+  select md5(‘aaa);  -- md5加密
+  -- 查看当前用户
+  select current_user();
+  -- 当前use的数据库
+  select current_database();
+  select version();  -- 版本</p>
+<p>----------- Date Functions 日期函数 -----------------
+  --获取当前日期: current_date
+  select current_date();
+  --获取当前UNIX时间戳函数: unix_timestamp
+  select unix_timestamp();
+  --日期转UNIX时间戳函数: unix_timestamp
+  select unix_timestamp("2011-12-07 13:01:03");
+  --指定格式日期转UNIX时间戳函数: unix_timestamp
+  select unix_timestamp('20111207 13:01:03', 'yyyyMMdd HH:mm:ss');
+  --UNIX时间戳转日期函数: from_unixtime
+  select from_unixtime(1618238391);
+  select from_unixtime(0, 'yyyy-MM-dd HH:mm:ss');</p>
+<p>--日期比较函数: datediff  日期格式要求'yyyy-MM-dd HH:mm:ss' or 'yyyy-MM-dd'
+  select datediff('2012-12-08', '2012-05-09');
+  --日期增加函数: date_add
+  select date_add('2012-02-28', 10);
+  --日期减少函数: date_sub
+  select date_sub('2012-01-1', 10);
+  -- 获取当前时间戳
+  select current_timestamp();
+  -- 当前日期
+  select current_date();
+  -- 时间戳转日期
+  select to_date(current_timestamp());
+  -- 年月日季度
+  select year('2020-01-11');
+  select month('2020-01-11');
+  select day('2020-01-11');
+  select quarter('2020-01-11');  -- 季度
+  select dayofmonth('2020-01-11');
+  select hour('2020-01-11');
+  select minute('2020-01-11');
+  select second('2020-01-11');
+  select weekofyear('2020-01-11');</p>
+<p>----Mathematical Functions 数学函数-------------
+  --取整函数: round  返回double类型的整数值部分 （遵循四舍五入）
+  select round(3.1415926);
+  --指定精度取整函数: round(double a, int d) 返回指定精度d的double类型
+  select round(3.1415926, 4);
+  --取随机数函数: rand 每次执行都不一样 返回一个0到1范围内的随机数
+  select rand();
+  --指定种子取随机数函数: rand(int seed) 得到一个稳定的随机数序列
+  select rand(3);</p>
+<p>select abs(-1); -- 绝对值
+  select pi(); -- 圆周率
+  -- array 排序
+  select *,sort_array(column_name) from test_array;
+  -- 类型转换
+  select binary('hadoop'); -- 转换为二进制
+  select cast('1' as bigint)  -- 自由转换，1转换为bigint，如果类型转换失败，则返回null</p>
+<p>-----Conditional Functions 条件函数------------------
+  --使用之前课程创建好的student表数据
+  select *
+  from student
+  limit 3;</p>
+<p>--if条件判断: if(boolean testCondition, T valueTrue, T valueFalseOrNull)
+  select if(1 = 2, 100, 200); -- 三元表达式
+  select if(sex = '男', 'M', 'W')
+  from student
+  limit 3;</p>
+<p>-- 空值判断, 返回true，false
+  select isnull(column_name) from table;
+  select isnotnull(column_name) from table;
+  --空值转换函数: nvl(T value, T default_value)
+  select nvl("allen", "itcast");
+  select nvl(null, "itcast");</p>
+<p>--条件转换函数: CASE a WHEN b THEN c [WHEN d THEN e]* [ELSE f] END
+  select name, case age when 10 then 'child' when 100 then 'old' else 'people' end from table;
+  select name, case sex when sex='男' then 'male' else 'femalshoe' end from table;
+  -- 判断 name是否等于NULL，如果相等则返回null，也就是替换为null
+  select name, nullif(name, NULL) from table;
+  -- 类似 python的 assert
+  select assert_true(0 &lt; 1);</p>
+<p>```</p>
+<ul>
+<li>自定义函数</li>
+</ul>
+<p><img alt="BO5M3O" src="img\BO5M3O.png" /></p>
+<h2 id="24-sql">2.4 SQL</h2>
+<h3 id="241">2.4.1 数据类型</h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>-- hive数据类型-array、map、struct
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>create table big_data.test_array(name string, works_loc array&lt;sting&gt;)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>row format delimited fields terminated by &#39;\t&#39;  -- 表字段使用\t分割
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>collection items terminated by &#39;,&#39;;  -- array类型的数据使用 , 分割
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>-- 查询单个array内的数据
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>select name,works_loc[0] from big_data.test_array;
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>-- 查询array中包含的数据
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>select * from big_data.test_array where ARRAY_CONTAINS(word_loc, &#39;value&#39;);
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>-- 查询array中的个数
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>select name,SIZE(word_loc) from big_data.test_array;
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>-- map
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>create table big_data.test_map(id int,name string, members map&lt;string,string&gt;, age int)
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>row format delimited fields termainated by &#39;,&#39;
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>COLLECTION ITEMS TERMINATED BY &#39;#&#39;  -- 分开每条数据
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>MAP KEYS TERMINATED BY &#39;:&#39;;  --  k:v
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>-- 查询指定key
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>select id,name,members[&#39;key&#39;] from big_data.test_map;
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>-- 查询所有的key,返回的类型是array
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>select map_keys(members) from  big_data.test_map;
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>select map_values(members) from  big_data.test_map;
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>-- 查看键值对的个数
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a>select name, SIZE(members) from  big_data.test_map;
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a>-- 查询包含map-keys或者values的数据
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>select * from  big_data.test_map where ARRAY_CONTAINS(MAP_KEYS(members), &#39;key-value&#39;);
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>-- struct,符合数据类型，一个列中允许包含另一个子列
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>create table  big_data.test_struct(
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>    id int,
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a>    info struct&lt;name:string, age:int&gt;
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a>) row format delimited fields termainated by &#39;#&#39;
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a>COLLECTION ITEMS TERMINATED BY &#39;:&#39;  -- struct中的二级分隔符
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a>select id,info.name form big_data.test_struct;
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_3">总结</h3>
+<p><img alt="image-20230724185259064" src="../img/image-20230724185259064.png" /></p>
+<h3 id="242">2.4.2 基本操作</h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span>
+<span class="normal"><a href="#__codelineno-10-31">31</a></span>
+<span class="normal"><a href="#__codelineno-10-32">32</a></span>
+<span class="normal"><a href="#__codelineno-10-33">33</a></span>
+<span class="normal"><a href="#__codelineno-10-34">34</a></span>
+<span class="normal"><a href="#__codelineno-10-35">35</a></span>
+<span class="normal"><a href="#__codelineno-10-36">36</a></span>
+<span class="normal"><a href="#__codelineno-10-37">37</a></span>
+<span class="normal"><a href="#__codelineno-10-38">38</a></span>
+<span class="normal"><a href="#__codelineno-10-39">39</a></span>
+<span class="normal"><a href="#__codelineno-10-40">40</a></span>
+<span class="normal"><a href="#__codelineno-10-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>--查询当前数据库
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>select current_database();
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>-- 查看表类型
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>DESC formatted table_name;
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>-- 类外部表类型转换
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>alter table table_name set tblproperties(&#39;EXTENAL&#39;=&#39;TRUE&#39;);
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>-- 修改表注释
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a>alter table table_name set tblproperties(&#39;commemt&#39;=&#39;table comment&#39;);
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a>-- 修改表名
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a>alter table old_name rename to new_name;
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a>-- 添加分区,不会有数据，但是会创建相关文件夹
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a>alter table table_name add partition(year=&#39;2019&#39;, month=&#39;10&#39;, day=&#39;01&#39;)
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a>-- 修改分区值-- 修改元数据记录，文件夹不会改变
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a>alter table table_name partition(year=&#39;2019&#39;, month=&#39;10&#39;, day=&#39;01&#39;) rename to partition(year=&#39;2011&#39;, month=&#39;11&#39;. day=&#39;11&#39;)
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19"></a>-- 删除分区，只是删除元数据
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20"></a>alter table table_name drop partition(year=&#39;2019&#39;, month=&#39;10&#39;, day=&#39;01&#39;)
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22"></a>-- 添加列
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23"></a>alter table table_name add columns(v1 int, v2 string);
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24"></a>-- 修改列,只能修改名字，不能修改类型
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25"></a>alter table table_name change v1 v1_new_name int);
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26"></a>-- 删除表
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27"></a>drop table table_name;
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28"></a>-- 清空表数据,外部表无法清空
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29"></a>truncate table table_name;
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30"></a>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31"></a>-- 正则匹配  (反斜杠需要两个一起写)
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32"></a>select * from table_name where column_name RLIKE &#39;正则表达式&#39;;
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33"></a>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34"></a>-- 联合查询, UNION默认会对数据去重
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35"></a>select * from table_name where name =&#39;aa&#39;
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36"></a>UNION
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37"></a>select * from table_name2 where name=&#39;bb&#39;;
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38"></a>-- UNION ALL 不去重
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39"></a>select * from table_name where name =&#39;aa&#39;;
+</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40"></a>UNION ALL
+</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41"></a>select * from table_name2 where name=&#39;bb&#39;;
+</span></code></pre></div></td></tr></table></div>
+<h3 id="244">2.4.4 语法例子</h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-11-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-11-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-11-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-11-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-11-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-11-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-11-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-11-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-11-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-11-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-11-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-11-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-11-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-11-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-11-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-11-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-11-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-11-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-11-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-11-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-11-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-11-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-11-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-11-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-11-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-11-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-11-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-11-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-11-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-11-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-11-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-11-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-11-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-11-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-11-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-11-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-11-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-11-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-11-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-11-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-11-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-11-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-11-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-11-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-11-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-11-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-11-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-11-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-11-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-11-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-11-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-11-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-11-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-11-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-11-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-11-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-11-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-11-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-11-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-11-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-11-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-11-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-11-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-11-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-11-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-11-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-11-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-11-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-11-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-11-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-11-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-11-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-11-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-11-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-11-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-11-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-11-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-11-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-11-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-11-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-11-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-11-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-11-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-11-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-11-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-11-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-11-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-11-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-11-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-11-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-11-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-11-100">100</a></span>
+<span class="normal"><a href="#__codelineno-11-101">101</a></span>
+<span class="normal"><a href="#__codelineno-11-102">102</a></span>
+<span class="normal"><a href="#__codelineno-11-103">103</a></span>
+<span class="normal"><a href="#__codelineno-11-104">104</a></span>
+<span class="normal"><a href="#__codelineno-11-105">105</a></span>
+<span class="normal"><a href="#__codelineno-11-106">106</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>--step1:建表，内部表
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>create table student_local
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>(
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    num  int,
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>    name string,
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>    sex  string,
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    age  int,
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>    dept string
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a>) row format delimited fields terminated by &#39;,&#39;;  -- 设置文件分隔符，默认分隔符是 \001
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a>-- 建表：外部表
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a>create EXTERNAL table student_local
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a>(
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a>    num  int,
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a>    name string,
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a>    sex  string,
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a>    age  int,
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a>    dept string
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a>) row format delimited fields terminated by &#39;,&#39;
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a>location &#39;/tmp/test1&#39;; -- 设置外部表存储的位置
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a>--step2:本地加载数据
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a>-- 语法：LOAD DATA [LOCAL] INPATH &#39;filepath&#39; [OVERWRITE] INTO TABLE table_name;
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a>LOAD DATA LOCAL INPATH &#39;/root/hivedata/students.txt&#39; INTO TABLE student_local;
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a>-- 从hdfs加载数据
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a>LOAD DATA INPATH &#39;/students.txt&#39; INTO TABLE student_HDFS;
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27"></a>--数据导出到文件
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28"></a>--语法：insert overwrite [local] directory &#39;path&#39; select * from stu;
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29"></a>insert overwrite local directory &#39;~/temp/export2/export2.txt&#39; select * from stu;
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30"></a>-- 将查询的结果导出到HDFS上，并指定分隔符
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31"></a>insert overwrite directory &#39;/tmp/export&#39; row format delimited fields terminated by &#39;\t&#39; select * from stu;
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32"></a>-- 使用 hive 可执行文件导出，shell
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33"></a>bin/hive -e &quot;SELECT * FROM stu&quot; &gt; ~/temp/export3/export3.txt
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34"></a>bin/hive -f xxx.sql &gt; ~/temp/export4/export4.txt
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35"></a>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36"></a>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37"></a>--使用insert+select插入数据到新表中
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38"></a>insert into table student_from_insert
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39"></a>select sno, sname
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40"></a>from student_from_insert;
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41"></a>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42"></a>-- where
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43"></a>--注意：where条件中不能使用聚合函数  可以使用Having实现
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44"></a>--而where子句还处于“确定”结果集的过程中，因而不能使用聚合函数。
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45"></a>select *
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46"></a>from t_usa_covid19
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47"></a>where 1 &gt; 2; -- 1 &gt; 2 返回false
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48"></a>
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49"></a>--找出来自于California州的疫情数据
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50"></a>select *
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51"></a>from t_usa_covid19
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52"></a>where state = &#39;California&#39;;
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53"></a>--where条件中使用函数 找出州名字母长度超过10位的有哪些
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54"></a>select *
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55"></a>from t_usa_covid19
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56"></a>where length(state) &gt; 10;
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57"></a>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58"></a>--可以使用Having实现
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59"></a>select state, sum(deaths)
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60"></a>from t_usa_covid19
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61"></a>group by state
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62"></a>having sum(deaths) &gt; 100;
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63"></a>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64"></a>-- 去重 distinct
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65"></a>select count( distinct county) as county_cnts
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66"></a>from t_usa_covid19;
+</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67"></a>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68"></a>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69"></a>-- 分组
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70"></a>--先where分组前过滤，再进行group by分组， 分组后每个分组结果集确定 再使用having过滤
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71"></a>select state, sum(deaths)
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72"></a>from t_usa_covid19
+</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73"></a>where count_date = &quot;2021-01-28&quot;
+</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74"></a>group by state
+</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75"></a>having sum(deaths) &gt; 10000;
+</span><span id="__span-11-76"><a id="__codelineno-11-76" name="__codelineno-11-76"></a>--这样写更好 即在group by的时候聚合函数已经作用得出结果 having直接引用结果过滤 不需要再单独计算一次了
+</span><span id="__span-11-77"><a id="__codelineno-11-77" name="__codelineno-11-77"></a>select state, sum(deaths) as cnts
+</span><span id="__span-11-78"><a id="__codelineno-11-78" name="__codelineno-11-78"></a>from t_usa_covid19
+</span><span id="__span-11-79"><a id="__codelineno-11-79" name="__codelineno-11-79"></a>where count_date = &quot;2021-01-28&quot;
+</span><span id="__span-11-80"><a id="__codelineno-11-80" name="__codelineno-11-80"></a>group by state
+</span><span id="__span-11-81"><a id="__codelineno-11-81" name="__codelineno-11-81"></a>having cnts &gt; 10000;
+</span><span id="__span-11-82"><a id="__codelineno-11-82" name="__codelineno-11-82"></a>
+</span><span id="__span-11-83"><a id="__codelineno-11-83" name="__codelineno-11-83"></a>-- 排序  limit
+</span><span id="__span-11-84"><a id="__codelineno-11-84" name="__codelineno-11-84"></a>--不写排序规则 默认就是asc升序
+</span><span id="__span-11-85"><a id="__codelineno-11-85" name="__codelineno-11-85"></a>select *
+</span><span id="__span-11-86"><a id="__codelineno-11-86" name="__codelineno-11-86"></a>from t_usa_covid19
+</span><span id="__span-11-87"><a id="__codelineno-11-87" name="__codelineno-11-87"></a>order by cases asc limit 2,10;
+</span><span id="__span-11-88"><a id="__codelineno-11-88" name="__codelineno-11-88"></a>
+</span><span id="__span-11-89"><a id="__codelineno-11-89" name="__codelineno-11-89"></a>
+</span><span id="__span-11-90"><a id="__codelineno-11-90" name="__codelineno-11-90"></a>--1、inner join 等价于 join
+</span><span id="__span-11-91"><a id="__codelineno-11-91" name="__codelineno-11-91"></a>select e.id, e.name, e_a.city, e_a.street
+</span><span id="__span-11-92"><a id="__codelineno-11-92" name="__codelineno-11-92"></a>from employee e
+</span><span id="__span-11-93"><a id="__codelineno-11-93" name="__codelineno-11-93"></a>         inner join employee_address e_a
+</span><span id="__span-11-94"><a id="__codelineno-11-94" name="__codelineno-11-94"></a>                    on e.id = e_a.id;
+</span><span id="__span-11-95"><a id="__codelineno-11-95" name="__codelineno-11-95"></a>
+</span><span id="__span-11-96"><a id="__codelineno-11-96" name="__codelineno-11-96"></a>--等价于 隐式连接表示法
+</span><span id="__span-11-97"><a id="__codelineno-11-97" name="__codelineno-11-97"></a>select e.id, e.name, e_a.city, e_a.street
+</span><span id="__span-11-98"><a id="__codelineno-11-98" name="__codelineno-11-98"></a>from employee e,
+</span><span id="__span-11-99"><a id="__codelineno-11-99" name="__codelineno-11-99"></a>     employee_address e_a
+</span><span id="__span-11-100"><a id="__codelineno-11-100" name="__codelineno-11-100"></a>where e.id = e_a.id;
+</span><span id="__span-11-101"><a id="__codelineno-11-101" name="__codelineno-11-101"></a>
+</span><span id="__span-11-102"><a id="__codelineno-11-102" name="__codelineno-11-102"></a>--2、left join  等价于 left outer join
+</span><span id="__span-11-103"><a id="__codelineno-11-103" name="__codelineno-11-103"></a>select e.id, e.name, e_conn.phno, e_conn.email
+</span><span id="__span-11-104"><a id="__codelineno-11-104" name="__codelineno-11-104"></a>from employee e
+</span><span id="__span-11-105"><a id="__codelineno-11-105" name="__codelineno-11-105"></a>         left join employee_connection e_conn
+</span><span id="__span-11-106"><a id="__codelineno-11-106" name="__codelineno-11-106"></a>                   on e.id = e_conn.id;
+</span></code></pre></div></td></tr></table></div>
+<h2 id="25">2.5分区表</h2>
+<blockquote>
+<p>分区表可以提高数据查询的效率</p>
+<p>可以选择字段作为分区</p>
+<p>分区就是存储在HDFS上的不同的子文件夹</p>
+</blockquote>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>-- 单级分区表
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>create table bigdata.score(id string, cid string, score int) partitioned by (month string)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>row format delimited fields terminated by &#39;\t&#39;;
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>load data local inpath &#39;/home/hadoop/score.txt&#39;
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>into table bigdata.score partition(month=&#39;01&#39;);
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>-- 多级分区表
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>create table bigdata.score2(id string, cid string, score int) partitioned by (year string, month string, day string)
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a>row format delimited fields terminated by &#39;\t&#39;;
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>load data local inpath &#39;/home/hadoop/score.txt&#39;
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>into table bigdata.score2 partition(year=&#39;2023&#39;, month=&#39;01&#39;, day=&#39;01&#39;); -- 有几个分区就要指定几个
+</span></code></pre></div></td></tr></table></div>
+<h2 id="26">2.6分桶表</h2>
+<blockquote>
+<p>存储在同一文件夹，不同文件中，按照固定的数量来拆分</p>
+<p>数据的拆分是根据 分桶列的值进行hash取模计算来拆分的，load data只是单纯的移动数据，没有经过计算，所以不能使用load data向分桶的表中加载数据，insert select 会 调用 MapReduce，才能使用计算，来计算数据应该分配到的桶。</p>
+</blockquote>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>-- 开启分桶自动优化
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>set hive.enforce.bucketing=true;
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>-- 创建分桶表
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>create table course(c_id string, c_name string, t_id string) clustered by(c_id)
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>into 3 buckets row format delimited fields terminated by &#39;\t&#39;;
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>-- 加载数据，只能通过 insert select 加载
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a>-- 使用 load data 向临时表加载数据，然后  insert select 加载到正式表
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>load data local inpath &#39;/home/hadoop/course.txt&#39; into table bigdata.course_temp;
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>insert overwrite tagble course select * from bigdata.course_temp cluster by(c_id);
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_4">总结</h2>
+<p>分区的优势：在指定分区列的前提下，减少被操作的数据量，带来性能的提升。</p>
+<p>分桶的优势：基于分桶列的特定操作，如：单值过滤、join、分组都可以带来性能的提升，可以提前通过计算来确定只需要的桶，取只需要的数据。</p>
+<p>分区和分桶可以同时使用，如果同时使用了，那么每个分区都有n个桶。</p>
+<h2 id="_5">函数</h2>
+<h3 id="tablesample">随机分桶抽样 TABLESAMPLE</h3>
+<p><img alt="image-20230726163041610" src="../img/image-20230726163041610.png" /></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>-- 根据 Column 列抽样，使用hash取模，然后去抽样，每次取的数据是固定的
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>select * from employee_connection tablesample(bucket 3 out of 10 on name);
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a>-- 完全随机，每一次的结果不一样
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>select * from employee_connection tablesample(bucket 3 out of 10 on rand());
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_6">分块抽样</h3>
+<p><img alt="image-20230726163123806" src="../img/image-20230726163123806.png" /></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>-- 取前100条数据
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>select * from employee_connection tablesample(100 rows);
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>-- 取前10%的数据
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>select * from employee_connection tablesample(10 percent);
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>-- 取1kb的数据
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>select * from employee_connection tablesample(1k);
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_7">虚拟列</h3>
+<ul>
+<li>INPUT_FILE_NAME：显示数据行所在的具体文件</li>
+<li>BLOCK_OFFSET_INSIDE_FILE：显示数据行所在文件的偏移量</li>
+<li>ROW_OFFSET_INSIDE_BLOCK：显示数据所在的HDFS块的偏移量</li>
+<li>此虚拟列需要设置：<code>SET hive.exec.rowoffset=true</code> 才能使用</li>
+</ul>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>select *,INPUT_FILE_NAME,BLOCK_OFFSET_INSIDE_FILE,ROW_OFFSET_INSIDE_BLOCK from table;
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_8"></h2>
+<h2 id="qa">Q&amp;A</h2>
+<ul>
+<li>查询结果或者注释显示中文乱码</li>
+</ul>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span>
+<span class="normal"><a href="#__codelineno-17-8">8</a></span>
+<span class="normal"><a href="#__codelineno-17-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1">-- 注意 下面sql语句是需要在MySQL中执行  修改Hive存储的元数据信息（metadata）</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="n">use</span><span class="w"> </span><span class="n">hive3</span><span class="p">;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">hive3</span><span class="p">.</span><span class="n">COLUMNS_V2</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span><span class="w"> </span><span class="nb">character</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">hive3</span><span class="p">.</span><span class="n">TABLE_PARAMS</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="n">PARAM_VALUE</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="nb">character</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">hive3</span><span class="p">.</span><span class="n">PARTITION_PARAMS</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="n">PARAM_VALUE</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="nb">character</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">utf8</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">hive3</span><span class="p">.</span><span class="n">PARTITION_KEYS</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="n">PKEY_COMMENT</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="nb">character</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">hive3</span><span class="p">.</span><span class="n">INDEX_PARAMS</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="n">PARAM_VALUE</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="nb">character</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="3-zookeeper">3. zookeeper安装</h1>
+<blockquote>
+<p><strong>注意</strong>：zk的版本和spark和hadoop的版本得对得上才行！！！</p>
+</blockquote>
+<p>然后安装步骤看word文档</p>
+<p>版本对应说明：</p>
+<p><img alt="image-20230629171059970" src="../img/image-20230629171059970.png" /></p>
+<h1 id="4spark">4.Spark</h1>
+<h2 id="41-spark">4.1 Spark基础</h2>
+<blockquote>
+<p>定义：Apache Spark是用于<strong>大规模数据</strong>处理的<strong>统一分析引擎</strong></p>
+</blockquote>
+<h3 id="411spark">4.1.1Spark是什么</h3>
+<ul>
+<li>统一分析引擎？</li>
+<li>Spark是一款分布式内存计算的统一分析引擎。</li>
+<li>其特点就是对任意类型的数据进行自定义计算。</li>
+<li>Spark可以计算：结构化、半结构化、非结构化等各种类型的数据结构，同时也支持使用Python、 Java、 Scala、 R以及SQL语言去开发应用程序计算数据。</li>
+<li>Spark的适用面非常广泛，所以，被称之为 统一的（适用面广）的分析引擎（数据处理）  </li>
+</ul>
+<h3 id="412-spark-vs-hadoopmapreduce">4.1.2 Spark VS Hadoop(MapReduce)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hadoop</th>
+<th>Spark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>基础平台, 包含计算, 存储, 调度</td>
+<td>纯计算工具（分布式）</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>海量数据批处理（磁盘迭代计算）</td>
+<td>海量数据的批处理（内存迭代计算、交互式计算）、海量数 据流计算</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>对机器要求低, 便宜</td>
+<td>对内存有要求, 相对较贵</td>
+</tr>
+<tr>
+<td>编程范式</td>
+<td>Map+Reduce, API 较为底层, 算法适应性差</td>
+<td>RDD组成DAG有向无环图, API 较为顶层, 方便使用</td>
+</tr>
+<tr>
+<td>数据存储结构</td>
+<td>MapReduce中间计算结果在HDFS磁盘上, 延迟大</td>
+<td>RDD中间运算结果在内存中 , 延迟小</td>
+</tr>
+<tr>
+<td>运行方式</td>
+<td>Task以进程方式维护, 任务启动慢</td>
+<td>Task以线程方式维护, 任务启动快，可批量创建提高并行能 力</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在计算层面， Spark相比较MR（MapReduce）有巨大的性能优势，但至今仍有许多计算工具基于MR构架，比如非常成熟的Hive</li>
+<li>Spark仅做计算，而Hadoop生态圈不仅有计算（MR）也有存储（HDFS）和资源管理调度（YARN）， HDFS和YARN仍是许多大数据
+  体系的核心架构  </li>
+</ul>
+<h3 id="413">4.1.3 总结</h3>
+<ul>
+<li>Spark解决什么问题？</li>
+</ul>
+<p>海量数据的计算，可以进行离线批处理以及实时流计算</p>
+<ul>
+<li>Spark有哪些模块？</li>
+</ul>
+<p>核心SparkCore、 SQL计算（SparkSQL）、流计算（SparkStreaming
+  ）、图计算（GraphX）、机器学习（MLlib）</p>
+<ul>
+<li>Spark特点有哪些？</li>
+</ul>
+<p>速度快、使用简单、通用性强、多种模式运行  </p>
+<h3 id="414-spark">4.1.4 Spark的运行模式？</h3>
+<ul>
+<li>本地模式</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>root@node1<span class="w"> </span>spark<span class="o">]</span><span class="c1"># bin/pyspark </span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>集群模式（StandAlone、 YARN、 K8S）</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span>
+<span class="normal"><a href="#__codelineno-19-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="c1"># StandAlone</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="c1"># 1，启动spark集群</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="c1"># 修改后台配置：`conf/spark-env.sh：SPARK_MASTER_WEBUI_PORT=8080`: </span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1"># 后台访问地址   http://node1:8080</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>/export/server/spark/sbin/start-all.sh
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="c1"># 2. 绑定spark到集群</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a>./pyspark<span class="w"> </span>--master<span class="w"> </span>spark://node1:7077
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="c1"># YARN</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>root@node1<span class="w"> </span>spark<span class="o">]</span><span class="c1"># bin/pyspark --master yarn</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13"></a>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="c1"># HA 高可用性，多个备用master</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15"></a><span class="c1"># node1</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16"></a>/export/server/spark/sbin/start-all.sh
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="c1"># node2</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18"></a>/export/server/spark/sbin/start-master.sh
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>云模式</li>
+</ul>
+<h3 id="415-sparkyarn">4.1.5 Spark的运行角色（对比YARN）？</h3>
+<p>• Master：集群资源管理（类同ResourceManager）
+• Worker：单机资源管理（类同NodeManager）
+• Driver：单任务管理者（类同ApplicationMaster）
+• Executor：单任务执行者（类同YARN容器内的Task）  </p>
+<h3 id="416-spark">4.1.6 Spark基础使用</h3>
+<p><img src="img/image-20230627202017032.png" alt="image-20230627202017032" style="zoom: 67%;" /></p>
+<ul>
+<li>
+<p>在执行spark可执行文件时，可以进入后台访问地址：http://node1:4040</p>
+</li>
+<li>
+<p><code>pyspark</code>: python-spark，可以运行python代码调用pyspark的api</p>
+</li>
+<li>
+<p><code>spark-shell</code>: spark终端，默认语言是<code>scala</code></p>
+</li>
+<li>
+<p><code>spark-submit</code>: 执行已经写好的代码到spark运行</p>
+</li>
+<li>
+<p><code>shell
+    # 执行pi.py， 迭代次数为20
+    ./spark-submit /export/server/spark/examples/src/main/python/pi.py 20</code></p>
+</li>
+</ul>
+<h3 id="417-historyserver">4.1.7 HistoryServer:历史服务器</h3>
+<ul>
+<li>
+<p><code>shell
+  # 启动 HistoryServer
+  /export/server/spark/sbin/start-history-server.sh</code></p>
+</li>
+<li>
+<p>http://node1:18080</p>
+</li>
+</ul>
+<p><img alt="image-20230627214658148" src="../img/image-20230627214658148.png" /></p>
+<h3 id="418-spark">4.1.8 Spark程序运行层次结构</h3>
+<ul>
+<li>后台页面有4040,有8080,有18080,它们有何区别吗?</li>
+<li>4040: 是一个运行的Application在运行的过程中临时绑定的端口,用以查看当前任务的状态.4040被占用会顺延到4041.4042等。<strong>4040是一个临时端口,当前程序运行完成后, 4040就会被注销</strong></li>
+<li>8080: 默认是StandAlone下, Master角色(进程)的WEB端口,用以查看当前Master(集群)的状态</li>
+<li>18080: 默认是历史服务器的端口, 由于每个程序运行完成后,4040端口就被注销了. 在以后想回看某个程序的运行状态就可以通过历史
+    服务器查看,历史服务器长期稳定运行,可供随时查看被记录的程序的运行过程.  </li>
+</ul>
+<h3 id="419">4.1.9 总结</h3>
+<h4 id="_9">理论</h4>
+<ul>
+<li>StandAlone的原理?</li>
+</ul>
+<p>Master和Worker角色以独立进程的形式存在,并组成Spark运行时环境(集群)</p>
+<ul>
+<li>
+<p>Spark角色在StandAlone中的分布？
+  Master角色:Master进程, Worker角色:Worker进程, Driver角色和Executor角色:
+  以线程运行在Worker中</p>
+</li>
+<li>
+<p>Standalone如何提交Spark应用？
+  bin/spark-submit --master spark://server:7077  </p>
+</li>
+<li>
+<p>4040\8080\18080分别是什么?
+  4040是单个程序运行的时候绑定的端口可供查看本任务运行情况</p>
+</li>
+</ul>
+<p>8080是spark集群web端口</p>
+<p>18080是历史服务器的web端口</p>
+<ul>
+<li>Job\State\Task的关系?
+  一个Spark程序会被分成多个子任务(Job)运行, 每一个Job会分成多个State(阶段)来
+  运行, 每一个State内会分出来多个Task(线程)来执行具体任务  </li>
+</ul>
+<h4 id="spark-on-yarn">Spark on yarn集群模式和客户端模式区别</h4>
+<p>Client模式和Cluster模式最最本质的区别是： Driver程序运行在哪里。</p>
+<ul>
+<li>Client模式：学习测试时使用，生产不推荐(要用也可以,性能略低,稳定性略低)</li>
+<li>Driver运行在Client上,和集群的通信成本高</li>
+<li>Driver输出结果会在客户端显示</li>
+<li>Cluster模式：生产环境中使用该模式</li>
+<li>Driver程序在YARN集群中，和集群的通信成本低</li>
+<li>Driver输出结果不能在客户端显示</li>
+<li>该模式下Driver运行ApplicattionMaster这个节点上,由Yarn管理，如果出现问题， yarn会重启
+     ApplicattionMaster(Driver)  </li>
+</ul>
+<h4 id="sparkonyarn">SparkOnYarn的本质</h4>
+<p>Master由ResourceManager代替
+Worker由NodeManager代替
+Driver可以运行在容器内(Cluster模式)或客户端进程中(Client模式)
+Executor全部运行在YARN提供的容器内</p>
+<p>Why Spark On YARN?
+    提高资源利用率, 在已有YARN的场景下让Spark收到YARN的调度可以更好的管控
+资源提高利用率并方便管理  </p>
+<h4 id="spark">Spark集群角色分析</h4>
+<p><img alt="image-20230629194617219" src="../img/image-20230629194617219.png" /></p>
+<h4 id="_10">分布式代码特征</h4>
+<ul>
+<li>代码在集群上运行, 是被分布式运行的.</li>
+<li>在Spark中, 非任务处理部分由Driver执行(非RDD代码)</li>
+<li>任务处理部分由Executor执行(RDD代码).</li>
+<li>Executor的数量可以很多,所以任务的计算是分布式在运行的.</li>
+</ul>
+<h4 id="pyspark">PySpark的架构体系</h4>
+<ul>
+<li>Python On Spark Driver端由JVM执行, Executor端由JVM做命令转发, 底层由</li>
+<li>Python解释器进行工作  </li>
+</ul>
+<h2 id="42-pyspark">4.2 PYspark</h2>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span>
+<span class="normal"><a href="#__codelineno-20-16">16</a></span>
+<span class="normal"><a href="#__codelineno-20-17">17</a></span>
+<span class="normal"><a href="#__codelineno-20-18">18</a></span>
+<span class="normal"><a href="#__codelineno-20-19">19</a></span>
+<span class="normal"><a href="#__codelineno-20-20">20</a></span>
+<span class="normal"><a href="#__codelineno-20-21">21</a></span>
+<span class="normal"><a href="#__codelineno-20-22">22</a></span>
+<span class="normal"><a href="#__codelineno-20-23">23</a></span>
+<span class="normal"><a href="#__codelineno-20-24">24</a></span>
+<span class="normal"><a href="#__codelineno-20-25">25</a></span>
+<span class="normal"><a href="#__codelineno-20-26">26</a></span>
+<span class="normal"><a href="#__codelineno-20-27">27</a></span>
+<span class="normal"><a href="#__codelineno-20-28">28</a></span>
+<span class="normal"><a href="#__codelineno-20-29">29</a></span>
+<span class="normal"><a href="#__codelineno-20-30">30</a></span>
+<span class="normal"><a href="#__codelineno-20-31">31</a></span>
+<span class="normal"><a href="#__codelineno-20-32">32</a></span>
+<span class="normal"><a href="#__codelineno-20-33">33</a></span>
+<span class="normal"><a href="#__codelineno-20-34">34</a></span>
+<span class="normal"><a href="#__codelineno-20-35">35</a></span>
+<span class="normal"><a href="#__codelineno-20-36">36</a></span>
+<span class="normal"><a href="#__codelineno-20-37">37</a></span>
+<span class="normal"><a href="#__codelineno-20-38">38</a></span>
+<span class="normal"><a href="#__codelineno-20-39">39</a></span>
+<span class="normal"><a href="#__codelineno-20-40">40</a></span>
+<span class="normal"><a href="#__codelineno-20-41">41</a></span>
+<span class="normal"><a href="#__codelineno-20-42">42</a></span>
+<span class="normal"><a href="#__codelineno-20-43">43</a></span>
+<span class="normal"><a href="#__codelineno-20-44">44</a></span>
+<span class="normal"><a href="#__codelineno-20-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># coding:utf8</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkConf</span><span class="p">,</span> <span class="n">SparkContext</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="c1"># 本地运行需要设置环境变量</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="c1"># import os</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="c1"># os.environ[&#39;PYSPARK_PYTHON&#39;] = r&#39;D:\anaconda3\envs\pyspark\python.exe&#39;</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a>    <span class="c1"># 通过 SparkConf 对象，创建spark应用程序</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a>    <span class="n">conf</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a>        <span class="n">SparkConf</span><span class="p">()</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13"></a>        <span class="c1"># .setMaster(&#39;local[*]&#39;)  # 使用spark-submit时不要使用 setMaster,直接在cmd里设置提交</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14"></a>        <span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s1">&#39;WordCountHelloWorld&#39;</span><span class="p">)</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15"></a>    <span class="p">)</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16"></a>    <span class="c1"># 通过SparkConf对象构建SparkContext对象</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17"></a>    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18"></a>    <span class="c1"># 设置Spark日志等级</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19"></a>    <span class="c1"># sc.setLogLevel(&#39;INFO&#39;)</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20"></a>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21"></a>    <span class="c1"># 需求：wordcount技术，读取HDFS下的words.txt文件，对其统计每个单词出现的次数</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22"></a>    <span class="c1"># 1.读取文件, 需要所有的node都能读取到此文件</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23"></a>    <span class="n">file_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s1">&#39;hdfs://node1:8020/input/words.txt&#39;</span><span class="p">)</span>
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24"></a>    <span class="c1"># file_rdd = sc.textFile(&#39;./data/word.txt&#39;)</span>
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25"></a>
+</span><span id="__span-20-26"><a id="__codelineno-20-26" name="__codelineno-20-26"></a>    <span class="c1"># 将单词进行切割，得到一个存储全部单词的集合对象</span>
+</span><span id="__span-20-27"><a id="__codelineno-20-27" name="__codelineno-20-27"></a>    <span class="n">words_rdd</span> <span class="o">=</span> <span class="n">file_rdd</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span><span id="__span-20-28"><a id="__codelineno-20-28" name="__codelineno-20-28"></a>
+</span><span id="__span-20-29"><a id="__codelineno-20-29" name="__codelineno-20-29"></a>    <span class="c1"># 将单词转换为元组，key是单词，value默认为1</span>
+</span><span id="__span-20-30"><a id="__codelineno-20-30" name="__codelineno-20-30"></a>    <span class="n">words_with_one_rdd</span> <span class="o">=</span> <span class="n">words_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-20-31"><a id="__codelineno-20-31" name="__codelineno-20-31"></a>
+</span><span id="__span-20-32"><a id="__codelineno-20-32" name="__codelineno-20-32"></a>    <span class="c1"># 将元组的value按照key来分组，对所有的value执行聚合操作(相加)</span>
+</span><span id="__span-20-33"><a id="__codelineno-20-33" name="__codelineno-20-33"></a>    <span class="n">result_rdd</span> <span class="o">=</span> <span class="n">words_with_one_rdd</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-20-34"><a id="__codelineno-20-34" name="__codelineno-20-34"></a>
+</span><span id="__span-20-35"><a id="__codelineno-20-35" name="__codelineno-20-35"></a>    <span class="c1"># 获取结果</span>
+</span><span id="__span-20-36"><a id="__codelineno-20-36" name="__codelineno-20-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">result_rdd</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
+</span><span id="__span-20-37"><a id="__codelineno-20-37" name="__codelineno-20-37"></a>
+</span><span id="__span-20-38"><a id="__codelineno-20-38" name="__codelineno-20-38"></a>    <span class="n">res</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-20-39"><a id="__codelineno-20-39" name="__codelineno-20-39"></a>        <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s1">&#39;hdfs://node1:8020/input/words.txt&#39;</span><span class="p">)</span>
+</span><span id="__span-20-40"><a id="__codelineno-20-40" name="__codelineno-20-40"></a>        <span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span><span id="__span-20-41"><a id="__codelineno-20-41" name="__codelineno-20-41"></a>        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-20-42"><a id="__codelineno-20-42" name="__codelineno-20-42"></a>        <span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-20-43"><a id="__codelineno-20-43" name="__codelineno-20-43"></a>        <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span><span id="__span-20-44"><a id="__codelineno-20-44" name="__codelineno-20-44"></a>    <span class="p">)</span>
+</span><span id="__span-20-45"><a id="__codelineno-20-45" name="__codelineno-20-45"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="43-rdd">4.3. RDD</h2>
+<blockquote>
+<p>RDD（Resilient Distributed Dataset）叫做弹性分布式数据集，是Spark中最基本的数据抽象，代表一个不可变、可分区、里面的元素可并行计算的集合。</p>
+</blockquote>
+<ul>
+<li>
+<p>Dataset：一个数据集合，用于存放数据的。</p>
+</li>
+<li>
+<p>Distributed： RDD中的数据是分布式存储的，可用于分布式计算。</p>
+</li>
+<li>
+<p>Resilient： RDD中的数据可以存储在内存中或者磁盘中。  </p>
+</li>
+</ul>
+<p><img alt="image-20230702153244274" src="../img/image-20230702153244274.png" /></p>
+<h3 id="groupbukeyreducebykey">groupBuKey和reduceByKey的区别</h3>
+<ul>
+<li>
+<p>groupBuKey：只是分组</p>
+</li>
+<li>
+<p>reduceByKey：分组+聚合</p>
+</li>
+<li>
+<p>性能：</p>
+</li>
+<li>
+<p>reduceByKey的性能远远大于groupBuKey+单独的聚合逻辑</p>
+</li>
+<li>
+<p><img src="img/image-20230703215849690.png" alt="image-20230703215849690" style="zoom:70%;" /></p>
+</li>
+<li>
+<p><img alt="image-20230703215925934" src="../img/image-20230703215925934.png" /></p>
+</li>
+<li>
+<p>reduceByKey是先内部做了聚合再传输数据分组，传输IO小，而groupBuKey是先分组再聚合</p>
+</li>
+</ul>
+<h3 id="_11">总结</h3>
+<ol>
+<li>RDD创建有哪几种方法？
+     通过并行化集合的方式(本地集合转分布式集合)
+     或者读取数据的方式创建(TextFile\WholeTextFile)</li>
+<li>RDD分区数如何查看？
+     通过 getNumPartitions API 查看, 返回值Int</li>
+<li>Transformation 和 Action的区别?
+     转换算子的返回值100%是RDD, 而Action算子的返回值100%不是RDD.
+     转换算子是懒加载的, 只有遇到Action才会执行. Action就是转换算子处理链条的开关.</li>
+<li>
+<p>哪两个Action算子的结果不经过Driver, 直接输出?
+     foreach 和 saveAsTextFile 直接由Executor执行后输出
+     不会将结果发送到Driver上去  </p>
+</li>
+<li>
+<p>reduceByKey 和 groupByKey的区别?
+   reduceByKey自带聚合逻辑, groupByKey不带
+   如果做数据聚合reduceByKey的效率更好, 因为可以先聚合后shuffle再最终聚合, 传输的IO小</p>
+</li>
+<li>mapPartitions 和 foreachPartition 的区别?
+   mapPartitions 带有返回值 foreachPartition不带</li>
+<li>对于分区操作有什么要注意的地方?
+   尽量不要增加分区, 可能破坏内存迭代的计算管道  </li>
+</ol>
+<h3 id="rdd">RDD缓存</h3>
+<ul>
+<li>
+<p>RDD数据是过程数据，用一次返回一个新的RDD对象，而前一个被使用过的RDD对象则会被释放（防止数据两太大占内存等）。为了RDD不被释放，可以给RDD设置缓存，缓存到内存或本地。</p>
+</li>
+<li>
+<p>缓存的存储是<strong>分散存储</strong>的，不同分区的缓存存储在当前分区所在的机器上。</p>
+</li>
+<li>
+<p><strong>缓存必须保留RDD的血缘关系</strong>，因为在设计上认为：缓存是不安全的，因为缓存可能丢失。如果缓存丢失了，则可以通过RDD的<strong>血缘关系</strong>，也就是RDD的来源来重新完整得计算到当前RDD。</p>
+</li>
+<li>
+<p><code>python
+  rdd.cache()  # 缓存
+  rdd3.persist(StorageLevel.MEMORY_ONLY)  # 设置缓存方式
+  rdd3.unpersist()  # 取消设置缓存</code></p>
+</li>
+</ul>
+<p><img src="img/image-20230705141847409.png" alt="image-20230705141847409" style="zoom:80%;" /></p>
+<h3 id="rdd-checkpoint">RDD CheckPoint</h3>
+<ul>
+<li>CheckPoint不管分区数量多少,风险是一样的，缓存分区越多,风险越高。</li>
+<li>CheckPoint支持写入HDFS,缓存不行, HDFS是高可靠存储, CheckPoint被认为是安全的.</li>
+<li>CheckPoint不支持内存,缓存可以,缓存如果写内存性能比CheckPoint要好一些</li>
+<li>CheckPoint因为设计认为是安全的,所以不保留<strong>血缘关系</strong>,而缓存因为设计上认为不安全,所以保留</li>
+</ul>
+<h3 id="_12">广播变量</h3>
+<ul>
+<li>分布式集合 广播变量解决了什么问题?</li>
+</ul>
+<p>RDD和本地集合进行关联使用的时候 , 降低内存占用以及减少网络IO传输, 提高性能.</p>
+<p><img alt="20230705204833" src="../img/20230705204833.png" /></p>
+<h3 id="_13">累加器</h3>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span>
+<span class="normal"><a href="#__codelineno-21-15">15</a></span>
+<span class="normal"><a href="#__codelineno-21-16">16</a></span>
+<span class="normal"><a href="#__codelineno-21-17">17</a></span>
+<span class="normal"><a href="#__codelineno-21-18">18</a></span>
+<span class="normal"><a href="#__codelineno-21-19">19</a></span>
+<span class="normal"><a href="#__codelineno-21-20">20</a></span>
+<span class="normal"><a href="#__codelineno-21-21">21</a></span>
+<span class="normal"><a href="#__codelineno-21-22">22</a></span>
+<span class="normal"><a href="#__codelineno-21-23">23</a></span>
+<span class="normal"><a href="#__codelineno-21-24">24</a></span>
+<span class="normal"><a href="#__codelineno-21-25">25</a></span>
+<span class="normal"><a href="#__codelineno-21-26">26</a></span>
+<span class="normal"><a href="#__codelineno-21-27">27</a></span>
+<span class="normal"><a href="#__codelineno-21-28">28</a></span>
+<span class="normal"><a href="#__codelineno-21-29">29</a></span>
+<span class="normal"><a href="#__codelineno-21-30">30</a></span>
+<span class="normal"><a href="#__codelineno-21-31">31</a></span>
+<span class="normal"><a href="#__codelineno-21-32">32</a></span>
+<span class="normal"><a href="#__codelineno-21-33">33</a></span>
+<span class="normal"><a href="#__codelineno-21-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="sd">@Time  : 2023/7/5 20:56</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="sd">@Author: XuanYi</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="sd">@File  : 07-累加器.py</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="sd">@desc  :</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span><span class="p">,</span> <span class="n">SparkConf</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11"></a>    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12"></a>        <span class="n">conf</span><span class="o">=</span><span class="n">SparkConf</span><span class="p">()</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13"></a>        <span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14"></a>        <span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="s1">&#39;local[*]&#39;</span><span class="p">)</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15"></a>    <span class="p">)</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16"></a>    <span class="n">rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17"></a>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18"></a>    <span class="c1"># spark 提供的累加器变量，初始值设置为0</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19"></a>    <span class="n">acml</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">accumulator</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20"></a>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21"></a>    <span class="k">def</span> <span class="nf">map_func</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22"></a>        <span class="k">global</span> <span class="n">acml</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23"></a>        <span class="n">acml</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24"></a>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25"></a>
+</span><span id="__span-21-26"><a id="__codelineno-21-26" name="__codelineno-21-26"></a>    <span class="n">rdd2</span> <span class="o">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">map_func</span><span class="p">)</span>
+</span><span id="__span-21-27"><a id="__codelineno-21-27" name="__codelineno-21-27"></a>    <span class="c1"># 如果不设置cache而rdd2在被调用 collect 后 rdd2就会被销毁，染回再调用rdd2的话，就会把上面的代码在运行一次，此时 acml 就是 20</span>
+</span><span id="__span-21-28"><a id="__codelineno-21-28" name="__codelineno-21-28"></a>    <span class="c1"># 这样很容易出错！！</span>
+</span><span id="__span-21-29"><a id="__codelineno-21-29" name="__codelineno-21-29"></a>    <span class="n">rdd2</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+</span><span id="__span-21-30"><a id="__codelineno-21-30" name="__codelineno-21-30"></a>    <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span><span id="__span-21-31"><a id="__codelineno-21-31" name="__codelineno-21-31"></a>
+</span><span id="__span-21-32"><a id="__codelineno-21-32" name="__codelineno-21-32"></a>    <span class="n">rdd3</span> <span class="o">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+</span><span id="__span-21-33"><a id="__codelineno-21-33" name="__codelineno-21-33"></a>
+</span><span id="__span-21-34"><a id="__codelineno-21-34" name="__codelineno-21-34"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">acml</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>累加器解决了什么问题?</li>
+</ul>
+<p>分布式代码执行中, 进行全局累加  </p>
+<h3 id="_14">总结</h3>
+<ol>
+<li>Cache和Checkpoint区别</li>
+</ol>
+<p>Cache是轻量化保存RDD数据, 可存储在内存和硬盘, 是分散存储, 设计上数据是不安全的(保留RDD血缘关系)
+   CheckPoint是重量级保存RDD数据, 是集中存储, 只能存储在硬盘(HDFS)上, 设计上是安全的(不保留RDD血缘关系)</p>
+<ol>
+<li>Cache 和 CheckPoint的性能对比?</li>
+</ol>
+<p>​       Cache性能更好, 因为是分散存储, 各个Executor并行执行, 效率高, 可以保存到内存中(占内存),更快
+​       CheckPoint比较慢, 因为是集中存储, 涉及到网络IO, 但是存储到HDFS上更加安全(多副本)  </p>
+<h2 id="44-dag">4.4. DAG</h2>
+<blockquote>
+<p>spark的执行流程图，一个 Action(代码中的Action函数) 对应 一个Job 对应 一个DAG</p>
+</blockquote>
+<ul>
+<li>
+<p>1个Action会产生1个DAG,如果在代码中有3个Action 就产生3个DAG。一个Action产生的一个DAG,会在程序运行中产生一个Job。所以:1个ACTION = 1个DAG =1个Job</p>
+</li>
+<li>
+<p>如果一个代码中,写了3个Action,那么这个代码运行起来产生3个JOB,每个JOB有自己的DAG</p>
+</li>
+</ul>
+<p>一个代码运行起来，在Spark中称之为: Application</p>
+<ul>
+<li>层级关系:
+  1个Application中,可以有多个JOB,每一个JOB内含一个DAG,同时每一个JOB都是由一个Action产生的.</li>
+</ul>
+<p><img alt="image-20230706130228694" src="../img/image-20230706130228694.png" /></p>
+<h3 id="441-dag">4.4.1 DAG的宽窄依赖和阶段划分</h3>
+<ul>
+<li>
+<p>RDD前后关系分为</p>
+</li>
+<li>
+<p>窄依赖：父RDD的一个分区，全部将数据发给子RDD的一个分区</p>
+<p><img src="img/image-20230706131717283.png" alt="image-20230706131717283" style="zoom:80%;" /></p>
+</li>
+<li>
+<p>宽依赖（shuffle）：父RDD的一个分区,将数据发给子RDD的多个分区、</p>
+<p><img src="img/image-20230706131739243.png" alt="image-20230706131739243" style="zoom:80%;" /></p>
+</li>
+<li>
+<p>阶段划分（stage）：Spark会把宽依赖个窄依赖分开来计算，最后再shuffle</p>
+</li>
+<li>
+<p>划分依据：从前向后，遇到<strong>宽依赖</strong>就划分出一个阶段（stage）</p>
+<p><img alt="image-20230706132031761" src="../img/image-20230706132031761.png" /></p>
+</li>
+<li>
+<p>如图可以看见划分为了两个 stage</p>
+</li>
+<li>
+<p>在stage内部一定是：<strong>窄依赖</strong></p>
+</li>
+<li>
+<p>Spark是怎么做内存计算的? DAG的作用? Stage阶段划分的作用?</p>
+</li>
+<li>Spark会产生DAG图</li>
+<li>DAG图会基于分区和宽窄依赖关系划分阶段</li>
+<li>一个阶段的内部都是<strong>窄依赖</strong>，窄依赖内,如果形成前后1:1的分区对应关系,就可以产生许多内存迭代计算的管道</li>
+<li>这些内存迭代计算的管道,就是一个个具体的执行Task</li>
+<li>
+<p>一个Task是一个具体的线程,任务跑在一个线程内,就是走内存计算了.</p>
+</li>
+<li>
+<p>Spark为什么比MapReduce快?</p>
+</li>
+<li>Spark的算子丰富, MapReduce算子匮乏(Map和Reduce), MapReduce这个编程模型,很难在一套MR中处理复杂的任务.很多的复杂任务,是需要写多个MapReduce进行串联.多个MR串联通过磁盘交互数据</li>
+<li>Spark可以执行内存迭代,算子之间形成DAG基于依赖划分阶段后,在阶段内形成内存迭代管道.但是MapReduce的Map和Reduce之间的交互依旧是通过硬盘来交互的.</li>
+<li>编程模型上spark占优(算子够多)</li>
+<li>算子交互上,和计算上可以尽量多的内存计算而非磁盘迭代</li>
+</ul>
+<h2 id="45">4.5 并行度（并发）</h2>
+<blockquote>
+<p>Spark的并行：同一时间内，有多少个task在同时运行</p>
+<p>如果设置并行度为6，则有6个task在同时运行，rdd的分区也就会被划分为6个分区</p>
+</blockquote>
+<ul>
+<li>设置并行度：</li>
+</ul>
+<p>可以在<strong>代码</strong>和<strong>配置文件</strong>中以及<strong>提交命令的参数</strong>中设置</p>
+<p>以下优先级从高到低</p>
+<ul>
+<li>代码：<code>conf = SparkConf()</code>     <code>conf.set("spark.default.parallelism", 100)</code></li>
+<li>客户端提交参数：<code>bin/spark-submit --conf "spark.default.parallelism 100"</code></li>
+<li>配置文件：<code>conf/spark-defaults.conf</code>设置<code>spark.default.parallelism 100</code></li>
+<li>
+<p>默认(1,但是不会全部以1来运行任务，多数时间是基于读取文件的分片数量来运行的)</p>
+</li>
+<li>
+<p>一般不推荐在代码中设置并行度，因为会导致重新shuffle，内存管道重新排列、计算，导致效率下降。</p>
+</li>
+<li>repartition</li>
+<li>coalesce</li>
+<li>
+<p>partitionBy</p>
+</li>
+<li>
+<p>集群并行度规划：</p>
+</li>
+<li>
+<p>设置为cpu总核心的2~10倍</p>
+<blockquote>
+<p>确保是cpu核心数的整数倍即可，最小是2倍，最大建议是10倍</p>
+</blockquote>
+</li>
+<li>
+<p>为什么最少设置2倍？</p>
+<p>cpu的一个核心同一时间只能干一件事情.
+所以,在100个核心的情况下,设置100个并行,就能让CPU 100%出力.
+这种设置下,如果task的压力不均衡,某个task先执行完了.就导致某个CPU核心空闲
+所以,我们将Task(并行)分配的数量变多,比如800个并行,同一时间只有100个在运行,700个在等待.
+但是可以确保,某个task运行完了.后续有task补上,不让cpu闲下来,最大程度利用集群的资源.</p>
+</li>
+</ul>
+<h2 id="46-spark">4.6. Spark任务调度</h2>
+<p><img alt="image-20230712131229410" src="../img/image-20230712131229410.png" /></p>
+<h3 id="461-driver">4.6.1 Driver内的两个组件</h3>
+<h4 id="dag">DAG调度器</h4>
+<p>​   工作内容：将逻辑的DAG图进行处理，最终得到逻辑上的<strong>Task</strong>划分</p>
+<h4 id="task">Task调度器</h4>
+<p>​   工作内容：基于DAG Scheduler的产出，来<strong>规划</strong>这些<strong>逻辑</strong>的task，英爱在哪些<strong>物理</strong>上的executor上 运行，以及监控它们的运行。</p>
+<h3 id="_15">总结</h3>
+<ul>
+<li>DAG是什么有什么作用</li>
+</ul>
+<p>DAG有向无环图,用以描述任务执行流程,主要作用是协助DAG调度器构建Task分配用以做任务管理</p>
+<ul>
+<li>
+<p>内存迭代\阶段划分?
+  基于DAG的宽窄依赖划分阶段,阶段内部都是窄依赖可以构建内存迭代的管道</p>
+</li>
+<li>
+<p>DAG调度器是?
+  构建Task分配用以做任务管理</p>
+</li>
+</ul>
+<h1 id="5-sparksql">5. SparkSQL</h1>
+<h2 id="51sparksql">5.1什么是SparkSQL</h2>
+<p>​       SparkSQL是Spark的一个<strong>模块</strong>，用于<strong>处理海重结构化数据</strong></p>
+<p>​       限定:结构化数据处理</p>
+<h2 id="52-sparksql">5.2 SparkSQL的数据抽象</h2>
+<p><img alt="image-20230712143824681" src="../img/image-20230712143824681.png" /></p>
+<ul>
+<li>
+<p>DataFrame的构成</p>
+</li>
+<li>
+<p>结构层面</p>
+<p>StructType对象描述整个Dataframe的表结构</p>
+<p>StructField对象描述一个列的信息</p>
+</li>
+<li>
+<p>数据层面</p>
+<p>Row对象记录一行数据</p>
+<p>Column对象记录一列数据并包含列的信息</p>
+</li>
+</ul>
+<h2 id="53-sparksql-shuffle">5.3 SparkSQL Shuffle分区数</h2>
+<p><img alt="image-20230712201835581" src="../img/image-20230712201835581.png" /></p>
+<h2 id="54-jdbcdataframe">5.4 配置JDBC读取DataFrame</h2>
+<p><img alt="image-20230712210330121" src="../img/image-20230712210330121.png" /></p>
+<h3 id="54">5.4 总结</h3>
+<ol>
+<li>
+<p>DataFrame 在结构层面上由StructField组成列描述，由StructType构造表描述。在数据层面上， Column对象记录列数据， Row对象记录行数据</p>
+</li>
+<li>
+<p>DataFrame可以从RDD转换、 Pandas DF转换、读取文件、读取JDBC等方法构建</p>
+</li>
+<li>
+<p>spark.read.format()和df.write.format() 是DataFrame读取和写出的统一化标准API</p>
+</li>
+<li>
+<p>SparkSQL默认在Shuffle阶段200个分区，可以修改参数获得最好性能</p>
+</li>
+<li>
+<p>dropDuplicates可以去重、 dropna可以删除缺失值、 fillna可以填充缺失值</p>
+</li>
+<li>
+<p>SparkSQL支持JDBC读写，可用标准API对数据库进行读写操作  </p>
+</li>
+</ol>
+<h2 id="55-udf">5.5 UDF</h2>
+<p><img alt="image-20230716133425966" src="../img/image-20230716133425966.png" /></p>
+<h2 id="56">5.6 窗口函数</h2>
+<hr />
+<p><code>ROW_NUMBER() over()</code> 是 SQL 中的一个窗口函数，它为结果集中的每一行分配一个唯一的连续编号。它通常用于为数据的特定顺序或分区生成行号。</p>
+<p><code>OVER()</code> 子句用于定义 <code>ROW_NUMBER()</code> 函数操作的窗口或行子集。如果没有指定特定的分区或顺序，该函数将为结果集中的所有行分配行号。</p>
+<p>以下是 <code>ROW_NUMBER() over()</code> 的示例用法：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">()</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">row_number</span><span class="p">,</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这个示例中，<code>ROW_NUMBER() OVER()</code> 函数用于为结果集中的每一行分配一个唯一的行号。<code>row_number</code> 列将包含连续的数字，而 <code>column1</code> 和 <code>column2</code> 表示表中的其他列。</p>
+<p>您还可以在 <code>OVER()</code> 子句中指定特定的顺序或分区。例如：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">row_number</span><span class="p">,</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这种情况下，<code>ROW_NUMBER()</code> 函数将根据 <code>column1</code> 的升序顺序分配行号。</p>
+<p>请注意，实际的语法和窗口函数的行为可能会因所使用的具体数据库管理系统（DBMS）而略有不同。这里提供的示例基于标准 SQL 语法。</p>
+<hr />
+<p><code>DENSE_RANK()</code> 是 SQL 中的另一个窗口函数，它为结果集中的每一行分配一个唯一的排名。它与 <code>ROW_NUMBER()</code> 函数类似，但在处理并列排名时有所不同。</p>
+<p><code>DENSE_RANK()</code> 函数将相同值的行分配相同的排名，并且在排名中不会留下空缺。换句话说，如果多行具有相同的值并获得相同的排名，下一个排名将增加与并列行数相同的数量，而不会跳过任何排名。</p>
+<p>以下是 <code>DENSE_RANK()</code> 的示例用法：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">DENSE_RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">dense_rank</span><span class="p">,</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这个示例中，<code>DENSE_RANK()</code> 函数根据 <code>column1</code> 的升序顺序为每一行分配一个稠密排名。具有相同 <code>column1</code> 值的行将获得相同的排名，并且下一个排名将相应增加。</p>
+<p>请注意，与 <code>ROW_NUMBER()</code> 类似，<code>DENSE_RANK()</code> 的实际语法和行为可能因所使用的具体数据库管理系统（DBMS）而有所不同。这里提供的示例基于标准 SQL 语法。</p>
+<hr />
+<p><code>PARTITION BY</code> 是 SQL 中用于将结果集划分为多个分区的子句。它通常与窗口函数一起使用，以在每个分区内进行计算或排序。</p>
+<p>使用 <code>PARTITION BY</code> 子句，您可以指定一个或多个列，将结果集分成不同的组或分区。然后，窗口函数将在每个分区内独立地进行计算，而不是在整个结果集上进行。</p>
+<p>下面是一个示例，展示了如何使用 <code>PARTITION BY</code> 子句：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">column3</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sum_per_partition</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这个示例中，<code>PARTITION BY</code> 子句根据 <code>column1</code> 的值将结果集分成多个分区。然后，<code>SUM()</code> 窗口函数将在每个分区内独立地计算 <code>column3</code> 的总和，并将结果作为 <code>sum_per_partition</code> 列返回。</p>
+<p>通过使用 <code>PARTITION BY</code>，您可以对每个分区应用不同的聚合函数、排序规则或其他窗口函数，以便更灵活地处理结果集的不同部分。</p>
+<p>请注意，<code>PARTITION BY</code> 子句的语法和行为可能因所使用的具体数据库管理系统（DBMS）而有所不同。上述示例基于标准 SQL 语法，您可能需要根据您所使用的数据库系统进行适当的调整。</p>
+<hr />
+<p><code>RANK()</code> 是 SQL 中的一个窗口函数，用于为结果集中的每一行分配一个排名。它根据指定的排序顺序对行进行排序，并为每个行分配一个唯一的排名值。</p>
+<p>以下是 <code>RANK()</code> 函数的示例用法：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这个示例中，<code>RANK()</code> 函数根据 <code>column1</code> 的升序顺序为每一行分配一个排名。排名值将根据排序顺序递增，相同值的行将获得相同的排名。</p>
+<p>请注意，如果有两个或多个行具有相同的值，并且在排序中占据相同的位置，它们将获得相同的排名，并且下一个排名将跳过相应数量的排名。</p>
+<p><code>RANK()</code> 函数在处理并列排名时会跳过排名，而不会留下空缺。例如，如果有两个行获得了排名 1，下一个行将获得排名 3，而不是 2。</p>
+<p>需要注意的是，实际的 <code>RANK()</code> 函数语法和行为可能因所使用的具体数据库管理系统（DBMS）而有所不同。上述示例基于标准 SQL 语法，您可能需要根据您所使用的数据库系统进行适当的调整。</p>
+<hr />
+<p><code>NTILE()</code> 是 SQL 中的一个窗口函数，用于将结果集划分为指定数量的桶（buckets），并为每个桶分配一个标识值。它将结果集中的行均匀地分配到各个桶中，以便进行分组或分析。</p>
+<p>以下是 <code>NTILE()</code> 函数的示例用法：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">NTILE</span><span class="p">(</span><span class="n">num_buckets</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">bucket</span><span class="p">,</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在这个示例中，<code>NTILE()</code> 函数将结果集按照 <code>column1</code> 的升序顺序划分为指定数量的桶（<code>num_buckets</code>）。每个桶将被分配一个标识值，表示它所属的桶号。</p>
+<p><code>NTILE()</code> 函数根据行的顺序将它们均匀地分配到各个桶中，以确保每个桶中的行数尽可能相近。如果结果集的行数不能被桶的数量整除，则某些桶可能会比其他桶多一个或少一个行。</p>
+<p>请注意，<code>NTILE()</code> 函数返回的标识值是整数，表示每个桶的编号。您可以根据需要对桶进行进一步的分析或聚合操作。</p>
+<p>需要注意的是，实际的 <code>NTILE()</code> 函数语法和行为可能因所使用的具体数据库管理系统（DBMS）而有所不同。上述示例基于标准 SQL 语法，您可能需要根据您所使用的数据库系统进行适当的调整。</p>
+<h3 id="_16">总结</h3>
+<ol>
+<li>
+<p>SparkSQL支持UDF和UDAF定义，但在Python中，暂时只能定义UDF</p>
+</li>
+<li>
+<p>UDF定义支持2种方式, 1:使用SparkSession对象构建. 2: 使用functions包中提供的UDF API构建. 要注意, 方式1可用DSL和SQL风格, 方式2 仅可用于DSL风格</p>
+</li>
+<li>
+<p>SparkSQL支持窗口函数使用, 常用SQL中的窗口函数均支持, 如聚合窗口\排序窗口\NTILE分组窗口等  </p>
+</li>
+</ol>
+<h2 id="57-catalyst">5.7 Catalyst</h2>
+<p>常规流程解析SQL：</p>
+<p><img alt="image-20230718133002522" src="../img/image-20230718133002522.png" /></p>
+<p>优化后：</p>
+<p><img alt="image-20230718133019322" src="../img/image-20230718133019322.png" /></p>
+<ul>
+<li><code>谓词下推（Predicate Pushdown）\ 断言下推</code>：将逻辑判断提前到前面，以减少join的数据量</li>
+<li><code>列词裁剪（Column Pruning）</code>：将加载后的列进行裁剪，减少不需要的列</li>
+</ul>
+<blockquote>
+<p>行过滤，提前执行 where</p>
+<p>列过滤，提前规划select的字段数量</p>
+</blockquote>
+<h2 id="58-sparksql">5.8 SparkSQL执行流程</h2>
+<p><img alt="image-20230718133237986" src="../img/image-20230718133237986.png" /></p>
+<h3 id="_17">总结</h3>
+<ol>
+<li>
+<p>DataFrame因为存储的是二维表数据结构，可以被针对，所以可以自动优化执行流程。</p>
+</li>
+<li>
+<p>自动优化依赖Catalyst优化器</p>
+</li>
+<li>
+<p>自动优化2个大的优化项是： 1. 断言（谓词）下推（行过滤） 2. 列值裁剪（列过滤）</p>
+</li>
+<li>
+<p>DataFrame代码在被优化有，最终还是被转换成RDD去执行</p>
+</li>
+</ol>
+<h1 id="6-spark-on-hive">6. Spark on Hive</h1>
+<ul>
+<li>hive启动metastore服务</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span>
+<span class="normal"><a href="#__codelineno-28-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>vim<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/conf/hive-site.xml
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>&lt;!--<span class="w"> </span>远程模式部署metastore<span class="w"> </span>metastore地址<span class="w"> </span>--&gt;
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a>&lt;property&gt;
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="w">    </span>&lt;name&gt;hive.metastore.uris&lt;/name&gt;
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a><span class="w">    </span>&lt;value&gt;thrift://node1:9083&lt;/value&gt;
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7"></a>&lt;/property&gt;
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>修改spark和hive的配置文件</li>
+</ul>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-29-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-29-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-29-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-29-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-29-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-29-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-29-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-29-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-29-10">10</a></span>
+<span class="normal"><a href="#__codelineno-29-11">11</a></span>
+<span class="normal"><a href="#__codelineno-29-12">12</a></span>
+<span class="normal"><a href="#__codelineno-29-13">13</a></span>
+<span class="normal"><a href="#__codelineno-29-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>vim<span class="w">  </span>/export/server/spark/conf/hive-site.xml
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>&lt;configuration&gt;
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="w">  </span>&lt;property&gt;
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="w">    </span>&lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="w">    </span>&lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a>&lt;!--&lt;value&gt;/root/hivedata&lt;/value&gt;<span class="w"> </span>--&gt;
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a><span class="w">  </span>&lt;/property&gt;
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9"></a>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10"></a><span class="w">  </span>&lt;property&gt;
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11"></a><span class="w">    </span>&lt;name&gt;hive.metastore.uris&lt;/name&gt;
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12"></a><span class="w">    </span>&lt;value&gt;thrift://node1:9083&lt;/value&gt;
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13"></a><span class="w">  </span>&lt;/property&gt;
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14"></a>&lt;/configuration&gt;
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_18">总结</h2>
+<ul>
+<li>Spark on Hive 就是因为Spqrk没有元数据管理引擎，所以需要借用Hive的metastore来作为元数据服务，而计算部分还是使用HiveSQL来执行。</li>
+<li>
+<p>HiveSQL：把SQL优化，然后翻译成RDD来执行。</p>
+</li>
+<li>
+<p>hive sql 和 spark on hive：</p>
+</li>
+</ul>
+<p><img alt="image-20230718143937856" src="../img/image-20230718143937856.png" /></p>
+<h1 id="7-spark-thriftserver">7. Spark-ThriftServer</h1>
+<blockquote>
+<p>和hive的hiveserver2类似，直接执行sql语句，底层将sql语句转换为rdd执行，然后返回结果给ThriftServer</p>
+</blockquote>
+<ul>
+<li>分布式SQL执行引擎就是使用Spark提供的ThriftServer服务，以“后台进程”的模式持续运行，对外提供端口。</li>
+</ul>
+<p>可以通过客户端工具或者代码，以JDBC协议连接使用。</p>
+<p>SQL提交后，底层运行的就是Spark任务。
+  相当于构建了一个以MetaStore服务为元数据， Spark为执行引擎的数据库服务，像操作数据库那样方便的操作SparkSQL进行分布式的SQL计算。  </p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="c1"># 启动命令</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>/export/server/spark/sbin/start-thriftserver.sh<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a>--hiveconf<span class="w"> </span>hive.server2.thrift.port<span class="o">=</span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4"></a>--hiveconf<span class="w"> </span>hive.server2.thrift.bind.host<span class="o">=</span>node1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5"></a>--master<span class="w"> </span>local<span class="o">[</span>*<span class="o">]</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-31-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-31-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-31-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-31-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-31-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-31-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-31-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-31-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-31-10">10</a></span>
+<span class="normal"><a href="#__codelineno-31-11">11</a></span>
+<span class="normal"><a href="#__codelineno-31-12">12</a></span>
+<span class="normal"><a href="#__codelineno-31-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">pyhive</span> <span class="kn">import</span> <span class="n">hive</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a>    <span class="c1"># 获取 Hive（Spark ThriftServer）的链接</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6"></a>    <span class="n">db_hive</span> <span class="o">=</span> <span class="n">hive</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;node1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7"></a>    <span class="c1"># 获取游标对象</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8"></a>    <span class="n">cursor</span> <span class="o">=</span> <span class="n">db_hive</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9"></a>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10"></a>    <span class="c1"># 执行SQL</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11"></a>    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM student&#39;</span><span class="p">)</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="8-spark-shuffle">8. Spark Shuffle</h1>
+<ul>
+<li>HashShuffleManager</li>
+</ul>
+<p><img alt="image-20230719163212270" src="../img/image-20230719163212270.png" /></p>
+<ul>
+<li>
+<p>SortShuffleManager  </p>
+</li>
+<li>
+<p>普通机制</p>
+<p><img src="img/image-20230719163245803.png" alt="image-20230719163245803" style="zoom:80%;" /></p>
+</li>
+<li>
+<p>bypass 机制</p>
+<p><img src="img/image-20230719163341874.png" alt="image-20230719163341874" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h2 id="_19">总结</h2>
+<ol>
+<li>
+<p>SortShuffle对比HashShuffle可以减少很多的磁盘文件,以节省网络IO的开销</p>
+</li>
+<li>
+<p>SortShuffle主要是对磁盘文件进行合并来进行文件数量的减少, 同时两类Shuffle都需要经过内存缓冲区溢写磁盘的场景. 所以可以得知, 尽管Spark是内存迭代计算框架, 但是内存迭代主要在窄依赖中. 在宽依赖(Shuffle)中磁盘交互还是一个无可避免的情况. 所以, 我们要尽量减少Shuffle的出现, 不要进行无意义的Shuffle计算.  </p>
+</li>
+</ol>
+<h1 id="9spark">9.Spark新特性</h1>
+<h2 id="91adaptive-query-executionaqe-sparksql">9.1Adaptive Query Execution（AQE） 自适应查询(SparkSQL)</h2>
+<blockquote>
+<p>由于缺乏或者不准确的数据统计信息(元数据)和对成本的错误估算(执行计划调度)导致生成的初始执行计划不理想。
+在Spark3.x版本提供Adaptive Query Execution自适应查询技术，通过在”运行时”对查询执行计划进行优化, 允许Planner在运行时执行可选计划,这些可选计划将会基于运行时数据统计进行动态优化, 从而提高性能.</p>
+</blockquote>
+<p>Adaptive Query Execution AQE主要提供了三个自适应优化:</p>
+<ul>
+<li>动态合并 Shuffle Partitions</li>
+</ul>
+<p><img alt="image-20230719165340517" src="../img/image-20230719165340517.png" /></p>
+<ul>
+<li>动态调整Join策略</li>
+</ul>
+<p><img alt="image-20230719165355280" src="../img/image-20230719165355280.png" /></p>
+<ul>
+<li>动态优化倾斜Join(Skew Joins)</li>
+</ul>
+<p><img alt="image-20230719165406720" src="../img/image-20230719165406720.png" /></p>
+<p>开启AQE方式 ：<code>set spark.sql.adaptive.enabled = true;</code></p>
+<p>AQE 总结:  </p>
+<ol>
+<li>AQE的开启通过: spark.sql.adaptive.enabled 设置为true开启</li>
+<li>AQE是自动化优化机制, 无需我们设置复杂的参数调整, 开启AQE符合条件即可自动化应用AQE优化</li>
+<li>AQE带来了极大的SparkSQL性能提升  </li>
+</ol>
+<p><img src="img/image-20230719165508112.png" alt="image-20230719165508112" style="zoom:50%;" /></p>
+<h2 id="92-dynamic-partition-pruning-sparksql">9.2 Dynamic Partition Pruning 动态分区裁剪(SparkSQL)</h2>
+<blockquote>
+<p>当优化器在编译时无法识别可跳过的分区时，可以使用"动态分区裁剪"，即基于运行时推断的信息来进一步进行分区裁剪。这在星型模型中很常见，星型模型是由一个或多个并且引用了任意数量的维度表的事实表组成。在这种连接操作中，我们可以通过识别维度表过滤之后的分区来裁剪从事实表中读取的分区。在一个TPC-DS基准测试中， 102个查询中有60个查询获得2到18倍的速度提升  </p>
+</blockquote>
+<p><img alt="image-20230719165706382" src="../img/image-20230719165706382.png" /></p>
+<h2 id="93python-api-pysparkkoalas">9.3增强的Python API: PySpark和Koalas</h2>
+<blockquote>
+<p>很多Python开发人员在数据结构和数据分析方面使用pandas API，但仅限于单节点处理。 Databricks会持续开发Koalas——基于Apache Spark的pandas API实现，让数据科学家能够在分布式环境中更高效地处理大数据。  </p>
+</blockquote>
+<h2 id="_20">总结</h2>
+<ol>
+<li>
+<p>AQE的开启通过: spark.sql.adaptive.enabled 设置为true开启,触发后极大提升SparkSQL计算性能</p>
+</li>
+<li>
+<p>动态分区裁剪可以让我们更好的优化运行时分区内数据的量级. 通过动态的谓词下推来获取传统静态谓词下推无法获得的更高过滤属性, 减少操作的分区数据量以提高性能.</p>
+</li>
+<li>
+<p>新版Koalas类库可以让我们写Pandas API(Koalas提供)然后将它们运行在分布式的Spark环境上,Pandas开发者也能快速上手Spark  </p>
+</li>
+</ol>
+<p><img src="img/Spark核心概念.png" alt="Spark核心概念" style="zoom:150%;" /></p>
+<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span>
+<span class="normal"><a href="#__codelineno-32-11">11</a></span>
+<span class="normal"><a href="#__codelineno-32-12">12</a></span>
+<span class="normal"><a href="#__codelineno-32-13">13</a></span>
+<span class="normal"><a href="#__codelineno-32-14">14</a></span>
+<span class="normal"><a href="#__codelineno-32-15">15</a></span>
+<span class="normal"><a href="#__codelineno-32-16">16</a></span>
+<span class="normal"><a href="#__codelineno-32-17">17</a></span>
+<span class="normal"><a href="#__codelineno-32-18">18</a></span>
+<span class="normal"><a href="#__codelineno-32-19">19</a></span>
+<span class="normal"><a href="#__codelineno-32-20">20</a></span>
+<span class="normal"><a href="#__codelineno-32-21">21</a></span>
+<span class="normal"><a href="#__codelineno-32-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="c1"># hadoop</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a>start-all.sh
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="c1"># zookeeper</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a>zkServer.sh<span class="w"> </span>start
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a>zkServer.sh<span class="w"> </span>status
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a><span class="c1"># hive</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>metastore<span class="w"> </span>&gt;<span class="w"> </span>/export/server/hive.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a>nohup<span class="w"> </span>/export/server/apache-hive-3.1.2-bin/bin/hive<span class="w"> </span>--service<span class="w"> </span>hiveserver2<span class="w"> </span>&gt;<span class="w"> </span>/export/server/hiveserver2.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11"></a>
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12"></a><span class="c1"># spark</span>
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13"></a><span class="c1"># node1</span>
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14"></a>/export/server/spark/sbin/start-all.sh
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15"></a><span class="c1"># node2</span>
+</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16"></a>/export/server/spark/sbin/start-master.sh
+</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17"></a>
+</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18"></a><span class="c1"># spark-ThriftServer</span>
+</span><span id="__span-32-19"><a id="__codelineno-32-19" name="__codelineno-32-19"></a>/export/server/spark/sbin/start-thriftserver.sh<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-20"><a id="__codelineno-32-20" name="__codelineno-32-20"></a>--hiveconf<span class="w"> </span>hive.server2.thrift.port<span class="o">=</span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-21"><a id="__codelineno-32-21" name="__codelineno-32-21"></a>--hiveconf<span class="w"> </span>hive.server2.thrift.bind.host<span class="o">=</span>node1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-22"><a id="__codelineno-32-22" name="__codelineno-32-22"></a>--master<span class="w"> </span>local<span class="o">[</span>*<span class="o">]</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="end">END</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../C%2B%2B/first/" class="md-footer__link md-footer__link--prev" aria-label="上一页: First">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                First
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../01-Hadoop-3.3.0-Centos7-64bit_%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="md-footer__link md-footer__link--next" aria-label="下一页: 01 Hadoop 3.3.0 Centos7 64bit 编译安装详解">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                01 Hadoop 3.3.0 Centos7 64bit 编译安装详解
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Martin Donath – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.path", "navigation.prune", "content.code.copy", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
