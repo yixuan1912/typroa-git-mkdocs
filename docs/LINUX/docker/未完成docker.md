@@ -1,4 +1,22 @@
-### docker基本命令
+
+
+# Docker image 导出与加载
+- 要导出 Docker 镜像，您可以使用 docker save 命令。这将允许您将 Docker 镜像保存为一个单个的 tar 归档文件，以便稍后可以在另一个 Docker 主机上导入。
+
+	```shell
+	docker save -o <output_filename>.tar <image_name>
+
+	```
+
+- 要在另一个 Docker 主机上导入此导出的镜像，可以使用 docker load 命令。例如：
+	```shell
+	docker load -i myapp_image.tar
+	
+	```
+
+
+
+# Docker基本命令
 
 - `docker ps -a `:查看进程
 - `ocker run -it --name mcentos centos /bin/bash`: 创建一个容器，以bash进行交互
@@ -11,11 +29,11 @@
 
 - 　--name="nginx-lb":为容器指定一个名称；
 
-  　　-d:后台运行容器，并返回容器ID；
+    　　-d:后台运行容器，并返回容器ID；
 
-  　　-p:指定映射端口号，本文是将ssh的22端口映射为10022端口，web访问的80端口映射为80端口
+    　　-p:指定映射端口号，本文是将ssh的22端口映射为10022端口，web访问的80端口映射为80端口
 
-  　　-volume: 用来指定挂载目录，将config配置目录、data数据目录、logs日志目录挂载到宿主机上，以后备份方便
+    　　-volume: 用来指定挂载目录，将config配置目录、data数据目录、logs日志目录挂载到宿主机上，以后备份方便
 
 
 
@@ -54,10 +72,6 @@ exit
 
 
 
-### 
-
-
-
 docker 创建gitlab仓库
 
 ```csharp
@@ -73,5 +87,6 @@ docker run \
 -v /home/software/gitlab/logs:/var/log/gitlab \    # 挂载gitlab的日志文件
 -v /home/software/gitlab/data:/var/opt/gitlab \    # 挂载gitlab的数据
 -v /etc/localtime:/etc/localtime:ro \    # 保持宿主机和容器时间同步
---privileged=true beginor/gitlab-ce    # 在容器中能以root身份执行操作
+--privileged=true \    # 在容器中能以root身份执行操作
+beginor/gitlab-ce
 ```

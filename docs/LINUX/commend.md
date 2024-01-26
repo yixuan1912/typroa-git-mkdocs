@@ -120,7 +120,7 @@ Device Boot Start End Blocks Id System
 [root@10.10.90.97 ~]# mount /dev/hdd2 /dp2
 ```
 
-###  tr替换字符串等
+### tr替换字符串等
 
 - ```BASH
   用法：tr [-cdst]... SET1 [SET2]
@@ -321,4 +321,40 @@ LOGICAL_SECTOR_SIZE=512
 ```
 
 
+
+
+
+### 查看进程网速
+
+![image-20231023233405865](./img/image-20231023233405865.png)
+
+```shell
+[root@JUHOST-64Wkw9 ~]# nethogs -h
+usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [device [device [device ...]]]
+		-V : prints version.
+		-h : prints this help.
+		-b : bughunt mode - implies tracemode.
+		-d : delay for update refresh rate in seconds. default is 1.
+		-v : view mode (0 = KB/s, 1 = total KB, 2 = total B, 3 = total MB). default is 0.
+		-c : number of updates. default is 0 (unlimited).
+		-t : tracemode.
+		-p : sniff in promiscious mode (not recommended).
+		-s : sort output by sent column.
+   -a : monitor all devices, even loopback/stopped ones.
+		device : device(s) to monitor. default is all interfaces up and running excluding loopback
+
+When nethogs is running, press:
+ q: quit
+ s: sort by SENT traffic
+ r: sort by RECEIVE traffic
+ m: switch between total (KB, B, MB) and KB/s mode
+```
+
+
+
+## shell 查看docker占用
+
+```shell
+docker ps -q | xargs docker stats --no-stream
+```
 

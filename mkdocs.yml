@@ -76,7 +76,7 @@ plugins:
   - blog:
       draft: true  #  渲染草稿帖子
       enabled: true
-      blog_dir: blog
+      blog_dir: Blog  # 从docs路径解析
       blog_toc: true
       post_date_format: medium
       post_url_date_format: yyyy-MM-dd
