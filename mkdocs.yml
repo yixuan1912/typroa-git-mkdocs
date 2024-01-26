@@ -73,18 +73,18 @@ copyright: >
 
 
 plugins:
-#  - blog:
-#      draft: true  #  渲染草稿帖子
-#      enabled: true
-#      blog_dir: blog
-#      blog_toc: true
-#      post_date_format: medium
-#      post_url_date_format: yyyy-MM-dd
-#  #    post_url_format: "{date}/{slug}"  # categories– 帖子类别  、file- 文件名
-#      post_excerpt: optional  # 该插件使帖子摘录成为可选。当帖子未定义摘录时，视图将包含整个帖子
-#      post_excerpt_max_authors: 0  # 摘录中呈现的作者数量的上限
-#      post_excerpt_max_categories: 0  # 摘录中呈现的类别数量的上限
-#      post_readtime: true   #  自动计算帖子的阅读时间并呈现
+  - blog:
+      draft: true  #  渲染草稿帖子
+      enabled: true
+      blog_dir: blog
+      blog_toc: true
+      post_date_format: medium
+      post_url_date_format: yyyy-MM-dd
+  #    post_url_format: "{date}/{slug}"  # categories– 帖子类别  、file- 文件名
+      post_excerpt: optional  # 该插件使帖子摘录成为可选。当帖子未定义摘录时，视图将包含整个帖子
+      post_excerpt_max_authors: 0  # 摘录中呈现的作者数量的上限
+      post_excerpt_max_categories: 0  # 摘录中呈现的类别数量的上限
+      post_readtime: true   #  自动计算帖子的阅读时间并呈现
 
   - search:
       enabled: true
